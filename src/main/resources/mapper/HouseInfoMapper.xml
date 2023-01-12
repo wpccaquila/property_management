@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.property_management.mapper.HouseInfoMapper">
+<mapper namespace="com.property_management.mapper.HouseInfoMapper">
 
-    <resultMap id="BaseResultMap" type="com.example.property_management.pojo.HouseInfo">
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.HouseInfo">
             <id property="houseId" column="house_id" jdbcType="INTEGER"/>
             <result property="houseName" column="house_name" jdbcType="VARCHAR"/>
             <result property="houseType" column="house_type" jdbcType="VARCHAR"/>
@@ -44,7 +44,7 @@
         house_owner = #{houseOwner}
     </select>
 
-    <update id="updateHouseInfo" parameterType="com.example.property_management.pojo.HouseInfo">
+    <update id="updateHouseInfo" parameterType="com.property_management.pojo.HouseInfo">
         update house_info
         set
             house_name = #{houseName},

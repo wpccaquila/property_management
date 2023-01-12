@@ -1,10 +1,10 @@
-package com.example.property_management.mapper;
+package com.property_management.mapper;
 import java.util.List;
 
+import com.property_management.pojo.HouseInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.example.property_management.pojo.HouseInfo;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

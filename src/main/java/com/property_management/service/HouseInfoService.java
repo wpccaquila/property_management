@@ -1,7 +1,6 @@
-package com.example.property_management.service;
+package com.property_management.service;
 
-import com.example.property_management.pojo.HouseInfo;
-import org.apache.ibatis.annotations.Param;
+import com.property_management.pojo.HouseInfo;
 
 import java.util.List;
 

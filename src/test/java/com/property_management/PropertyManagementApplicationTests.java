@@ -1,8 +1,7 @@
-package com.example.property_management;
+package com.property_management;
 
-import com.example.property_management.pojo.OwnerInfo;
-import com.example.property_management.service.OwnerInfoService;
-import com.example.property_management.service.impl.OwnerInfoServiceImpl;
+import com.property_management.pojo.OwnerInfo;
+import com.property_management.service.OwnerInfoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -23,17 +22,17 @@ class PropertyManagementApplicationTests {
         System.out.println("添加成功");
     }
 
-//    @Test
-//    public void queryOwnerTest(){
-//        ownerInfo = ownerInfoService.queryOwnerByName("王鹏程");
-//        ownerInfo.toString();
-//    }
+    @Test
+    public void queryOwnerTest(){
+        List<OwnerInfo> list = ownerInfoService.queryOwnerByName("王鹏程");
+        list.forEach(ownerInfo -> System.out.println(ownerInfo));
+    }
 //
-//    @Test
-//    public void queryOwnerByIdTest1(){
-//        ownerInfo = ownerInfoService.queryOwnerById(2);
-//        ownerInfo.toString();
-//    }
+    @Test
+    public void queryOwnerByIdTest1(){
+        OwnerInfo ownerInfo = ownerInfoService.queryOwnerById(1);
+        System.out.println(ownerInfo.toString());
+    }
 
     @Test
     public void queryAllOwnerTest(){

@@ -1,4 +1,4 @@
-package com.example.property_management.pojo;
+package com.property_management.pojo;
 
 import org.springframework.stereotype.Component;
 

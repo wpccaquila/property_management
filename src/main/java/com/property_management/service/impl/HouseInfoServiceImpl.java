@@ -1,8 +1,8 @@
-package com.example.property_management.service.impl;
+package com.property_management.service.impl;
 
-import com.example.property_management.mapper.HouseInfoMapper;
-import com.example.property_management.pojo.HouseInfo;
-import com.example.property_management.service.HouseInfoService;
+import com.property_management.mapper.HouseInfoMapper;
+import com.property_management.pojo.HouseInfo;
+import com.property_management.service.HouseInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

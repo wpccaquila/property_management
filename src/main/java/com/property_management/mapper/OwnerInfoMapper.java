@@ -1,7 +1,7 @@
-package com.example.property_management.mapper;
+package com.property_management.mapper;
 
 
-import com.example.property_management.pojo.OwnerInfo;
+import com.property_management.pojo.OwnerInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -20,7 +20,7 @@ public interface OwnerInfoMapper {
      * @param ownerName
      * @return
      */
-     OwnerInfo queryOwnerByName(
+     List<OwnerInfo> queryOwnerByName(
             @Param("owner_name")
             String ownerName);
 

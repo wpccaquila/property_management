@@ -1,9 +1,9 @@
-package com.example.property_management.service.impl;
+package com.property_management.service.impl;
 
 
-import com.example.property_management.mapper.OwnerInfoMapper;
-import com.example.property_management.pojo.OwnerInfo;
-import com.example.property_management.service.OwnerInfoService;
+import com.property_management.mapper.OwnerInfoMapper;
+import com.property_management.pojo.OwnerInfo;
+import com.property_management.service.OwnerInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -23,7 +23,7 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     }
 
     @Override
-    public OwnerInfo queryOwnerByName(String ownerName) {
+    public List<OwnerInfo> queryOwnerByName(String ownerName) {
         return ownerInfoMapper.queryOwnerByName(ownerName);
     }
 

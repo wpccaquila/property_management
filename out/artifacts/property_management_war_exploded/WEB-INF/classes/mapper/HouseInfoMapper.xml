@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.property_management.mapper.HouseInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.example.property_management.pojo.HouseInfo">
+            <id property="houseId" column="house_id" jdbcType="INTEGER"/>
+            <result property="houseName" column="house_name" jdbcType="VARCHAR"/>
+            <result property="houseType" column="house_type" jdbcType="VARCHAR"/>
+            <result property="houseArea" column="house_area" jdbcType="INTEGER"/>
+            <result property="roomNumber" column="room_number" jdbcType="INTEGER"/>
+            <result property="houseOwner" column="house_owner" jdbcType="INTEGER"/>
+    </resultMap>
+
+
+
+    <select id="queryAllHouseInfo" resultMap="BaseResultMap">
+        select * from house_info
+    </select>
+
+    <insert id="insertAll">
+        insert into house_info
+        (house_name, house_type,
+         house_area, room_number, house_owner)
+        values (#{houseName,jdbcType=VARCHAR}, #{houseType,jdbcType=VARCHAR},
+                #{houseArea,jdbcType=NUMERIC}, #{roomNumber,jdbcType=NUMERIC}, #{houseOwner,jdbcType=VARCHAR})
+
+    </insert>
+    <select id="selectByHouseId" resultMap="BaseResultMap">
+        select
+            (house_id,house_name, house_type,
+             house_area, room_number, house_owner)
+        from house_info
+        where
+        house_id = #{houseId,jdbcType=NUMERIC}
+    </select>
+    <select id="selectByHouseOwner" resultMap="BaseResultMap">
+        select
+            (house_id,house_name, house_type,
+             house_area, room_number, house_owner)
+        from house_info
+        where
+        house_owner = #{houseOwner}
+    </select>
+
+    <update id="updateHouseInfo" parameterType="com.example.property_management.pojo.HouseInfo">
+        update house_info
+        set
+            house_name = #{houseName},
+            room_number = #{roomNumber},
+            house_type = #{houseType},
+            house_area = #{houseArea},
+            house_owner = #{houseOwner}
+        where house_id = #{houseId}
+    </update>
+
+    <delete id="deleteByHouseId">
+        delete
+        from house_info
+        where house_id = #{houseId,jdbcType=NUMERIC}
+    </delete>
+
+
+</mapper>

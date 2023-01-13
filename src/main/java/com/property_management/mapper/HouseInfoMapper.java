@@ -8,11 +8,8 @@ import org.apache.ibatis.annotations.Param;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
-* @author wpcc
-* @description 针对表【house_info】的数据库操作Mapper
-* @createDate 2023-01-10 11:01:53
-* @Entity com.example.property_management.pojo.HouseInfo
-*/
+ * 房屋信息实体类
+ */
 @Mapper
 public interface HouseInfoMapper extends BaseMapper<HouseInfo> {
 

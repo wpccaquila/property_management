@@ -16,9 +16,9 @@
     public int addOwner(OwnerInfo ownerInfo); -->
     <insert id="addOwner" parameterType="com.property_management.pojo.OwnerInfo">
         insert into owner_info(owner_name,owner_phone,owner_address,
-                               owner_password,house_id,owner_identity)
+                               owner_password,owner_identity)
         values (#{owner_name},#{owner_phone},#{owner_address},
-                #{owner_password},#{house_id},#{owner_identity})
+                #{owner_password},#{owner_identity})
     </insert>
 
 <!--    姓名查询业主信息
@@ -67,4 +67,12 @@
     <delete id="deleteOwnerById" parameterType="int">
         delete from owner_info where owner_id = #{owner_id}
     </delete>
-    </mapper>
+
+    <select id="selectByOwner_phoneAndOwner_password" resultMap="BaseResultMap">
+        select *
+        from owner_info
+        where
+        owner_phone = #{owner_phone}
+        AND owner_password = #{owner_password,jdbcType=VARCHAR}
+    </select>
+</mapper>

@@ -1,7 +1,7 @@
 package com.property_management;
 
 import com.property_management.pojo.HouseInfo;
-import com.property_management.service.HouseInfoService;
+import com.property_management.service.common.HouseInfoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

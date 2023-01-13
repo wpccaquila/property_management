@@ -1,7 +1,9 @@
 package com.property_management.pojo;
 
-import org.springframework.stereotype.Component;
 
+/**
+ * 业主信息实体类
+ */
 public class OwnerInfo {
     private int owner_id;
     private String owner_name;
@@ -46,6 +48,17 @@ public class OwnerInfo {
         this.owner_address = owner_address;
         this.owner_password = owner_password;
         this.house_id = house_id;
+        this.owner_identity = owner_identity;
+    }
+
+    /**
+     * 无id和房间id构造函数
+     */
+    public OwnerInfo(String owner_name, int owner_phone, String owner_address, String owner_password, String owner_identity) {
+        this.owner_name = owner_name;
+        this.owner_phone = owner_phone;
+        this.owner_address = owner_address;
+        this.owner_password = owner_password;
         this.owner_identity = owner_identity;
     }
 

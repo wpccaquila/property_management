@@ -1,9 +1,9 @@
-package com.property_management.service.impl;
+package com.property_management.service.common.impl;
 
 
 import com.property_management.mapper.OwnerInfoMapper;
 import com.property_management.pojo.OwnerInfo;
-import com.property_management.service.OwnerInfoService;
+import com.property_management.service.common.OwnerInfoService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,8 +18,8 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
      * 实现添加一个业主信息
      */
     @Override
-    public void addOwner(OwnerInfo ownerInfo) {
-        ownerInfoMapper.addOwner(ownerInfo);
+    public int addOwner(OwnerInfo ownerInfo) {
+        return ownerInfoMapper.addOwner(ownerInfo);
     }
 
     @Override
@@ -31,6 +31,12 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     public OwnerInfo queryOwnerById(int ownerId) {
         return ownerInfoMapper.queryOwnerById(ownerId);
     }
+
+    @Override
+    public OwnerInfo queryOwnerByPhoneAndPassword(int phone, String password) {
+        return ownerInfoMapper.selectByOwner_phoneAndOwner_password(phone,password);
+    }
+
 
     /**
      * 查询所有业主信息

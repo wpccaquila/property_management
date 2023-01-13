@@ -13,7 +13,15 @@ public interface OwnerInfoMapper {
      * 新增一个业主
      * @param ownerInfo
      */
-     void addOwner(OwnerInfo ownerInfo);
+     int addOwner(OwnerInfo ownerInfo);
+
+    /**
+     * 通过手机号和密码返回业主信息
+     * @param owner_phone
+     * @param owner_password
+     * @return
+     */
+    OwnerInfo selectByOwner_phoneAndOwner_password(@Param("owner_phone") int owner_phone, @Param("owner_password") String owner_password);
 
     /**
      * 姓名查询业主

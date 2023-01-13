@@ -1,7 +1,7 @@
 package com.property_management;
 
 import com.property_management.pojo.OwnerInfo;
-import com.property_management.service.OwnerInfoService;
+import com.property_management.service.common.OwnerInfoService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 

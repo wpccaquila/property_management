@@ -1,4 +1,4 @@
-package com.property_management.service;
+package com.property_management.service.common;
 
 import com.property_management.pojo.HouseInfo;
 

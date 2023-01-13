@@ -112,6 +112,8 @@
                 <includes>
                     <include>**/*.properties</include>
                     <include>**/*.xml</include>
+                    <include>**/*.css</include>
+                    <include>**/*.js</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>

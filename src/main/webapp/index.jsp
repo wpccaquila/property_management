@@ -60,5 +60,16 @@
         </div>
     </div>
 </div>
+<%-- 用户名或密码错误时，提示--%>
+    <%
+        String login_msg = (String)request.getAttribute("login_msg");
+        if(login_msg != null) {
+    %>
+        <script>
+            alert("用户名或密码错误");
+        </script>
+    <%
+        }
+    %>
 </body>
 </html>

@@ -3,6 +3,7 @@ package com.property_management.controller;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -18,17 +19,10 @@ public class RegisterAndLoginController {
      */
     @RequestMapping("/register_forward")
     public String register_forward(){
-        return "register";
+        return "/register.jsp";
     }
 
-    /**
-     * 跳转到首页
-     * @return
-     */
-    @RequestMapping("/index_forward")
-    public String index_forward(){
-        return "redirect:index.jsp";
-    }
+
 
 
     /**
@@ -36,6 +30,7 @@ public class RegisterAndLoginController {
      * @return
      */
     @RequestMapping("/register")
+    @Transactional
     public String register(String owner_name,int owner_phone,String owner_password,
                            String owner_address, String owner_identity){
         System.out.println("————调用register方法————");
@@ -47,7 +42,7 @@ public class RegisterAndLoginController {
         }else {
             System.out.println("————注册出问题————，返回值为：" + num);
         }
-        return "redirect:index.jsp";
+        return "/index.jsp";
     }
 
     /**
@@ -57,13 +52,22 @@ public class RegisterAndLoginController {
      * @return
      */
     @RequestMapping("/owner_login")
-    public String login(int owner_phone,String owner_password){
-        OwnerInfo currentOwnerInfo = ownerInfoService.queryOwnerByPhoneAndPassword(owner_phone, owner_password);
-        System.out.println(currentOwnerInfo);
-        return "redirect:index.jsp";
+    public String login(int owner_phone,String owner_password, String role) {
+        // 登录身份为管理员
+        if (role.equals("admin") && owner_phone == 123456 && owner_password.equalsIgnoreCase("admin")) {
+            return "manager/manager_home_page";
+        }
+        // 登录身份为住户
+        else if (role.equals("resident")) {
+            // 数据库验证
+            OwnerInfo currentOwnerInfo = ownerInfoService.queryOwnerByPhoneAndPassword(owner_phone, owner_password);
+            System.out.println(currentOwnerInfo);
+            // 密码或用户错误提示
+
+            // 跳转到用户主页面
+        }
+        return "/index.jsp";
     }
-
-
 
 
 }

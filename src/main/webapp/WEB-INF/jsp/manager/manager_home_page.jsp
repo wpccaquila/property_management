@@ -1,4 +1,3 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,9 +6,9 @@
 <head>
     <meta charset="UTF-8">
     <title>小区物业系统</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
 </head>
 
 <body>
@@ -27,9 +26,12 @@
     <div class="row">
         <div class="col-sm-3">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#">账单管理</a></li>
-                <li><a href="#">维修管理</a></li>
-                <li><a href="#">租户管理</a></li>
+                <li class="active"><a href="#">用户信息管理</a></li>
+                <li><a href="#">住户信息管理</a></li>
+                <li><a href="#">物业缴费信息管理</a></li>
+                <li><a href="#">公告信息管理</a></li>
+                <li><a href="#">维修信息管理</a></li>
+                <li><a href="#">投诉信息管理</a></li>
             </ul>
         </div>
         <div class="col-sm-9">

@@ -1,83 +1,64 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>物业管理系统登录界面</title>
-    <style type="text/css">
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-            font-family: sans-serif;
-        }
-        .login-box {
-            width: 600px;
-            background: #fff;
-            padding: 40px;
-            margin: auto;
-            margin-top: 80px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            border-radius: 5px;
-            text-align: center;
-            font-family: sans-serif;
-        }
-        .login-box h2 {
-            margin-top: 0;
-            margin-bottom: 10px;
-            font-size: 24px;
-            color: #333;
-        }
-        .login-box form {
-            margin-top: 20px;
-        }
-        .login-box input[type="text"],
-        .login-box input[type="password"] {
-            border: none;
-            width: 250px;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            background-color: #e0e0e0;
-            outline: none;
-        }
-        .login-box input[type="submit"] {
-            width: 130px;
-            padding: 10px;
-            background-color: #4da4f4;
-            border: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            outline: none;
-            cursor: pointer;
-            color: #fff;
-            font-family: sans-serif;
-            font-size: 16px;
-        }
-        .login-box a {
-            width: 130px;
-            padding: 10px;
-            background-color: #4da4f4;
-            border: none;
-            border-radius: 5px;
-            margin-right: 10px;
-            outline: none;
-            cursor: pointer;
-            color: #fff;
-            font-family: sans-serif;
-            font-size: 16px;
+    <title>物业管理系统登录页面</title>
+    <meta charset="utf-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
+    <script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+
+    <style>
+        .login {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
     </style>
+
 </head>
-<body>
-<div class="login-box">
-    <h2>物业管理系统登录</h2>
-    <form action="${pageContext.request.contextPath}/owner_login" method="post" onsubmit="return checkForm()">
-        <input type="text" name="owner_phone" placeholder="手机号" autocomplete="off"/> <br>
-        <input type="password" name="owner_password" placeholder="密码" autocomplete="off"/> <br>
-        <input type="submit" value="登录" />
-        <a href="${pageContext.request.contextPath}/register_forward" > 注册 </a>
-    </form>
+<body
+      style="background-image: url(images/background.jpg);
+      background-size: cover;">
+<div class="login">
+    <div class="container" >
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">物业管理系统登录</h3>
+                    </div>
+                    <div class="panel-body">
+                        <form accept-charset="UTF-8" role="form" action="<%=request.getContextPath()%>/owner_login">
+                            <fieldset>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="输入手机号" name="owner_phone" type="text">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="输入密码" name="owner_password" type="password" value="">
+                                </div>
+                                <div class="form-group">
+                                    <select class="form-control" name="role">
+                                        <option value="resident" name="resident_sign_in">住户</option>
+                                        <option value="admin" name="manager_sign_in">管理员</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="登录">
+                                </div>
+                                <div class="form-group">
+                                    <a href="<%=request.getContextPath()%>/register.jsp"><input class="btn btn-lg btn-success btn-block" type="button" value="注册"></a>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

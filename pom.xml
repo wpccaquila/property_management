@@ -114,6 +114,8 @@
                     <include>**/*.xml</include>
                     <include>**/*.css</include>
                     <include>**/*.js</include>
+                    <include>**/*.html</include>
+                    <include>static/**</include>
                 </includes>
                 <filtering>false</filtering>
             </resource>
@@ -125,6 +127,7 @@
                 </includes>
             </resource>
         </resources>
+
     </build>
 
 

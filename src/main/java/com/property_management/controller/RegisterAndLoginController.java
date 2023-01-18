@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 登录与注册功能控制类
+ */
 @Controller
 public class RegisterAndLoginController {
     @Resource
@@ -22,9 +25,6 @@ public class RegisterAndLoginController {
     public String register_forward(){
         return "/register.jsp";
     }
-
-
-
 
     /**
      * 注册业主账号

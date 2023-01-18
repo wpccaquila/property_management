@@ -2,6 +2,7 @@ package com.property_management;
 
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
+import com.property_management.service.manager.page.ManagerOwnerInformationPageService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -52,6 +53,12 @@ class PropertyManagementApplicationTests {
         int num = ownerInfoService.deleteOwnerById(2);
         System.out.println("返回值为：" + num);
     }
-
+    @Resource
+    ManagerOwnerInformationPageService managerOwnerInformationPageService;
+    @Test
+    public void Page(){
+        List<OwnerInfo> ownerInfoList = managerOwnerInformationPageService.getOwnerInfoList(1, 2);
+        ownerInfoList.forEach(ownerInfo -> System.out.println(ownerInfo));
+    }
 
 }

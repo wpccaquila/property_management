@@ -1,39 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%--
+  Created by IntelliJ IDEA.
+  User: wpcc
+  Date: 2023/1/18
+  Time: 10:37
+  物业管理首页
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>小区物业系统</title>
-    <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css">
-    <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
-    <script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+    <%-- 静态包含头部索引和标题信息--%>
+    <%@ include file="manager_public_part/manager_head.jsp"%>
 </head>
 
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">小区物业系统</a>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
-        </ul>
-    </div>
-</nav>
+    <%-- 静态包含顶部导航栏--%>
+    <%@ include file="manager_public_part/manager_top.jsp"%>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3">
             <ul class="nav nav-pills nav-stacked">
-                <li class="active"><a href="#">用户信息管理</a></li>
-                <li><a href="#">住户信息管理</a></li>
-                <li><a href="#">物业缴费信息管理</a></li>
+                <li><a href="<%=request.getContextPath()%>/forward_manager_owner_information_page">用户信息管理</a></li>
+                <li><a href="management_payment_information.jsp">物业缴费信息管理</a></li>
                 <li><a href="#">公告信息管理</a></li>
                 <li><a href="#">维修信息管理</a></li>
                 <li><a href="#">投诉信息管理</a></li>
             </ul>
         </div>
+
         <div class="col-sm-9">
             <div class="panel panel-default">
                 <div class="panel-heading">欢迎使用小区物业系统</div>

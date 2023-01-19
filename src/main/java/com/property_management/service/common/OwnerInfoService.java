@@ -47,7 +47,7 @@ public interface OwnerInfoService {
       * @param ownerInfo
       * @return
       */
-     int updataOwnerById(OwnerInfo ownerInfo);
+     int updateOwnerById(OwnerInfo ownerInfo);
 
      /**
       * 通过id号，删除业主

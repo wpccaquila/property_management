@@ -8,7 +8,6 @@
         <result property="owner_phone" column="owner_phone" jdbcType="INTEGER"/>
         <result property="owner_address" column="owner_address" jdbcType="VARCHAR"/>
         <result property="owner_password" column="owner_password" jdbcType="VARCHAR"/>
-        <result property="house_id" column="house_id" jdbcType="INTEGER"/>
         <result property="owner_identity" column="owner_identity" jdbcType="VARCHAR"/>
     </resultMap>
 
@@ -31,6 +30,7 @@
         select * from owner_info
             where owner_name like concat('%',#{owner_name},'%')
     </select>
+
     <!--    id查询业主信息
         OwnerInfo queryOwnerById(
         @Param("owner_id")
@@ -46,6 +46,9 @@
         List<OwnerInfo> queryAllOwner();-->
     <select id="queryAllOwner" resultMap="BaseResultMap">
         select * from owner_info
+        <if test="page != null and pageSize != null">
+            limit #{page},#{pageSize}
+        </if>
     </select>
 
 <!--    修改业主信息
@@ -56,7 +59,6 @@
             owner_phone=#{owner_phone},
             owner_address=#{owner_address},
             owner_password=#{owner_password},
-            house_id=#{house_id},
             owner_identity=#{owner_identity}
         where owner_id=#{owner_id}
     </update>

@@ -11,4 +11,5 @@
 <link href="<%=request.getContextPath()%>/css/bootstrap.css" rel="stylesheet" type="text/css">
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 

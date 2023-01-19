@@ -22,14 +22,10 @@
     <div class="row">
         <div class="col-sm-3">
             <ul class="nav nav-pills nav-stacked">
-                <li><a href="<%=request.getContextPath()%>/forward_manager_owner_information_page">用户信息管理</a></li>
-                <li><a href="management_payment_information.jsp">物业缴费信息管理</a></li>
-                <li><a href="#">公告信息管理</a></li>
-                <li><a href="#">维修信息管理</a></li>
-                <li><a href="#">投诉信息管理</a></li>
+                <%-- 静态包含左侧导航栏--%>
+                <%@ include file="./manager_public_part/navigation_bar.jsp"%>
             </ul>
         </div>
-
         <div class="col-sm-9">
             <div class="panel panel-default">
                 <div class="panel-heading">欢迎使用小区物业系统</div>

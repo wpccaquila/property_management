@@ -1,5 +1,6 @@
 package com.property_management;
 
+import com.property_management.controller.manager.ManagerOwnerInformationController;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
 import com.property_management.service.manager.page.ManagerOwnerInformationPageService;
@@ -7,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -19,7 +21,7 @@ class PropertyManagementApplicationTests {
 
     @Test
     public void addOwnerTest(){
-        ownerInfoService.addOwner(new OwnerInfo("小李",13756875,"锦南7幢","123456",2,"业主"));
+        ownerInfoService.addOwner(new OwnerInfo("小李",13756875,"锦南7幢","123456","业主"));
         System.out.println("添加成功");
     }
 
@@ -44,9 +46,13 @@ class PropertyManagementApplicationTests {
     }
     @Test
     public void updataTest(){
-        int num = ownerInfoService.updataOwnerById(new OwnerInfo(2,"小仙女",13756875,"锦南7幢","123456",2,"租客"));
+        int num = ownerInfoService.updateOwnerById(new OwnerInfo(1,"小仙女",1356875,"锦南7幢","123456","租客"));
         System.out.println("返回值为：" + num);
     }
+    @Resource
+    ManagerOwnerInformationController managerOwnerInformationController;
+
+
 
     @Test
     public void deleteTest(){
@@ -55,6 +61,7 @@ class PropertyManagementApplicationTests {
     }
     @Resource
     ManagerOwnerInformationPageService managerOwnerInformationPageService;
+
     @Test
     public void Page(){
         List<OwnerInfo> ownerInfoList = managerOwnerInformationPageService.getOwnerInfoList(1, 2);

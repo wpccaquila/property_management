@@ -48,7 +48,7 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     }
 
     @Override
-    public int updataOwnerById(OwnerInfo ownerInfo) {
+    public int updateOwnerById(OwnerInfo ownerInfo) {
         return ownerInfoMapper.modifyOwner(ownerInfo);
     }
 

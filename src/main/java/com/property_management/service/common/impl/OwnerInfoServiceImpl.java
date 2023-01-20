@@ -1,6 +1,7 @@
 package com.property_management.service.common.impl;
 
 
+import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.OwnerInfoMapper;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
@@ -14,9 +15,6 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     @Resource
     private OwnerInfoMapper ownerInfoMapper;
 
-    /**
-     * 实现添加一个业主信息
-     */
     @Override
     public int addOwner(OwnerInfo ownerInfo) {
         return ownerInfoMapper.addOwner(ownerInfo);
@@ -26,6 +24,8 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     public List<OwnerInfo> queryOwnerByName(String ownerName) {
         return ownerInfoMapper.queryOwnerByName(ownerName);
     }
+
+
 
     @Override
     public OwnerInfo queryOwnerById(int ownerId) {

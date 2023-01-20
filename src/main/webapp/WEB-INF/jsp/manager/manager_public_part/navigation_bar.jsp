@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<li><a href="<%=request.getContextPath()%>/page_manager_owner_information">用户信息管理</a></li>
+<li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=0">用户信息管理</a></li>
 <li><a href="management_payment_information.jsp">物业缴费信息管理</a></li>
 <li><a href="#">公告信息管理</a></li>
 <li><a href="#">维修信息管理</a></li>

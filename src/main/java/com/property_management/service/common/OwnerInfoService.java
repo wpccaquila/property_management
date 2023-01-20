@@ -2,6 +2,7 @@ package com.property_management.service.common;
 
 
 import com.property_management.pojo.OwnerInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ public interface OwnerInfoService {
       * @return
       */
      List<OwnerInfo> queryOwnerByName(String ownerName);
+
 
      /**
       * 通过ID号查询业主信息

@@ -32,6 +32,7 @@
                 <div class="panel-body">
                     <p>用户信息管理 </p>
 
+                    <a>${ownerInfoPageInfo.pageSize}</a>
                     <%-- 查询用户--%>
                     <form action="<%=request.getContextPath()%>/selectOwnerInfoByName" method="post">
                         <div  class="input-group text-center">
@@ -55,10 +56,11 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    <c:forEach items="${ownerInfoList}" var="item">
+                                    <c:forEach items="${ownerInfoList}" var="item" varStatus="status">
                                         <tr>
                                             <td>
-                                                <input type="text" readonly="readonly" name="owner_id" value="${item.owner_id}" class="form-control" />
+                                                    <%-- 为了美观设置的id号，不是数据库中的id号--%>
+                                                <input type="text" readonly="readonly" name="owner_id" value="<c:out value="${status.index + 1}"/>" class="form-control" />
                                             </td>
                                             <td>
                                                 <input type="text" readonly="readonly" name="owner_name" value="${item.owner_name}" class="form-control" />

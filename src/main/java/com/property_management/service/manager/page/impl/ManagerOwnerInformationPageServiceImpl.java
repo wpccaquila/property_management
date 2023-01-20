@@ -1,6 +1,7 @@
 package com.property_management.service.manager.page.impl;
 
 
+import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.OwnerInfoMapper;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.manager.page.ManagerOwnerInformationPageService;
@@ -17,5 +18,13 @@ public class ManagerOwnerInformationPageServiceImpl implements ManagerOwnerInfor
 
     public List<OwnerInfo> getOwnerInfoList(Integer pageNum, Integer pageSize){
         return ownerInfoMapper.queryAllOwner();
+    }
+
+
+    @Override
+    public List<OwnerInfo> getOwnerInfoByPage(int pageNo, int pageSize) {
+        PageHelper.startPage(pageNo, pageSize);
+        List<OwnerInfo> list = ownerInfoMapper.getOwnerInfoByPage(pageNo, pageSize);
+        return list;
     }
 }

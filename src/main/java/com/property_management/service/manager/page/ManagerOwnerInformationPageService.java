@@ -16,4 +16,11 @@ public interface ManagerOwnerInformationPageService {
      * @return
      */
      List<OwnerInfo> getOwnerInfoList(Integer pageNum, Integer pageSize);
+    /**
+     * 实现分页查询返回
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+     List<OwnerInfo> getOwnerInfoByPage(int pageNo, int pageSize);
 }

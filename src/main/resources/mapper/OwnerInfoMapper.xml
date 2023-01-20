@@ -11,14 +11,21 @@
         <result property="owner_identity" column="owner_identity" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+
 <!-- 插入业主信息
     public int addOwner(OwnerInfo ownerInfo); -->
     <insert id="addOwner" parameterType="com.property_management.pojo.OwnerInfo">
         insert into owner_info(owner_name,owner_phone,owner_address,
                                owner_password,owner_identity)
         values (#{owner_name},#{owner_phone},#{owner_address},
-                #{owner_password},#{owner_identity})
+                #{owner_password},#{owner_identity});
     </insert>
+
+<!--    对id号进行排序-->
+    <select id="orderId" resultMap="BaseResultMap">
+        ALTER TABLE owner_info ORDER BY owner_id;
+    </select>
 
 <!--    姓名查询业主信息
     OwnerInfo queryOwnerByName(
@@ -46,9 +53,6 @@
         List<OwnerInfo> queryAllOwner();-->
     <select id="queryAllOwner" resultMap="BaseResultMap">
         select * from owner_info
-        <if test="page != null and pageSize != null">
-            limit #{page},#{pageSize}
-        </if>
     </select>
 
 <!--    修改业主信息
@@ -76,5 +80,9 @@
         where
         owner_phone = #{owner_phone}
         AND owner_password = #{owner_password,jdbcType=VARCHAR}
+    </select>
+
+    <select id="getOwnerInfoByPage" resultMap="BaseResultMap">
+        select * from owner_info limit #{offset}, #{pageSize}
     </select>
 </mapper>

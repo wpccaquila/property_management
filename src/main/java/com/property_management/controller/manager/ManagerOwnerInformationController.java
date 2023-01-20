@@ -1,6 +1,7 @@
 package com.property_management.controller.manager;
 
 
+import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
 import com.property_management.service.manager.page.ManagerOwnerInformationPageService;
@@ -19,7 +20,9 @@ import java.util.List;
 @Controller
 public class ManagerOwnerInformationController {
     // 分页时，每次返回多少条数据
-    int PAGESIZE = 2;
+    int PAGESIZE = 4;
+    // 默认返回第一页
+    int PAGEDEFAULT = 1;
 
     @Resource
     ManagerOwnerInformationPageService managerOwnerInformationPageService;
@@ -45,11 +48,28 @@ public class ManagerOwnerInformationController {
      * @param request
      * @return
      */
-    @GetMapping("/page_manager_owner_information")
-    public String pageManagerOwnerInformation(HttpServletRequest request){
-        // 如果没有请求页码参数时，默认请求第一页的数据
-        List<OwnerInfo> ownerInfoList = managerOwnerInformationPageService.getOwnerInfoList(1, PAGESIZE);
-        request.setAttribute("ownerInfoList",ownerInfoList);
+//    @GetMapping("/page_manager_owner_information")
+//    public String pageManagerOwnerInformation(HttpServletRequest request){
+//        // 如果没有请求页码参数时，默认请求第一页的数据
+//        List<OwnerInfo> ownerInfoList = managerOwnerInformationPageService.getOwnerInfoList(1, PAGESIZE);
+//        request.setAttribute("ownerInfoList",ownerInfoList);
+//        return "manager/manager_owner_information/manager_owner_information_page";
+//    }
+
+    @RequestMapping("/page_manager_owner_information")
+    public String pageManagerOwnerInformation(HttpServletRequest request,int pageNo){
+        System.out.println("——————33333——————");
+        List<OwnerInfo> ownerInfoByPageList = managerOwnerInformationPageService.getOwnerInfoByPage(pageNo, PAGESIZE);
+        // 将数据保存到PageHelper插件中自带的PageInfo实体类中
+        PageInfo<OwnerInfo> pageInfo = new PageInfo<>(ownerInfoByPageList);
+        System.out.println("——————22222——————");
+        // 将pageInfo保存到域中
+
+        System.out.println("ownerInfoList:----" + ownerInfoByPageList);
+
+        request.setAttribute("ownerInfoList",ownerInfoByPageList);
+        request.setAttribute("ownerInfoPageInfo",pageInfo);
+        System.out.println("——————11111——————");
         return "manager/manager_owner_information/manager_owner_information_page";
     }
 
@@ -62,7 +82,7 @@ public class ManagerOwnerInformationController {
     public String selectOwnerInfoById(HttpServletRequest request,int ownerId){
         OwnerInfo ownerInfoById = ownerInfoService.queryOwnerById(ownerId);
         request.setAttribute("ownerInfoById",ownerInfoById);
-        return pageManagerOwnerInformation(request);
+        return pageManagerOwnerInformation(request,PAGEDEFAULT);
     }
 
     /**
@@ -86,7 +106,7 @@ public class ManagerOwnerInformationController {
     @GetMapping("/delete_manager_owner_information")
     public String  deleteManagerOwnerInformation(int owner_id,HttpServletRequest request){
         ownerInfoService.deleteOwnerById(owner_id);
-        return pageManagerOwnerInformation(request);
+        return pageManagerOwnerInformation(request,PAGEDEFAULT);
     }
 
     /**
@@ -101,7 +121,7 @@ public class ManagerOwnerInformationController {
         OwnerInfo ownerInfo = new OwnerInfo(owner_id,owner_name,owner_phone,owner_address,owner_password,owner_identity);
         int num = ownerInfoService.updateOwnerById(ownerInfo);
         System.out.println("修改数据库返回值："+num);
-        return pageManagerOwnerInformation(request);
+        return pageManagerOwnerInformation(request,PAGEDEFAULT);
     }
 
 

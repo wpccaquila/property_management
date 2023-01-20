@@ -4,6 +4,7 @@ package com.property_management.mapper;
 import com.property_management.pojo.OwnerInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -14,6 +15,19 @@ public interface OwnerInfoMapper {
      * @param ownerInfo
      */
      int addOwner(OwnerInfo ownerInfo);
+
+    /**
+     * 重新排序id
+     */
+    void orderId();
+
+    /**
+     * 使用Pagehelper 分页
+     * @param offset
+     * @param pageSize
+     * @return
+     */
+    List<OwnerInfo> getOwnerInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
 
     /**
      * 通过手机号和密码返回业主信息

@@ -85,4 +85,8 @@
     <select id="getOwnerInfoByPage" resultMap="BaseResultMap">
         select * from owner_info limit #{offset}, #{pageSize}
     </select>
+
+    <select id="selectCount" resultType="int">
+        SELECT COUNT(*) FROM owner_info;
+    </select>
 </mapper>

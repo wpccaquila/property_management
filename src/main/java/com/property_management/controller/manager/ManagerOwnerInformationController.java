@@ -22,7 +22,7 @@ public class ManagerOwnerInformationController {
     // 分页时，每次返回多少条数据
     int PAGESIZE = 4;
     // 默认返回第一页
-    int PAGEDEFAULT = 1;
+    int PAGEDEFAULT =0;
 
     @Resource
     ManagerOwnerInformationPageService managerOwnerInformationPageService;
@@ -44,34 +44,55 @@ public class ManagerOwnerInformationController {
     }
 
     /**
-     * 请求数据
+     * 分页请求
      * @param request
+     * @param pageNo 页码
      * @return
      */
-//    @GetMapping("/page_manager_owner_information")
-//    public String pageManagerOwnerInformation(HttpServletRequest request){
-//        // 如果没有请求页码参数时，默认请求第一页的数据
-//        List<OwnerInfo> ownerInfoList = managerOwnerInformationPageService.getOwnerInfoList(1, PAGESIZE);
-//        request.setAttribute("ownerInfoList",ownerInfoList);
-//        return "manager/manager_owner_information/manager_owner_information_page";
-//    }
-
     @RequestMapping("/page_manager_owner_information")
     public String pageManagerOwnerInformation(HttpServletRequest request,int pageNo){
-        System.out.println("——————33333——————");
-        List<OwnerInfo> ownerInfoByPageList = managerOwnerInformationPageService.getOwnerInfoByPage(pageNo, PAGESIZE);
+        // 计算当前开始的行号
+        int startLineNo = managerOwnerInformationPageService.getStartLineNo(pageNo);
+        List<OwnerInfo> ownerInfoByPageList = managerOwnerInformationPageService.getOwnerInfoByPage(startLineNo, PAGESIZE);
         // 将数据保存到PageHelper插件中自带的PageInfo实体类中
         PageInfo<OwnerInfo> pageInfo = new PageInfo<>(ownerInfoByPageList);
-        System.out.println("——————22222——————");
-        // 将pageInfo保存到域中
-
-        System.out.println("ownerInfoList:----" + ownerInfoByPageList);
-
+        // 计算总页数
+        int pages = managerOwnerInformationPageService.getPageNumber(PAGESIZE);
+        request.setAttribute("ownerPages",pages);
+        request.setAttribute("ownerStartLineNo",startLineNo);
+        // 将返回的用户信息表储存到域中
         request.setAttribute("ownerInfoList",ownerInfoByPageList);
+        // 将当前页开始的页码储存到域中
+        request.setAttribute("ownerPageNo",pageNo);
+        // 将pageInfo保存到域中
         request.setAttribute("ownerInfoPageInfo",pageInfo);
-        System.out.println("——————11111——————");
         return "manager/manager_owner_information/manager_owner_information_page";
     }
+
+    /**
+     * 默认的分页请求，默认为请求第一页
+     * @return
+     */
+    @RequestMapping("/PAGE-DEFAULT")
+    public String pageManagerOwnerInformation(HttpServletRequest request){
+        // 计算当前开始的行号
+        int startLineNo = managerOwnerInformationPageService.getStartLineNo(PAGEDEFAULT);
+        List<OwnerInfo> ownerInfoByPageList = managerOwnerInformationPageService.getOwnerInfoByPage(startLineNo, PAGESIZE);
+        // 将数据保存到PageHelper插件中自带的PageInfo实体类中
+        PageInfo<OwnerInfo> pageInfo = new PageInfo<>(ownerInfoByPageList);
+        // 计算总页数
+        int pages = managerOwnerInformationPageService.getPageNumber(PAGESIZE);
+        request.setAttribute("ownerPages",pages);
+        request.setAttribute("ownerStartLineNo",startLineNo);
+        // 将返回的用户信息表储存到域中
+        request.setAttribute("ownerInfoList",ownerInfoByPageList);
+        // 将当前页开始的页码储存到域中
+        request.setAttribute("ownerPageNo",PAGEDEFAULT);
+        // 将pageInfo保存到域中
+        request.setAttribute("ownerInfoPageInfo",pageInfo);
+        return "manager/manager_owner_information/manager_owner_information_page";
+    }
+
 
     /**
      * 通过查询id返回数据

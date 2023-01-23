@@ -30,10 +30,10 @@ public class MyControllerAdvice {
 
     }
 
-    @ExceptionHandler(value = {java.lang.IllegalStateException.class})
-    @ResponseBody
-    public String illegalStateException(HttpServletRequest request){
-        System.out.println("出错啦");
-        return "出错啦";
-    }
+//    @ExceptionHandler(value = {java.lang.IllegalStateException.class})
+//    @ResponseBody
+//    public String illegalStateException(HttpServletRequest request){
+//        System.out.println("出错啦");
+//        return "出错啦";
+//    }
 }

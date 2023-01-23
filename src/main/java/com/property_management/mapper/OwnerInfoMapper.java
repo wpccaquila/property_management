@@ -56,6 +56,12 @@ public interface OwnerInfoMapper {
             int ownerId);
 
     /**
+     * 返回表记录数
+     * @return
+     */
+    int selectCount();
+
+    /**
      * 查询所有业主
      * @return
      */

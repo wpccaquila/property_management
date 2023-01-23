@@ -25,6 +25,10 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
         return ownerInfoMapper.queryOwnerByName(ownerName);
     }
 
+    @Override
+    public int selectCount() {
+        return ownerInfoMapper.selectCount();
+    }
 
 
     @Override

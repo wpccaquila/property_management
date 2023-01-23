@@ -27,9 +27,9 @@
         </div>
         <div class="col-sm-9">
             <div class="panel panel-default">
-                <div class="panel-heading">欢迎使用小区物业系统</div>
+                <div class="panel-heading">用户信息管理</div>
                     <div class="panel-body">
-                        <form  action="<%=request.getContextPath()%>/update_manager_owner_information" method="post">
+                        <form  action="<%=request.getContextPath()%>/update_manager_owner_information?owner_id=${ownerInfoById.owner_id}" method="post">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -44,7 +44,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="text" readonly="readonly" name="owner_id" value="${ownerInfoById.owner_id}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="owner_id" value="${param.currentPageLineNo}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" name="owner_name" value="${ownerInfoById.owner_name}" class="form-control" />
@@ -69,7 +69,7 @@
                                 </tbody>
                             </table>
                         </form>
-                        <a href="<%=request.getContextPath()%>/page_manager_owner_information" class="btn btn-primary">返回</a>
+                        <a href="<%=request.getContextPath()%>/PAGE-DEFAULT" class="btn btn-primary">返回</a>
                     </div>
 
                 </div>

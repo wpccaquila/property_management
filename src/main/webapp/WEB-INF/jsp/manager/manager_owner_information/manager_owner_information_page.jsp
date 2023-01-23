@@ -28,11 +28,8 @@
         </div>
         <div class="col-sm-9">
             <div class="panel panel-default">
-                <div class="panel-heading">欢迎使用小区物业系统</div>
+                <div class="panel-heading">用户信息管理</div>
                 <div class="panel-body">
-                    <p>用户信息管理 </p>
-
-                    <a>${ownerInfoPageInfo.pageSize}</a>
                     <%-- 查询用户--%>
                     <form action="<%=request.getContextPath()%>/selectOwnerInfoByName" method="post">
                         <div  class="input-group text-center">
@@ -56,11 +53,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                     <c:forEach items="${ownerInfoList}" var="item" varStatus="status">
                                         <tr>
                                             <td>
-                                                    <%-- 为了美观设置的id号，不是数据库中的id号--%>
-                                                <input type="text" readonly="readonly" name="owner_id" value="<c:out value="${status.index + 1}"/>" class="form-control" />
+                                                    <%-- 是数据库中的行号，不是id号--%>
+                                                <c:set var="ownerStartLineNo" value="${ownerStartLineNo + 1}" scope="request"/>
+                                                <input type="text" readonly="readonly" name="owner_id" value="${ownerStartLineNo}" class="form-control" />
                                             </td>
                                             <td>
                                                 <input type="text" readonly="readonly" name="owner_name" value="${item.owner_name}" class="form-control" />
@@ -78,7 +77,7 @@
                                                 <input type="text" readonly="readonly" name="owner_identity" value="${item.owner_identity}" class="form-control" />
                                             </td>
                                             <td>
-                                                <a href="<%=request.getContextPath()%>/forwardUpdateOwner?ownerId=${item.owner_id}"  class="btn btn-primary">修改数据</a>
+                                                <a href="<%=request.getContextPath()%>/forwardUpdateOwner?ownerId=${item.owner_id}&currentPageLineNo=${ownerStartLineNo}"  class="btn btn-primary">修改数据</a>
                                                 <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/delete_manager_owner_information?owner_id=${item.owner_id}')">删除用户</a>
                                             </td>
                                         </tr>
@@ -90,16 +89,11 @@
 
                     </div>
 
-
+                    <%-- 页脚分页按钮--%>
                     <div class="text-center">
                         <ul class="pagination">
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">下一页</a></li>
+                            <%-- 静态包含分页按钮--%>
+                            <%@ include file="../manager_public_part/paging_button.jsp"%>
                         </ul>
                     </div>
 

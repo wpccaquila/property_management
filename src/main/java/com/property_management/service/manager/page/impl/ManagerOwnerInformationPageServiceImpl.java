@@ -27,4 +27,22 @@ public class ManagerOwnerInformationPageServiceImpl implements ManagerOwnerInfor
         List<OwnerInfo> list = ownerInfoMapper.getOwnerInfoByPage(pageNo, pageSize);
         return list;
     }
+
+    @Override
+    public int getStartLineNo(int pageNo) {
+        return pageNo*4;
+    }
+
+    @Override
+    public int getPageNumber(int pageSize) {
+        int totalRows = ownerInfoMapper.selectCount();
+        int pageNumber = totalRows / pageSize;
+        // 如果有余数，则将页数加1
+        if(totalRows % pageSize != 0){
+            pageNumber += 1;
+        }
+        return pageNumber;
+    }
+
+
 }

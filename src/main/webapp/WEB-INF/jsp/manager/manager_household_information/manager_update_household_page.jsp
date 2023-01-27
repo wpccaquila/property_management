@@ -29,7 +29,7 @@
                         <h3 class="panel-title">添加住户信息</h3>
                     </div>
                     <div class="panel-body">
-                        <form class="form-horizontal" action="<%=request.getContextPath()%>/updateHouseholdById?householdId="${householdInfoById.householdId}"  method="post" role="form">
+                        <form class="form-horizontal" action="<%=request.getContextPath()%>/updateHouseholdById?householdId=${householdInfoById.householdId}"  method="post" role="form">
                         <div class="form-group">
                             <label for="household_name" class="col-sm-3 control-label">真实姓名：</label>
                             <div class="col-sm-9">
@@ -109,7 +109,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <a href="<%=request.getContextPath()%>/index.jsp" class="btn btn-lg btn-success btn-block">返回首页</a>
+                                <a href="<%=request.getContextPath()%>/forwardManagerHouseholdInformationPage" class="btn btn-lg btn-success btn-block">返回首页</a>
                             </div>
                         </div>
                     </form>

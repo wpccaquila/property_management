@@ -1,8 +1,6 @@
 package com.property_management.service.common;
 
 import com.property_management.pojo.HouseholdInfo;
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.property_management.pojo.OwnerInfo;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -42,6 +40,13 @@ public interface HouseholdInfoService {
      */
     HouseholdInfo selectAllByHouseholdId(Integer householdId);
 
+    /**
+     * 通过名字查询
+     * @param householdName
+     * @return
+     */
+    List<HouseholdInfo> selectAllByHouseholdName(String householdName);
+
 
     /**
      * 修改住户信息
@@ -58,10 +63,11 @@ public interface HouseholdInfoService {
 
     /**
      * 使用Pagehelper 分页
+     *
      * @param offset
      * @param pageSize
      * @return
      */
-    List<OwnerInfo> getHouseholdInfoByPage(int offset, int pageSize);
+    List<HouseholdInfo> getHouseholdInfoByPage(int offset, int pageSize);
 
 }

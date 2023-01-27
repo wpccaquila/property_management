@@ -4,7 +4,7 @@ package com.property_management.controller.manager;
 import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
-import com.property_management.service.manager.page.ManagerOwnerInformationPageService;
+import com.property_management.service.manager.page.ManagerOwnerInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +25,7 @@ public class ManagerOwnerInfoController {
     int PAGEDEFAULT =0;
 
     @Resource
-    ManagerOwnerInformationPageService managerOwnerInformationPageService;
+    ManagerOwnerInfoPageService managerOwnerInfoPageService;
     @Resource
     OwnerInfoService ownerInfoService;
 
@@ -52,12 +52,12 @@ public class ManagerOwnerInfoController {
     @RequestMapping("/page_manager_owner_information")
     public String pageManagerOwnerInformation(HttpServletRequest request,int pageNo){
         // 计算当前开始的行号
-        int startLineNo = managerOwnerInformationPageService.getStartLineNo(pageNo);
-        List<OwnerInfo> ownerInfoByPageList = managerOwnerInformationPageService.getOwnerInfoByPage(startLineNo, PAGESIZE);
+        int startLineNo = managerOwnerInfoPageService.getStartLineNo(pageNo);
+        List<OwnerInfo> ownerInfoByPageList = managerOwnerInfoPageService.getOwnerInfoByPage(startLineNo, PAGESIZE);
         // 将数据保存到PageHelper插件中自带的PageInfo实体类中
         PageInfo<OwnerInfo> pageInfo = new PageInfo<>(ownerInfoByPageList);
         // 计算总页数
-        int pages = managerOwnerInformationPageService.getPageNumber(PAGESIZE);
+        int pages = managerOwnerInfoPageService.getPageNumber(PAGESIZE);
         request.setAttribute("ownerPages",pages);
         request.setAttribute("ownerStartLineNo",startLineNo);
         // 将返回的用户信息表储存到域中
@@ -76,12 +76,12 @@ public class ManagerOwnerInfoController {
     @RequestMapping("/PAGE-DEFAULT")
     public String pageManagerOwnerInformation(HttpServletRequest request){
         // 计算当前开始的行号
-        int startLineNo = managerOwnerInformationPageService.getStartLineNo(PAGEDEFAULT);
-        List<OwnerInfo> ownerInfoByPageList = managerOwnerInformationPageService.getOwnerInfoByPage(startLineNo, PAGESIZE);
+        int startLineNo = managerOwnerInfoPageService.getStartLineNo(PAGEDEFAULT);
+        List<OwnerInfo> ownerInfoByPageList = managerOwnerInfoPageService.getOwnerInfoByPage(startLineNo, PAGESIZE);
         // 将数据保存到PageHelper插件中自带的PageInfo实体类中
         PageInfo<OwnerInfo> pageInfo = new PageInfo<>(ownerInfoByPageList);
         // 计算总页数
-        int pages = managerOwnerInformationPageService.getPageNumber(PAGESIZE);
+        int pages = managerOwnerInfoPageService.getPageNumber(PAGESIZE);
         request.setAttribute("ownerPages",pages);
         request.setAttribute("ownerStartLineNo",startLineNo);
         // 将返回的用户信息表储存到域中
@@ -114,9 +114,12 @@ public class ManagerOwnerInfoController {
      */
     @RequestMapping("/selectOwnerInfoByName")
     public String selectOwnerInfoByName(HttpServletRequest request,String ownerName){
-        List<OwnerInfo> ownerInfoByOwnerNameList = ownerInfoService.queryOwnerByName(ownerName);
-        request.setAttribute("ownerInfoByOwnerNameList",ownerInfoByOwnerNameList);
-        return "manager/manager_owner_information/manager_owner_information_select_page";
+        if(ownerName!=null&&ownerName!=""){
+            List<OwnerInfo> ownerInfoByOwnerNameList = ownerInfoService.queryOwnerByName(ownerName);
+            request.setAttribute("ownerInfoByOwnerNameList",ownerInfoByOwnerNameList);
+            return "manager/manager_owner_information/manager_owner_information_select_page";
+        }
+        return pageManagerOwnerInformation(request,PAGEDEFAULT);
     }
 
     /**

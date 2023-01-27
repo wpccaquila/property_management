@@ -2,9 +2,12 @@ package com.property_management.service.manager.page.impl;
 
 
 import com.github.pagehelper.PageHelper;
+import com.property_management.mapper.HouseholdInfoMapper;
 import com.property_management.mapper.OwnerInfoMapper;
+import com.property_management.pojo.HouseholdInfo;
 import com.property_management.pojo.OwnerInfo;
-import com.property_management.service.manager.page.ManagerOwnerInformationPageService;
+import com.property_management.service.manager.page.ManagerHouseholdInfoPageService;
+import com.property_management.service.manager.page.ManagerOwnerInfoPageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -12,20 +15,14 @@ import java.util.List;
 
 
 @Service
-public class ManagerOwnerInformationPageServiceImpl implements ManagerOwnerInformationPageService {
+public class ManagerHouseholdInfoOwnerInfoPageServiceImpl implements ManagerHouseholdInfoPageService {
     @Resource
-    OwnerInfoMapper ownerInfoMapper;
-
-    public List<OwnerInfo> getOwnerInfoList(Integer pageNum, Integer pageSize){
-        return ownerInfoMapper.queryAllOwner();
-    }
-
+    HouseholdInfoMapper householdInfoMapper;
 
     @Override
-    public List<OwnerInfo> getOwnerInfoByPage(int pageNo, int pageSize) {
+    public List<HouseholdInfo> getHouseholdInfoByPage(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
-        List<OwnerInfo> list = ownerInfoMapper.getOwnerInfoByPage(pageNo, pageSize);
-        return list;
+        return householdInfoMapper.getHouseholdInfoByPage(pageNo, pageSize);
     }
 
     @Override
@@ -35,7 +32,7 @@ public class ManagerOwnerInformationPageServiceImpl implements ManagerOwnerInfor
 
     @Override
     public int getPageNumber(int pageSize) {
-        int totalRows = ownerInfoMapper.selectCount();
+        int totalRows = householdInfoMapper.selectCount();
         int pageNumber = totalRows / pageSize;
         // 如果有余数，则将页数加1
         if(totalRows % pageSize != 0){

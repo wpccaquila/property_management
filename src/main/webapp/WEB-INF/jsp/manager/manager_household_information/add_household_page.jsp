@@ -108,7 +108,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <a href="<%=request.getContextPath()%>/index.jsp" class="btn btn-lg btn-success btn-block">返回首页</a>
+                                <a href="<%=request.getContextPath()%>/forwardManagerHouseholdInformationPage" class="btn btn-lg btn-success btn-block">返回首页</a>
                             </div>
                         </div>
                     </form>

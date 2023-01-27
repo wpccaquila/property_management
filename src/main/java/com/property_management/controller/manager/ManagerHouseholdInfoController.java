@@ -1,7 +1,9 @@
 package com.property_management.controller.manager;
 
+import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.HouseholdInfo;
 import com.property_management.service.common.HouseholdInfoService;
+import com.property_management.service.manager.page.ManagerHouseholdInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,14 +22,67 @@ public class ManagerHouseholdInfoController {
     int PAGEDEFAULT =0;
     @Resource
     HouseholdInfoService householdInfoService;
+    @Resource
+    ManagerHouseholdInfoPageService managerHouseholdInfoPageService;
+
+
+    /**
+     * 默认的分页请求，默认为请求第一页
+     * @return
+     */
+    @RequestMapping("/PAGE-DEFAULT-Household")
+    public String pageManagerHouseholdInfoPageServiceInfoInformation(HttpServletRequest request){
+        // 计算当前开始的行号
+        int startLineNo = managerHouseholdInfoPageService.getStartLineNo(PAGEDEFAULT);
+        List<HouseholdInfo> householdByPageList = managerHouseholdInfoPageService.getHouseholdInfoByPage(startLineNo, PAGESIZE);
+        // 将数据保存到PageHelper插件中自带的PageInfo实体类中
+        PageInfo<HouseholdInfo> pageInfo = new PageInfo<>(householdByPageList);
+        // 计算总页数
+        int pages = managerHouseholdInfoPageService.getPageNumber(PAGESIZE);
+        request.setAttribute("householdPages",pages);
+        request.setAttribute("householdStartLineNo",startLineNo);
+        // 将返回的用户信息表储存到域中
+        request.setAttribute("householdInfoList",householdByPageList);
+        // 将当前页开始的页码储存到域中
+        request.setAttribute("householdPageNo",PAGEDEFAULT);
+        // 将pageInfo保存到域中
+        request.setAttribute("householdInfoPageInfo",pageInfo);
+        return "manager/manager_household_information/manager_household_information_page";
+    }
+
+    /**
+     * 分页请求
+     * @param request
+     * @param pageNo 页码
+     * @return
+     */
+    @RequestMapping("/pageManagerHouseholdInfoInformation")
+    public String pageManagerHouseholdInfoPageServiceInfoInformation(HttpServletRequest request,int pageNo){
+        // 计算当前开始的行号
+        int startLineNo = managerHouseholdInfoPageService.getStartLineNo(pageNo);
+        List<HouseholdInfo> householdByPageList = managerHouseholdInfoPageService.getHouseholdInfoByPage(startLineNo, PAGESIZE);
+        // 将数据保存到PageHelper插件中自带的PageInfo实体类中
+        PageInfo<HouseholdInfo> pageInfo = new PageInfo<>(householdByPageList);
+        // 计算总页数
+        int pages = managerHouseholdInfoPageService.getPageNumber(PAGESIZE);
+        request.setAttribute("householdPages",pages);
+        request.setAttribute("householdStartLineNo",startLineNo);
+        // 将返回的用户信息表储存到域中
+        request.setAttribute("householdInfoList",householdByPageList);
+        // 将当前页开始的页码储存到域中
+        request.setAttribute("householdPageNo",pageNo);
+        // 将pageInfo保存到域中
+        request.setAttribute("householdPageInfo",pageInfo);
+        return "manager/manager_household_information/manager_household_information_page";
+    }
 
     /**
      * 跳转到住户信息首页
      * @return
      */
     @RequestMapping("/forwardManagerHouseholdInformationPage")
-    public String forwardManagerHouseholdInformationPage(){
-        return "manager/manager_household_information/manager_household_information_page";
+    public String forwardManagerHouseholdInformationPage(HttpServletRequest request){
+        return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
 
     /**
@@ -53,19 +108,35 @@ public class ManagerHouseholdInfoController {
         householdInfoService.addAll(new HouseholdInfo(household_name, household_id_number,
                                         household_birthday, household_gender, household_phone,
                                         household_checkin_time, household_house_type, household_address));
-        return selectAllHousehold(request);
+        return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
 
+//    /**
+//     * 请求所有用户数据
+//     * @param request
+//     * @return
+//     */
+//    @RequestMapping("/selectAllHousehold")
+//    public String selectAllHousehold(HttpServletRequest request){
+//        List<HouseholdInfo> householdInfoList = householdInfoService.selectAllHousehold();
+//        request.setAttribute("householdInfoList",householdInfoList);
+//        return "manager/manager_household_information/manager_household_information_page";
+//    }
+
     /**
-     * 请求所有用户数据
+     * 通过名字查询
+     * @param householdName
      * @param request
      * @return
      */
-    @RequestMapping("/selectAllHousehold")
-    public String selectAllHousehold(HttpServletRequest request){
-        List<HouseholdInfo> householdInfoList = householdInfoService.selectAllHousehold();
-        request.setAttribute("householdInfoList",householdInfoList);
-        return "manager/manager_household_information/manager_household_information_page";
+    @RequestMapping("selectHouseholdByName")
+    public String selectHouseholdByName(String householdName,HttpServletRequest request){
+        if(householdName!=null&&householdName!=""){
+            List<HouseholdInfo> householdInfoByName = householdInfoService.selectAllByHouseholdName(householdName);
+            request.setAttribute("householdInfoByName",householdInfoByName);
+            return "manager/manager_household_information/manager_household_select_page";
+        }
+        return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
 
     /**
@@ -101,7 +172,7 @@ public class ManagerHouseholdInfoController {
         householdInfoService.modifyHousehold(new HouseholdInfo(householdId,household_name, household_id_number,
                 household_birthday, household_gender, household_phone,
                 household_checkin_time, household_house_type, household_address));
-        return selectAllHousehold(request);
+        return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
 
 
@@ -113,7 +184,7 @@ public class ManagerHouseholdInfoController {
     @RequestMapping("/deleteHouseholdById")
     public String deleteHouseholdById(int householdId,HttpServletRequest request){
         householdInfoService.deleteByHouseholdId(householdId);
-        return selectAllHousehold(request);
+        return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
 
 }

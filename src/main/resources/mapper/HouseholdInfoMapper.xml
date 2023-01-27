@@ -79,7 +79,16 @@
         select * from household_info limit #{offset}, #{pageSize}
     </select>
 
+    <select id="selectCount" resultType="int">
+        SELECT COUNT(*) FROM household_info;
+    </select>
 
+    <select id="selectAllByHouseholdName"
+            resultMap="BaseResultMap"
+            parameterType="String">
+        select * from household_info
+        where household_name like concat('%',#{householdName},'%')
+    </select>
 
 
 </mapper>

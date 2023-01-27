@@ -1,8 +1,6 @@
 package com.property_management.service.common.impl;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.property_management.pojo.HouseholdInfo;
-import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.HouseholdInfoService;
 import com.property_management.mapper.HouseholdInfoMapper;
 import org.springframework.stereotype.Service;
@@ -41,6 +39,11 @@ public class HouseholdInfoServiceImpl implements HouseholdInfoService{
     }
 
     @Override
+    public  List<HouseholdInfo> selectAllByHouseholdName(String householdName) {
+        return householdInfoMapper.selectAllByHouseholdName(householdName);
+    }
+
+    @Override
     public int modifyHousehold(HouseholdInfo householdInfo) {
         return householdInfoMapper.modifyHousehold(householdInfo);
     }
@@ -51,7 +54,7 @@ public class HouseholdInfoServiceImpl implements HouseholdInfoService{
     }
 
     @Override
-    public List<OwnerInfo> getHouseholdInfoByPage(int offset, int pageSize) {
+    public List<HouseholdInfo> getHouseholdInfoByPage(int offset, int pageSize) {
         return householdInfoMapper.getHouseholdInfoByPage(offset,pageSize);
     }
 }

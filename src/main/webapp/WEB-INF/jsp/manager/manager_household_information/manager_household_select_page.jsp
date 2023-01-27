@@ -31,7 +31,7 @@
                 <div class="panel-heading">用户信息管理</div>
                 <div class="panel-body">
                     <%-- 查询用户--%>
-                    <form action="<%=request.getContextPath()%>/selectHouseholdByName" method="post">
+                    <form action="<%=request.getContextPath()%>/householdInfoByName" method="post">
                         <div  class="input-group text-center">
                             <span  class="input-group-addon">用户的姓名</span>
                             <input style="width:200px;" type="text" class="form-control" name="householdName"/>
@@ -59,12 +59,11 @@
 
                                 <tbody>
 
-                                <c:forEach items="${householdInfoList}" var="item" varStatus="status">
+                                <c:forEach items="${householdInfoByName}" var="item" varStatus="status">
                                     <tr>
                                         <td>
-                                                <%-- 是数据库中的行号，不是id号--%>
-                                            <c:set var="householdStartLineNo" value="${householdStartLineNo + 1}" scope="request"/>
-                                            <input type="text" readonly="readonly" name="household_id" value="${householdStartLineNo}" class="form-control" />
+                                                <%-- 为了美观设置的id号，不是数据库中的id号--%>
+                                            <input type="text" readonly="readonly" name="household_id" value="<c:out value="${status.index + 1}"/>" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="household_name" value="${item.householdName}" class="form-control" />
@@ -103,13 +102,6 @@
                     </div>
                     </div>
 
-                <%-- 页脚分页按钮--%>
-                <div class="text-center">
-                    <ul class="pagination">
-                        <%-- 静态包含分页按钮--%>
-                        <%@ include file="household_paging_button.jsp"%>
-                    </ul>
-                </div>
 
                 </div>
             </div>

@@ -23,6 +23,8 @@ public interface HouseholdInfoMapper {
      */
     int addAll(HouseholdInfo householdInfo);
 
+
+
     /**
      * 根据id号删除住户
      * @param householdId
@@ -44,6 +46,13 @@ public interface HouseholdInfoMapper {
      */
     HouseholdInfo selectAllByHouseholdId(@Param("householdId") Integer householdId);
 
+    /**
+     * 通过名字查询
+     * @param householdName
+     * @return
+     */
+    List<HouseholdInfo> selectAllByHouseholdName(@Param("householdName") String householdName);
+
 
     /**
      * 修改住户信息
@@ -64,9 +73,13 @@ public interface HouseholdInfoMapper {
      * @param pageSize
      * @return
      */
-    List<OwnerInfo> getHouseholdInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
+    List<HouseholdInfo> getHouseholdInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
 
-
+    /**
+     * 返回表记录数
+     * @return
+     */
+    int selectCount();
 }
 
 

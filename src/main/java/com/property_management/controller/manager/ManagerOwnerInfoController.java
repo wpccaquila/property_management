@@ -18,7 +18,7 @@ import java.util.List;
  * 管理员页面——用户信息管理控制器
  */
 @Controller
-public class ManagerOwnerInformationController {
+public class ManagerOwnerInfoController {
     // 分页时，每次返回多少条数据
     int PAGESIZE = 4;
     // 默认返回第一页
@@ -143,6 +143,11 @@ public class ManagerOwnerInformationController {
         int num = ownerInfoService.updateOwnerById(ownerInfo);
         System.out.println("修改数据库返回值："+num);
         return pageManagerOwnerInformation(request,PAGEDEFAULT);
+    }
+
+    @RequestMapping("/forwardHomePage")
+    public String forwardHomePage(){
+        return "manager/manager_home_page";
     }
 
 

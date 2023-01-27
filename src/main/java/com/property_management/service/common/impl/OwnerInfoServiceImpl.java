@@ -1,7 +1,6 @@
 package com.property_management.service.common.impl;
 
 
-import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.OwnerInfoMapper;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
@@ -23,11 +22,6 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     @Override
     public List<OwnerInfo> queryOwnerByName(String ownerName) {
         return ownerInfoMapper.queryOwnerByName(ownerName);
-    }
-
-    @Override
-    public int selectCount() {
-        return ownerInfoMapper.selectCount();
     }
 
 

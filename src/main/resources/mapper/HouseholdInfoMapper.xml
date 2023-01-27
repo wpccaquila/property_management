@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.property_management.mapper.HouseholdInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.HouseholdInfo">
+            <id property="householdId" column="household_id" jdbcType="INTEGER"/>
+            <result property="householdName" column="household_name" jdbcType="VARCHAR"/>
+            <result property="householdIdNumber" column="household_id_number" jdbcType="VARCHAR"/>
+            <result property="householdBirthday" column="household_birthday" jdbcType="VARCHAR"/>
+            <result property="householdGender" column="household_gender" jdbcType="VARCHAR"/>
+            <result property="householdPhone" column="household_phone" jdbcType="INTEGER"/>
+            <result property="householdCheckinTime" column="household_checkin_time" jdbcType="VARCHAR"/>
+            <result property="householdHouseType" column="household_house_type" jdbcType="VARCHAR"/>
+            <result property="householdAddress" column="household_address" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        household_id,household_name,household_id_number,
+        household_birthday,household_gender,household_phone,
+        household_checkin_time,household_house_type,household_address
+    </sql>
+
+    <insert id="addAll">
+        insert into household_info
+        ( household_name, household_id_number,
+         household_birthday, household_gender, household_phone,
+         household_checkin_time, household_house_type, household_address)
+        values ( #{householdName,jdbcType=VARCHAR},
+                #{householdIdNumber,jdbcType=VARCHAR},
+                #{householdBirthday,jdbcType=VARCHAR},
+                #{householdGender,jdbcType=VARCHAR},
+                #{householdPhone,jdbcType=INTEGER},
+                #{householdCheckinTime,jdbcType=VARCHAR},
+                #{householdHouseType,jdbcType=VARCHAR},
+                #{householdAddress,jdbcType=VARCHAR})
+
+    </insert>
+
+    <delete id="deleteByHouseholdId">
+        delete
+        from household_info
+        where household_id = #{householdId,jdbcType=NUMERIC}
+    </delete>
+
+    <select id="selectAllByHouseholdId" resultType="com.property_management.pojo.HouseholdInfo">
+        select
+        <include refid="Base_Column_List"/>
+        from household_info
+        where
+        household_id = #{householdId,jdbcType=NUMERIC}
+    </select>
+
+    <select id="selectAllHousehold" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from household_info
+    </select>
+
+    <update id="modifyHousehold" parameterType="com.property_management.pojo.HouseholdInfo">
+        update household_info
+        set household_name = #{householdName,jdbcType=VARCHAR},
+            household_id_number=#{householdIdNumber,jdbcType=VARCHAR},
+            household_birthday=#{householdBirthday,jdbcType=VARCHAR},
+            household_gender=#{householdGender,jdbcType=VARCHAR},
+            household_phone=#{householdPhone,jdbcType=INTEGER},
+            household_checkin_time=#{householdCheckinTime,jdbcType=VARCHAR},
+            household_house_type=#{householdHouseType,jdbcType=VARCHAR},
+            household_address=#{householdAddress,jdbcType=VARCHAR}
+        where household_id = #{householdId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectHouseholdInfoCount" resultType="int">
+        SELECT COUNT(*) FROM household_info;
+    </select>
+
+    <select id="getHouseholdInfoByPage" resultMap="BaseResultMap">
+        select * from household_info limit #{offset}, #{pageSize}
+    </select>
+
+
+
+
+</mapper>

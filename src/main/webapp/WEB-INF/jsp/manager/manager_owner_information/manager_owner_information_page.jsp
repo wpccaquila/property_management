@@ -33,10 +33,10 @@
                     <%-- 查询用户--%>
                     <form action="<%=request.getContextPath()%>/selectOwnerInfoByName" method="post">
                         <div  class="input-group text-center">
-                            <span class="input-group-addon">用户的姓名</span>
-                            <input type="text" class="form-control" name="ownerName"/>
+                            <span  class="input-group-addon">用户的姓名</span>
+                            <input style="width:200px;" type="text" class="form-control" name="ownerName"/>
                         </div>
-                        <input style="float:right" type="submit" class="btn btn-primary" value="查询"/>
+                        <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
                     </form>
 
                     <div class="panel-body">
@@ -93,7 +93,7 @@
                     <div class="text-center">
                         <ul class="pagination">
                             <%-- 静态包含分页按钮--%>
-                            <%@ include file="../manager_public_part/paging_button.jsp"%>
+                            <%@ include file="owner_paging_button.jsp"%>
                         </ul>
                     </div>
 

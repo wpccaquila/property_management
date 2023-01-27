@@ -9,7 +9,7 @@
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">小区物业管理系统</a>
+            <a class="navbar-brand" href="<%=request.getContextPath()%>/forwardHomePage">小区物业管理系统</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="<%=request.getContextPath()%>/index.jsp"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>

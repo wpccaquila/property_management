@@ -23,16 +23,21 @@
     <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=0">1</a></li>
     <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=1">2</a></li>
     <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=2">3</a></li>
-<%}else{%>
-    <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=${ownerPageNo-2}">${ownerPageNo-1}</a></li>
+<%}else if(pageNo >= 2){%>
     <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=${ownerPageNo-1}">${ownerPageNo}</a></li>
     <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=${ownerPageNo}">${ownerPageNo+1}</a></li>
+<%-- 若是尾页时，最后一页不显示--%>
+    <%if(ownerPages-1 <= pageNo){%>
+        <li><a style="display:none">${ownerPageNo+2}</a></li>
+    <%}else{%>
+        <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=${ownerPageNo+1}">${ownerPageNo+2}</a></li>
+    <%}%>
 <%}%>
 
 
-<%
-// 如果当前页数大于总页数，则下一页按钮消失
-    if(ownerPages-1 <= pageNo){%>
+
+<%--如果当前页数大于总页数，则下一页按钮消失--%>
+<%if(ownerPages-1 <= pageNo){%>
     <li><a style="display:none">下一页</a></li>
 <%}else{%>
     <li><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=${ownerPageNo+1}">下一页</a></li>

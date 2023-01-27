@@ -22,12 +22,6 @@ public interface OwnerInfoService {
       */
      List<OwnerInfo> queryOwnerByName(String ownerName);
 
-     /**
-      * 返回表记录数
-      * @return
-      */
-     int selectCount();
-
 
      /**
       * 通过ID号查询业主信息

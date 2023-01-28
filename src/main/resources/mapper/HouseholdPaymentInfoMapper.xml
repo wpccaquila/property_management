@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.property_management.mapper.HouseholdPaymentInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.HouseholdPaymentInfo">
+            <id property="propertyPaymentId" column="property_payment_id" jdbcType="INTEGER"/>
+            <result property="householdId" column="household_id" jdbcType="INTEGER"/>
+            <result property="householdName" column="household_name" jdbcType="VARCHAR"/>
+            <result property="paymentAmount" column="payment_amount" jdbcType="DECIMAL"/>
+            <result property="paymentMethod" column="payment_method" jdbcType="VARCHAR"/>
+            <result property="paymentTime" column="payment_time" jdbcType="TIMESTAMP"/>
+            <result property="paymentStatus" column="payment_status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        property_payment_id,household_id,household_name,
+        payment_amount,payment_method,payment_time,
+        payment_status
+    </sql>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from household_payment_info
+    </select>
+    <select id="selectAllByPropertyPaymentId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from household_payment_info
+        where
+        property_payment_id = #{propertyPaymentId,jdbcType=NUMERIC}
+    </select>
+    <delete id="deleteByPropertyPaymentId">
+        delete
+        from household_payment_info
+        where property_payment_id = #{propertyPaymentId,jdbcType=NUMERIC}
+    </delete>
+
+    <insert id="addAll">
+        insert into household_payment_info
+        (household_id, household_name,
+         payment_amount, payment_method, payment_time,
+         payment_status)
+        values (#{householdId,jdbcType=NUMERIC},
+                #{householdName,jdbcType=VARCHAR},
+                #{paymentAmount,jdbcType=DECIMAL}, #{paymentMethod,jdbcType=VARCHAR}, #{paymentTime,jdbcType=TIMESTAMP},
+                #{paymentStatus,jdbcType=VARCHAR})
+
+    </insert>
+    <select id="selectAllByHouseholdName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from household_payment_info
+        where
+        household_name = #{householdName,jdbcType=VARCHAR}
+    </select>
+
+    <update id="modifyHouseholdPaymentInfo" parameterType="com.property_management.pojo.HouseholdPaymentInfo">
+        update household_payment_info
+        set payment_amount=#{paymentAmount,jdbcType=DECIMAL},
+            payment_method=#{paymentMethod,jdbcType=VARCHAR},
+            payment_time=#{paymentTime,jdbcType=TIMESTAMP},
+            payment_status=#{paymentStatus,jdbcType=VARCHAR}
+        where property_payment_id=#{propertyPaymentId,jdbcType=INTEGER}
+    </update>
+
+    <select id="selectHouseholdPaymentInfoCount" resultType="int">
+        SELECT COUNT(*) FROM household_payment_info;
+    </select>
+
+    <select id="getHouseholdPaymentInfoByPage" resultMap="BaseResultMap">
+        select * from household_payment_info limit #{offset}, #{pageSize}
+    </select>
+</mapper>

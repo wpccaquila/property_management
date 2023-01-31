@@ -1,10 +1,8 @@
 package com.property_management.mapper;
-import com.property_management.pojo.HouseholdInfo;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 import com.property_management.pojo.HouseholdPaymentInfo;
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
@@ -27,7 +25,7 @@ public interface HouseholdPaymentInfoMapper {
      * @param propertyPaymentId
      * @return
      */
-    List<HouseholdPaymentInfo> selectAllByPropertyPaymentId(@Param("propertyPaymentId") Integer propertyPaymentId);
+    HouseholdPaymentInfo selectAllByPropertyPaymentId(@Param("propertyPaymentId") Integer propertyPaymentId);
 
     /**
      * 通过住户名字查询缴费订单信息
@@ -69,7 +67,7 @@ public interface HouseholdPaymentInfoMapper {
      * @param pageSize
      * @return
      */
-    List<HouseholdInfo> getHouseholdPaymentInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
+    List<HouseholdPaymentInfo> getHouseholdPaymentInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
 
 
 }

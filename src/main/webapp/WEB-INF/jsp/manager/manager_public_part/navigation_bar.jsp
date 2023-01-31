@@ -8,7 +8,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <li id="li1" onclick="changeActive('li1')" ><a href="<%=request.getContextPath()%>/page_manager_owner_information?pageNo=0">用户信息管理</a></li>
 <li id="li2" onclick="changeActive('li2')"><a href="<%=request.getContextPath()%>/pageManagerHouseholdInfoInformation?pageNo=0">住户信息管理</a></li>
-<li id="li3" onclick="changeActive('li3')"><a href="<%=request.getContextPath()%>/selectAllPaymentInfo">物业缴费信息管理</a></li>
+<li id="li3" onclick="changeActive('li3')"><a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Payment">物业缴费信息管理</a></li>
 <li id="li4" onclick="changeActive('li4')"><a href="#">公告信息管理</a></li>
 <li id="li5" onclick="changeActive('li5')"><a href="#">维修信息管理</a></li>
 <li id="li6" onclick="changeActive('li6')"><a href="#">投诉信息管理</a></li>

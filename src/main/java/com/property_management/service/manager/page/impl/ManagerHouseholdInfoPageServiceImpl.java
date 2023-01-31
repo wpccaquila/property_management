@@ -3,11 +3,8 @@ package com.property_management.service.manager.page.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.HouseholdInfoMapper;
-import com.property_management.mapper.OwnerInfoMapper;
 import com.property_management.pojo.HouseholdInfo;
-import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.manager.page.ManagerHouseholdInfoPageService;
-import com.property_management.service.manager.page.ManagerOwnerInfoPageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,7 +12,7 @@ import java.util.List;
 
 
 @Service
-public class ManagerHouseholdInfoOwnerInfoPageServiceImpl implements ManagerHouseholdInfoPageService {
+public class ManagerHouseholdInfoPageServiceImpl implements ManagerHouseholdInfoPageService {
     @Resource
     HouseholdInfoMapper householdInfoMapper;
 

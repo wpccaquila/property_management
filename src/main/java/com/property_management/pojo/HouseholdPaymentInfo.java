@@ -57,6 +57,22 @@ public class HouseholdPaymentInfo implements Serializable {
     private String householdName;
 
     /**
+     * 修改时用的构造对象
+     * @param propertyPaymentId
+     * @param paymentAmount
+     * @param paymentMethod
+     * @param paymentTime
+     * @param paymentStatus
+     */
+    public HouseholdPaymentInfo(Integer propertyPaymentId, BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
+        this.propertyPaymentId = propertyPaymentId;
+        this.paymentAmount = paymentAmount;
+        this.paymentMethod = paymentMethod;
+        this.paymentTime = paymentTime;
+        this.paymentStatus = paymentStatus;
+    }
+
+    /**
      * 缴费金额
      */
     private BigDecimal paymentAmount;

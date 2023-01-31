@@ -26,7 +26,7 @@ public class HouseholdPaymentInfoServiceImpl implements HouseholdPaymentInfoServ
     }
 
     @Override
-    public List<HouseholdPaymentInfo> selectAllByPropertyPaymentId(Integer propertyPaymentId) {
+    public HouseholdPaymentInfo selectAllByPropertyPaymentId(Integer propertyPaymentId) {
         return householdPaymentInfoMapper.selectAllByPropertyPaymentId(propertyPaymentId);
     }
 
@@ -55,10 +55,6 @@ public class HouseholdPaymentInfoServiceImpl implements HouseholdPaymentInfoServ
         return householdPaymentInfoMapper.selectHouseholdPaymentInfoCount();
     }
 
-    @Override
-    public List<HouseholdInfo> getHouseholdPaymentInfoByPage(int offset, int pageSize) {
-        return householdPaymentInfoMapper.getHouseholdPaymentInfoByPage(offset,pageSize);
-    }
 }
 
 

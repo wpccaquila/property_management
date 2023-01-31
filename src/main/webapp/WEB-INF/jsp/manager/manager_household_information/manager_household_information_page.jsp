@@ -28,7 +28,7 @@
         </div>
         <div class="col-sm-9">
             <div class="panel panel-default">
-                <div class="panel-heading">用户信息管理</div>
+                <div class="panel-heading">住户信息管理</div>
                 <div class="panel-body">
                     <%-- 查询用户--%>
                     <form action="<%=request.getContextPath()%>/selectHouseholdByName" method="post">

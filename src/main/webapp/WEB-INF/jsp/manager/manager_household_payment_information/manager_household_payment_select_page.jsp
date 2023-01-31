@@ -40,7 +40,6 @@
                     </form>
 
                     <input style="float:right;margin-right:15px;width:170px;" class="btn btn-primary" value="增加住户缴费信息" onclick="window.location.href='<%=request.getContextPath()%>/forwardInsertPayment'" />
-
                     <div class="panel-body">
                         <form  method="post">
                             <table class="table table-bordered">
@@ -58,7 +57,7 @@
 
                                 <tbody>
 
-                                <c:forEach items="${householdPaymentByPageList}" var="item" varStatus="status">
+                                <c:forEach items="${householdPaymentByNameList}" var="item" varStatus="status">
                                     <tr>
                                         <td>
                                                 <%-- 是数据库中的行号，不是id号--%>
@@ -96,13 +95,7 @@
                     </div>
                     </div>
 
-                <%-- 页脚分页按钮--%>
-                <div class="text-center">
-                    <ul class="pagination">
-                        <%-- 静态包含分页按钮--%>
-                        <%@ include file="payment_paging_button.jsp"%>
-                    </ul>
-                </div>
+                <a href="<%=request.getContextPath()%>/selectAllPaymentInfo" class="btn btn-primary">返回</a>
 
                 </div>
             </div>

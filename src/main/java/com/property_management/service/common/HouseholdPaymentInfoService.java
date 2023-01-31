@@ -3,7 +3,6 @@ package com.property_management.service.common;
 
 import com.property_management.pojo.HouseholdInfo;
 import com.property_management.pojo.HouseholdPaymentInfo;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -26,7 +25,7 @@ public interface HouseholdPaymentInfoService {
      * @param propertyPaymentId
      * @return
      */
-    List<HouseholdPaymentInfo> selectAllByPropertyPaymentId(Integer propertyPaymentId);
+    HouseholdPaymentInfo selectAllByPropertyPaymentId(Integer propertyPaymentId);
 
     /**
      * 通过住户名字查询缴费订单信息
@@ -61,14 +60,6 @@ public interface HouseholdPaymentInfoService {
      * @return
      */
     int selectHouseholdPaymentInfoCount();
-
-    /**
-     * 使用Pagehelper 分页
-     * @param offset
-     * @param pageSize
-     * @return
-     */
-    List<HouseholdInfo> getHouseholdPaymentInfoByPage(int offset, int pageSize);
 
 
 }

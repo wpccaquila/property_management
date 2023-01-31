@@ -30,19 +30,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading">住户缴费信息管理</div>
                 <div class="panel-body">
-                    <%-- 查询用户--%>
-                    <form action="<%=request.getContextPath()%>/selectPaymentByName" method="post">
-                        <div  class="input-group text-center">
-                            <span  class="input-group-addon">住户的姓名</span>
-                            <input style="width:200px;" type="text" class="form-control" name="householdPaymentName"/>
-                        </div>
-                        <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
-                    </form>
-
-                    <input style="float:right;margin-right:15px;width:170px;" class="btn btn-primary" value="增加住户缴费信息" onclick="window.location.href='<%=request.getContextPath()%>/forwardInsertPayment'" />
 
                     <div class="panel-body">
-                        <form  method="post">
+                        <form  method="post" action="<%=request.getContextPath()%>/updataPaymentInfoById?propertyPaymentId=${householdPaymentById.propertyPaymentId}">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -58,37 +48,33 @@
 
                                 <tbody>
 
-                                <c:forEach items="${householdPaymentByPageList}" var="item" varStatus="status">
                                     <tr>
                                         <td>
-                                                <%-- 是数据库中的行号，不是id号--%>
-                                            <c:set var="householdPaymentStartLineNo" value="${householdPaymentStartLineNo + 1}" scope="request"/>
-                                            <input type="text" readonly="readonly" name="householdPayment_id" value="${householdPaymentStartLineNo}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="householdPaymentStartLineNo" value="${param.householdPaymentStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPayment_name" value="${item.householdId}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="householdId" value="${householdPaymentById.householdId}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPayment_phone" value="${item.householdName}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="householdName" value="${householdPaymentById.householdName}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPayment_address" value="${item.paymentAmount}" class="form-control" />
+                                            <input type="text"  name="paymentAmount" value="${householdPaymentById.paymentAmount}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPayment_password" value="${item.paymentMethod}" class="form-control" />
+                                            <input type="text"  name="paymentMethod" value="${householdPaymentById.paymentMethod}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPayment_identity" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                                            <input type="text"  id="paymentTime" name="paymentTime" value="<fmt:formatDate value="${householdPaymentById.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPayment_identity" value="${item.paymentStatus}" class="form-control" />
+                                            <input type="text"  name="paymentStatus" value="${householdPaymentById.paymentStatus}" class="form-control" />
                                         </td>
                                         <td>
-                                            <a href="<%=request.getContextPath()%>/forwardUpdateHouseholdPaymentPage?propertyPaymentId=${item.propertyPaymentId}&householdPaymentStartLineNo=${householdPaymentStartLineNo}"  class="btn btn-primary">修改数据</a>
+                                            <button type="submit" class="btn btn-primary">修改数据</button>
                                             <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deletePaymentInfoById?propertyPaymentId=${item.propertyPaymentId}')">删除用户</a>
                                         </td>
                                     </tr>
-                                </c:forEach>
                                 </tbody>
 
                             </table>
@@ -96,13 +82,7 @@
                     </div>
                     </div>
 
-                <%-- 页脚分页按钮--%>
-                <div class="text-center">
-                    <ul class="pagination">
-                        <%-- 静态包含分页按钮--%>
-                        <%@ include file="payment_paging_button.jsp"%>
-                    </ul>
-                </div>
+                <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Payment" class="btn btn-primary">返回</a>
 
                 </div>
             </div>
@@ -120,6 +100,23 @@
             window.location.href = url
         }
     }
+
+
+    $(function() {
+        $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
+        $("#paymentTime").datepicker({
+        dateFormat: "yy-mm-dd",
+        changeYear: true,
+        changeMonth: true,
+        yearRange: '1950:2025',
+        monthNames: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        monthNamesShort: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+        dayNames: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        dayNamesShort: ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'],
+        dayNamesMin: ['日', '一', '二', '三', '四', '五', '六']
+        });
+    });
+
 
 
 </script>

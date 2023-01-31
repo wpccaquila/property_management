@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.property_management.mapper.NoticeInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.NoticeInfo">
+            <id property="noticeId" column="notice_id" jdbcType="INTEGER"/>
+            <result property="noticeTitle" column="notice_title" jdbcType="VARCHAR"/>
+            <result property="noticeContent" column="notice_content" jdbcType="VARCHAR"/>
+            <result property="noticeCreateTime" column="notice_create_time" jdbcType="TIMESTAMP"/>
+            <result property="noticeCreateUser" column="notice_create_user" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        notice_id,notice_title,notice_content,
+        notice_create_time,notice_create_user
+    </sql>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from notice_info
+    </select>
+    <select id="selectAllByNoticeId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from notice_info
+        where
+        notice_id = #{noticeId,jdbcType=NUMERIC}
+    </select>
+    <delete id="deleteByNoticeId">
+        delete
+        from notice_info
+        where notice_id = #{noticeId,jdbcType=NUMERIC}
+    </delete>
+
+    <select id="selectAllByNoticeTitleName"
+            resultMap="BaseResultMap"
+            parameterType="String">
+        select * from notice_info
+        where notice_title like concat('%',#{noticeTitle},'%')
+    </select>
+
+    <update id="modifyNoticeInfo" parameterType="com.property_management.pojo.NoticeInfo">
+        update notice_info
+        set notice_title=#{noticeTitle,jdbcType=VARCHAR},
+            notice_content=#{noticeContent,jdbcType=VARCHAR},
+            notice_create_time=#{noticeCreateTime,jdbcType=TIMESTAMP},
+            notice_create_user=#{noticeCreateUser,jdbcType=VARCHAR}
+        where notice_id=#{propertyPaymentId,jdbcType=INTEGER}
+    </update>
+    <insert id="addAll">
+        insert into notice_info
+        (notice_title, notice_content,
+         notice_create_time, notice_create_user)
+        values (#{noticeTitle,jdbcType=VARCHAR}, #{noticeContent,jdbcType=VARCHAR},
+                #{noticeCreateTime,jdbcType=TIMESTAMP}, #{noticeCreateUser,jdbcType=VARCHAR})
+
+    </insert>
+
+    <select id="selectNoticeInfoCount" resultType="int">
+        SELECT COUNT(*) FROM notice_info;
+    </select>
+
+    <select id="getHouseNoticeInfoByPage" resultMap="BaseResultMap">
+        select * from notice_info limit #{offset}, #{pageSize}
+    </select>
+</mapper>

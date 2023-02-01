@@ -73,7 +73,7 @@ public class ManagerOwnerInfoController {
      * 默认的分页请求，默认为请求第一页
      * @return
      */
-    @RequestMapping("/PAGE-DEFAULT")
+    @RequestMapping("/PAGE-DEFAULT-Owner")
     public String pageManagerOwnerInformation(HttpServletRequest request){
         // 计算当前开始的行号
         int startLineNo = managerOwnerInfoPageService.getStartLineNo(PAGEDEFAULT);

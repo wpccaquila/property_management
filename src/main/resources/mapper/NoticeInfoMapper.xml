@@ -48,7 +48,7 @@
             notice_content=#{noticeContent,jdbcType=VARCHAR},
             notice_create_time=#{noticeCreateTime,jdbcType=TIMESTAMP},
             notice_create_user=#{noticeCreateUser,jdbcType=VARCHAR}
-        where notice_id=#{propertyPaymentId,jdbcType=INTEGER}
+        where notice_id=#{noticeId,jdbcType=INTEGER}
     </update>
     <insert id="addAll">
         insert into notice_info

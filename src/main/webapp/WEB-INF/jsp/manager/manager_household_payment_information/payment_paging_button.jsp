@@ -43,4 +43,4 @@
 <li><a href="<%=request.getContextPath()%>/pageManagerHouseholdInfoInformation?pageNo=${householdPaymentPageNo+1}">下一页</a></li>
 <%}%>
 <%-- 尾页--%>
-<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdInfoInformation?pageNo=${householdPaymentPageNo-1}">尾页</a></li>
+<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdInfoInformation?pageNo=${householdPaymentPages-1}">尾页</a></li>

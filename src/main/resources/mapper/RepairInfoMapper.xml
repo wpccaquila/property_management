@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.property_management.mapper.RepairInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.RepairInfo">
+            <id property="repairId" column="repair_id" jdbcType="INTEGER"/>
+            <result property="repairType" column="repair_type" jdbcType="VARCHAR"/>
+            <result property="repairContent" column="repair_content" jdbcType="VARCHAR"/>
+            <result property="repairCreateTime" column="repair_create_time" jdbcType="TIMESTAMP"/>
+            <result property="repairApplicant" column="repair_applicant" jdbcType="VARCHAR"/>
+            <result property="repairState" column="repair_state" jdbcType="VARCHAR"/>
+            <result property="repairProcessor" column="repair_processor" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        repair_id,repair_type,repair_content,
+        repair_create_time,repair_applicant,repair_state,
+        repair_processor
+    </sql>
+    <insert id="addRepair">
+        insert into repair_info
+        (repair_id, repair_type, repair_content,
+         repair_create_time, repair_applicant, repair_state,
+         repair_processor)
+        values (#{repairId,jdbcType=NUMERIC}, #{repairType,jdbcType=VARCHAR}, #{repairContent,jdbcType=VARCHAR},
+                #{repairCreateTime,jdbcType=TIMESTAMP}, #{repairApplicant,jdbcType=VARCHAR},
+                #{repairState,jdbcType=VARCHAR},
+                #{repairProcessor,jdbcType=VARCHAR})
+
+    </insert>
+    <delete id="deleteByRepairId">
+        delete
+        from repair_info
+        where repair_id = #{repairId,jdbcType=NUMERIC}
+    </delete>
+    <select id="selectAllByRepairId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from repair_info
+        where
+        repair_id = #{repairId,jdbcType=NUMERIC}
+    </select>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from repair_info
+    </select>
+
+    <select id="getRepairInfoByPage" resultMap="BaseResultMap">
+        select * from repair_info limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="queryRepairByType"
+            resultMap="BaseResultMap"
+            parameterType="String">
+        select * from repair_info
+        where repair_type like concat('%',#{repairType,jdbcType=VARCHAR},'%')
+    </select>
+
+    <select id="selectRepairCount" resultType="int">
+        SELECT COUNT(*) FROM repair_info;
+    </select>
+
+    <update id="modifyRepairByRepairId">
+        update repair_info
+        set repair_type=#{repairType,jdbcType=VARCHAR},
+            repair_content=#{repairContent,jdbcType=VARCHAR},
+            repair_create_time=#{repairCreateTime,jdbcType=TIMESTAMP},
+            repair_applicant=#{repairApplicant,jdbcType=VARCHAR},
+            repair_state=#{repairState,jdbcType=VARCHAR},
+            repair_processor=#{repairProcessor,jdbcType=VARCHAR}
+        where repair_id=#{repairId,jdbcType=NUMERIC}
+    </update>
+</mapper>

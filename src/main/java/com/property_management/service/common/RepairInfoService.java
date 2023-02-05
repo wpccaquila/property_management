@@ -64,6 +64,13 @@ public interface RepairInfoService {
      * 修改报修信息
      * @return
      */
-    int modifyRepairByRepairId(int repairId);
+    int modifyRepairByRepairId(RepairInfo repairInfo);
+
+    /**
+     * 通过报修类型查询
+     * @param repairType
+     * @return
+     */
+    List<RepairInfo> searchAllByRepairType(String repairType);
 
 }

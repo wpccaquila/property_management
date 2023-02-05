@@ -54,8 +54,13 @@ public class RepairInfoServiceImpl implements RepairInfoService{
     }
 
     @Override
-    public int modifyRepairByRepairId(int repairId) {
-        return repairInfoMapper.modifyRepairByRepairId(repairId);
+    public int modifyRepairByRepairId(RepairInfo repairInfo){
+        return repairInfoMapper.modifyRepairByRepairId(repairInfo);
+    }
+
+    @Override
+    public List<RepairInfo> searchAllByRepairType(String repairType) {
+        return repairInfoMapper.searchAllByRepairType(repairType);
     }
 }
 

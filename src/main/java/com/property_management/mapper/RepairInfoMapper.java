@@ -70,7 +70,14 @@ public interface RepairInfoMapper {
      * 修改报修信息
      * @return
      */
-    int modifyRepairByRepairId(@Param("repairId") int repairId);
+    int modifyRepairByRepairId(RepairInfo repairInfo);
+
+    /**
+     * 通过报修类型查询
+     * @param repairType
+     * @return
+     */
+    List<RepairInfo> searchAllByRepairType(@Param("repairType") String repairType);
 
 }
 

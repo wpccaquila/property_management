@@ -63,7 +63,7 @@
         SELECT COUNT(*) FROM repair_info;
     </select>
 
-    <update id="modifyRepairByRepairId">
+    <update id="modifyRepairByRepairId" parameterType="com.property_management.pojo.RepairInfo">
         update repair_info
         set repair_type=#{repairType,jdbcType=VARCHAR},
             repair_content=#{repairContent,jdbcType=VARCHAR},
@@ -73,4 +73,13 @@
             repair_processor=#{repairProcessor,jdbcType=VARCHAR}
         where repair_id=#{repairId,jdbcType=NUMERIC}
     </update>
+
+    <select id="searchAllByRepairType" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from repair_info
+        where
+        repair_type
+        like concat('%',#{repairType,jdbcType=VARCHAR},'%')
+    </select>
 </mapper>

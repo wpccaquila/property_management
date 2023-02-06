@@ -124,12 +124,12 @@ public class ManagerOwnerInfoController {
 
     /**
      * 删除用户
-     * @param owner_id
+     * @param ownerId
      * @return
      */
     @GetMapping("/delete_manager_owner_information")
-    public String  deleteManagerOwnerInformation(int owner_id,HttpServletRequest request){
-        ownerInfoService.deleteOwnerById(owner_id);
+    public String  deleteManagerOwnerInformation(int ownerId,HttpServletRequest request){
+        ownerInfoService.deleteOwnerById(ownerId);
         return pageManagerOwnerInformation(request,PAGEDEFAULT);
     }
 

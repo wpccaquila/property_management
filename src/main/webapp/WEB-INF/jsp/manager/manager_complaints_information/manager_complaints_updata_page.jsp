@@ -28,21 +28,20 @@
         </div>
         <div class="col-sm-9">
             <div class="panel panel-default">
-                <div class="panel-heading">住户缴费信息管理</div>
+                <div class="panel-heading">住户投诉信息管理</div>
                 <div class="panel-body">
 
                     <div class="panel-body">
-                        <form  method="post" action="<%=request.getContextPath()%>/updataPaymentInfoById?propertyPaymentId=${householdPaymentById.propertyPaymentId}">
+                        <form  method="post" action="<%=request.getContextPath()%>/updateComplaintsInfoById?complaintId=${complaintsInfoById.complaintId}">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>缴费订单id</th>
-                                    <th>住户id</th>
-                                    <th>住户姓名</th>
-                                    <th>缴费金额</th>
-                                    <th>缴费方式</th>
-                                    <th>缴费时间</th>
-                                    <th>缴费状态</th>
+                                    <th>投诉信息id</th>
+                                    <th>投诉时间</th>
+                                    <th>投诉内容</th>
+                                    <th>投诉人姓名</th>
+                                    <th>投诉人电话</th>
+                                    <th>投诉状态</th>
                                 </tr>
                                 </thead>
 
@@ -50,39 +49,35 @@
 
                                     <tr>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdPaymentStartLineNo" value="${param.householdPaymentStartLineNo}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="complaintsStartLineNo" value="${param.complaintsStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdId" value="${householdPaymentById.householdId}" class="form-control" />
+                                            <input type="text" id="complaintTime" name="complaintTime" value="<fmt:formatDate value="${complaintsInfoById.complaintTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdName" value="${householdPaymentById.householdName}" class="form-control" />
+                                            <input type="text"  name="complaintContent" value="${complaintsInfoById.complaintContent}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="paymentAmount" value="${householdPaymentById.paymentAmount}" class="form-control" />
+                                            <input type="text"  name="complaintName" value="${complaintsInfoById.complaintName}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="paymentMethod" value="${householdPaymentById.paymentMethod}" class="form-control" />
+                                            <input type="text"  name="complaintPhone" value="${complaintsInfoById.complaintPhone}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  id="paymentTime" name="paymentTime" value="<fmt:formatDate value="${householdPaymentById.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
-                                        </td>
-                                        <td>
-                                            <input type="text"  name="paymentStatus" value="${householdPaymentById.paymentStatus}" class="form-control" />
+                                            <input type="text"  name="complaintStatus" value="${complaintsInfoById.complaintStatus}" class="form-control" />
                                         </td>
                                         <td>
                                             <button type="submit" class="btn btn-primary">修改数据</button>
-                                            <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deletePaymentInfoById?propertyPaymentId=${item.propertyPaymentId}')">删除用户</a>
+                                            <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deleteComplaintsInfoById?complaintId=${complaintsInfoById.complaintId}')">删除投诉</a>
                                         </td>
                                     </tr>
                                 </tbody>
 
                             </table>
-                            <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Payment" class="btn btn-primary">返回</a>
+                            <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Complaints" class="btn btn-primary">返回</a>
                         </form>
                     </div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -103,7 +98,7 @@
 
     $(function() {
         $.datepicker.setDefaults($.datepicker.regional['zh-CN']);
-        $("#paymentTime").datepicker({
+        $("#complaintTime").datepicker({
         dateFormat: "yy-mm-dd",
         changeYear: true,
         changeMonth: true,

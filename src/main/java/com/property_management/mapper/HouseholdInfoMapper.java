@@ -75,11 +75,7 @@ public interface HouseholdInfoMapper {
      */
     List<HouseholdInfo> getHouseholdInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
 
-    /**
-     * 返回表记录数
-     * @return
-     */
-    int selectCount();
+
 }
 
 

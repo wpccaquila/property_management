@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.property_management.mapper.ComplaintsInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.ComplaintsInfo">
+            <id property="complaintId" column="complaint_id" jdbcType="INTEGER"/>
+            <result property="complaintTime" column="complaint_time" jdbcType="TIMESTAMP"/>
+            <result property="complaintContent" column="complaint_content" jdbcType="VARCHAR"/>
+            <result property="complaintName" column="complaint_name" jdbcType="VARCHAR"/>
+            <result property="complaintPhone" column="complaint_phone" jdbcType="VARCHAR"/>
+            <result property="complaintStatus" column="complaint_status" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        complaint_id,complaint_time,complaint_content,
+        complaint_name,complaint_phone,complaint_status
+    </sql>
+    <select id="selectAllByComplaintId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from complaints_info
+        where
+        complaint_id = #{complaintId,jdbcType=NUMERIC}
+    </select>
+    <delete id="deleteByComplaintId">
+        delete
+        from complaints_info
+        where complaint_id = #{complaintId,jdbcType=NUMERIC}
+    </delete>
+    <select id="selectAllByComplaintName" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from complaints_info
+        where
+        complaint_name
+        like concat('%',#{complaintName,jdbcType=VARCHAR},'%')
+    </select>
+
+    <insert id="addAll">
+        insert into complaints_info
+        (complaint_time, complaint_content,
+         complaint_name, complaint_phone, complaint_status)
+        values (#{complaintTime,jdbcType=TIMESTAMP},
+                #{complaintContent,jdbcType=VARCHAR},
+                #{complaintName,jdbcType=VARCHAR}, #{complaintPhone,jdbcType=VARCHAR},
+                #{complaintStatus,jdbcType=VARCHAR})
+
+    </insert>
+    <update id="updateComplaintInfo" parameterType="com.property_management.pojo.ComplaintsInfo">
+        update complaints_info
+        set complaint_content = #{complaintContent,jdbcType=VARCHAR},
+            complaint_name    = #{complaintName,jdbcType=VARCHAR},
+            complaint_phone   = #{complaintPhone,jdbcType=VARCHAR},
+            complaint_status  = #{complaintStatus,jdbcType=VARCHAR},
+            complaint_time    = #{complaintTime}
+        where complaint_id = #{complaintId,jdbcType=NUMERIC}
+    </update>
+
+    <select id="selectComplaintInfoCount" resultType="int">
+        SELECT COUNT(*) FROM complaints_info;
+    </select>
+
+    <select id="getComplaintInfoByPage" resultMap="BaseResultMap">
+        select * from complaints_info limit #{offset}, #{pageSize}
+    </select>
+</mapper>

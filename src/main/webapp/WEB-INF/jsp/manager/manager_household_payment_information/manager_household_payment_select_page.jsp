@@ -91,11 +91,10 @@
                                 </tbody>
 
                             </table>
+                            <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Payment" class="btn btn-primary">返回</a>
                         </form>
                     </div>
                     </div>
-
-                <a href="<%=request.getContextPath()%>/selectAllPaymentInfo" class="btn btn-primary">返回</a>
 
                 </div>
             </div>

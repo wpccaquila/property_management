@@ -28,17 +28,16 @@
         </div>
         <div class="col-sm-9">
             <div class="panel panel-default">
-                <div class="panel-heading">欢迎使用小区物业系统</div>
+                <div class="panel-heading">用户信息管理</div>
                 <div class="panel-body">
-                    <p>用户信息管理 </p>
 
                     <%-- 查询用户--%>
                     <form action="<%=request.getContextPath()%>/selectOwnerInfoByName" method="post">
-                        <div class="input-group">
-                            <span class="input-group-addon">用户的姓名</span>
-                            <input type="text" class="form-control" name="ownerName"/>
+                        <div  class="input-group text-center">
+                            <span  class="input-group-addon">用户的姓名</span>
+                            <input style="width:200px;" type="text" class="form-control" name="ownerName"/>
                         </div>
-                        <input type="submit" class="btn btn-primary" value="查询"/>
+                        <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
                     </form>
 
                     <div class="panel-body">
@@ -58,8 +57,9 @@
                                 <c:forEach items="${ownerInfoByOwnerNameList}" var="item" varStatus="status">
                                     <tr>
                                         <td>
-                                                <%-- 为了美观设置的id号，不是数据库中的id号--%>
-                                            <input type="text" readonly="readonly" name="owner_id" value="<c:out value="${status.index + 1}"/>" class="form-control" />
+                                                <%-- 是数据库中的行号，不是id号--%>
+                                            <c:set var="ownerStartLineNo" value="${ownerStartLineNo + 1}" scope="request"/>
+                                            <input type="text" readonly="readonly" name="ownerStartLineNo" value="${ownerStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="owner_name" value="${item.owner_name}" class="form-control" />
@@ -77,7 +77,7 @@
                                             <input type="text" readonly="readonly" name="owner_identity" value="${item.owner_identity}" class="form-control" />
                                         </td>
                                         <td>
-                                            <a href="<%=request.getContextPath()%>/forwardUpdateOwner?ownerId=${item.owner_id}"  class="btn btn-primary">修改数据</a>
+                                            <a href="<%=request.getContextPath()%>/forwardUpdateOwner?ownerId=${item.owner_id}&ownerStartLineNo=${ownerStartLineNo}"  class="btn btn-primary">修改数据</a>
                                             <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/delete_manager_owner_information?owner_id=${item.owner_id}')">删除用户</a>
                                         </td>
                                     </tr>
@@ -85,7 +85,7 @@
                                 </tbody>
                             </table>
                         </form>
-                        <a href="<%=request.getContextPath()%>/page_manager_owner_information" class="btn btn-primary">返回</a>
+                        <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Owner" class="btn btn-primary">返回</a>
                     </div>
 
                 </div>

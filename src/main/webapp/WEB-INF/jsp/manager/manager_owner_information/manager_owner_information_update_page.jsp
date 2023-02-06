@@ -44,7 +44,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <input type="text" readonly="readonly" name="owner_id" value="${param.currentPageLineNo}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="owner_id" value="${param.ownerStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" name="owner_name" value="${ownerInfoById.owner_name}" class="form-control" />
@@ -69,7 +69,7 @@
                                 </tbody>
                             </table>
                         </form>
-                        <a href="<%=request.getContextPath()%>/PAGE-DEFAULT" class="btn btn-primary">返回</a>
+                        <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Owner" class="btn btn-primary">返回</a>
                     </div>
 
                 </div>

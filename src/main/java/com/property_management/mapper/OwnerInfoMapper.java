@@ -82,4 +82,5 @@ public interface OwnerInfoMapper {
      int deleteOwnerById(@Param("owner_id")
                          int ownerId);
 
+
 }

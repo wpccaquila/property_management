@@ -1,13 +1,10 @@
-package com.property_management.service.manager.page.impl;
+package com.property_management.service.page.impl;
 
 
 import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.OwnerInfoMapper;
-import com.property_management.mapper.RepairInfoMapper;
 import com.property_management.pojo.OwnerInfo;
-import com.property_management.pojo.RepairInfo;
-import com.property_management.service.manager.page.ManagerOwnerInfoPageService;
-import com.property_management.service.manager.page.ManagerRepairInfoPageService;
+import com.property_management.service.page.ManagerOwnerInfoPageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,14 +12,16 @@ import java.util.List;
 
 
 @Service
-public class ManagerRepairInfoPageServiceImpl implements ManagerRepairInfoPageService {
+public class ManagerOwnerInfoPageServiceImpl implements ManagerOwnerInfoPageService {
     @Resource
-    RepairInfoMapper repairInfoMapper;
+    OwnerInfoMapper ownerInfoMapper;
+
+
 
     @Override
-    public List<RepairInfo> getRepairInfoByPage(int pageNo, int pageSize) {
+    public List<OwnerInfo> getOwnerInfoByPage(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
-        return repairInfoMapper.getRepairInfoByPage(pageNo, pageSize);
+        return ownerInfoMapper.getOwnerInfoByPage(pageNo, pageSize);
     }
 
     @Override
@@ -32,7 +31,7 @@ public class ManagerRepairInfoPageServiceImpl implements ManagerRepairInfoPageSe
 
     @Override
     public int getPageNumber(int pageSize) {
-        int totalRows = repairInfoMapper.selectRepairCount();
+        int totalRows = ownerInfoMapper.selectCount();
         int pageNumber = totalRows / pageSize;
         // 如果有余数，则将页数加1
         if(totalRows % pageSize != 0){

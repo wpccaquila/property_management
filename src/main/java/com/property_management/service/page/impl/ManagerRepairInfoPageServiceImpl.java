@@ -1,24 +1,25 @@
-package com.property_management.service.manager.page.impl;
+package com.property_management.service.page.impl;
 
 
 import com.github.pagehelper.PageHelper;
-import com.property_management.mapper.NoticeInfoMapper;
-import com.property_management.service.manager.page.ManagerNoticeInfoPageService;
+import com.property_management.mapper.RepairInfoMapper;
+import com.property_management.pojo.RepairInfo;
+import com.property_management.service.page.ManagerRepairInfoPageService;
 import org.springframework.stereotype.Service;
-import com.property_management.pojo.NoticeInfo;
+
 import javax.annotation.Resource;
 import java.util.List;
 
 
 @Service
-public class ManagerNoticePageServiceImpl implements ManagerNoticeInfoPageService {
+public class ManagerRepairInfoPageServiceImpl implements ManagerRepairInfoPageService {
     @Resource
-    NoticeInfoMapper noticeInfoMapper;
+    RepairInfoMapper repairInfoMapper;
 
     @Override
-    public List<NoticeInfo> getNoticeInfoByPage(int pageNo, int pageSize) {
+    public List<RepairInfo> getRepairInfoByPage(int pageNo, int pageSize) {
         PageHelper.startPage(pageNo, pageSize);
-        return noticeInfoMapper.getHouseNoticeInfoByPage(pageNo, pageSize);
+        return repairInfoMapper.getRepairInfoByPage(pageNo, pageSize);
     }
 
     @Override
@@ -28,7 +29,7 @@ public class ManagerNoticePageServiceImpl implements ManagerNoticeInfoPageServic
 
     @Override
     public int getPageNumber(int pageSize) {
-        int totalRows = noticeInfoMapper.selectNoticeInfoCount();
+        int totalRows = repairInfoMapper.selectRepairCount();
         int pageNumber = totalRows / pageSize;
         // 如果有余数，则将页数加1
         if(totalRows % pageSize != 0){

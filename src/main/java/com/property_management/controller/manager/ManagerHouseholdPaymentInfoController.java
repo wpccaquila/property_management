@@ -1,10 +1,9 @@
 package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
-import com.property_management.pojo.HouseholdInfo;
 import com.property_management.pojo.HouseholdPaymentInfo;
 import com.property_management.service.common.HouseholdPaymentInfoService;
-import com.property_management.service.manager.page.ManagerHouseholdPaymentInfoPageService;
+import com.property_management.service.page.ManagerHouseholdPaymentInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -177,7 +176,7 @@ public class ManagerHouseholdPaymentInfoController {
                                         BigDecimal paymentAmount, String paymentMethod,
                                         String paymentTime, String paymentStatus) throws ParseException {
         // 转换时间格式
-        SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
+        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
         Date paymentTimeDate=dateFormat.parse(paymentTime);
 
         householdPaymentInfoService.addAll(new HouseholdPaymentInfo(householdId,householdName,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));

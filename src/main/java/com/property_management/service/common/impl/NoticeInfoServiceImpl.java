@@ -21,6 +21,23 @@ public class NoticeInfoServiceImpl implements NoticeInfoService{
     NoticeInfoMapper noticeInfoMapper;
 
     @Override
+    public List<NoticeInfo> findFourLatestNotice() {
+        return noticeInfoMapper.findFourLatestNotice();
+    }
+
+    @Override
+    public NoticeInfo findLatestNotice() {
+        NoticeInfo latestNotice = noticeInfoMapper.findLatestNotice();
+//        //将公告内容中空格与回车替换成HTML格式，不然输出到页面时会被忽略
+//        String noticeContent = latestNotice.getNoticeContent();
+//        noticeContent = noticeContent.replaceAll("\\s", "&nbsp;");//替换空格
+//        noticeContent = noticeContent.replaceAll("\r\n", "<br/>");//替换回车
+//        System.out.println("输出看看：" + noticeContent);
+//        latestNotice.setNoticeContent(noticeContent);
+        return latestNotice;
+    }
+
+    @Override
     public List<NoticeInfo> selectAll() {
         return noticeInfoMapper.selectAll();
     }

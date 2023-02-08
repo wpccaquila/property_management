@@ -3,7 +3,7 @@ package com.property_management.controller.manager;
 import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.HouseholdInfo;
 import com.property_management.service.common.HouseholdInfoService;
-import com.property_management.service.manager.page.ManagerHouseholdInfoPageService;
+import com.property_management.service.page.ManagerHouseholdInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

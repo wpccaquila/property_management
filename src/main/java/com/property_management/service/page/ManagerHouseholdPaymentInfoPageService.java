@@ -1,14 +1,15 @@
-package com.property_management.service.manager.page;
+package com.property_management.service.page;
 
-
-import com.property_management.pojo.RepairInfo;
+import com.property_management.pojo.HouseholdInfo;
+import com.property_management.pojo.HouseholdPaymentInfo;
 
 import java.util.List;
 
 /**
  * 使用PageHelper 插件实现分页功能
  */
-public interface ManagerRepairInfoPageService {
+public interface ManagerHouseholdPaymentInfoPageService {
+
 
 
     /**
@@ -17,7 +18,7 @@ public interface ManagerRepairInfoPageService {
      * @param pageSize
      * @return
      */
-     List<RepairInfo> getRepairInfoByPage(int pageNo, int pageSize);
+    List<HouseholdPaymentInfo> getHouseholdPaymentInfoByPage(int pageNo, int pageSize);
 
     /**
      * 通过页码计算当前行号

@@ -1,14 +1,14 @@
-package com.property_management.service.manager.page;
+package com.property_management.service.page;
 
-
-import com.property_management.pojo.NoticeInfo;
+import com.property_management.pojo.ComplaintsInfo;
+import com.property_management.pojo.HouseholdInfo;
 
 import java.util.List;
 
 /**
  * 使用PageHelper 插件实现分页功能
  */
-public interface ManagerNoticeInfoPageService {
+public interface ManagerComplaintsInfoPageService {
 
     /**
      * 实现分页查询返回
@@ -16,7 +16,7 @@ public interface ManagerNoticeInfoPageService {
      * @param pageSize
      * @return
      */
-    List<NoticeInfo> getNoticeInfoByPage(int pageNo, int pageSize);
+    List<ComplaintsInfo> getComplaintsInfoByPage(int pageNo, int pageSize);
 
     /**
      * 通过页码计算当前行号

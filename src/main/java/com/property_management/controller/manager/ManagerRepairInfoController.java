@@ -1,10 +1,9 @@
 package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
-import com.property_management.pojo.OwnerInfo;
 import com.property_management.pojo.RepairInfo;
 import com.property_management.service.common.RepairInfoService;
-import com.property_management.service.manager.page.ManagerRepairInfoPageService;
+import com.property_management.service.page.ManagerRepairInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

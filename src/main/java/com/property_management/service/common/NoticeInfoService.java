@@ -15,6 +15,18 @@ import java.util.List;
 */
 public interface NoticeInfoService {
 
+    /**
+     * 返回最后四条公告
+     * @return
+     */
+    List<NoticeInfo> findFourLatestNotice();
+
+    /**
+     * 返回最新一条公告信息
+     * @return
+     */
+    NoticeInfo findLatestNotice();
+
 
     /**
      * 返回所有数据

@@ -4,7 +4,7 @@ package com.property_management.controller.manager;
 import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.OwnerInfoService;
-import com.property_management.service.manager.page.ManagerOwnerInfoPageService;
+import com.property_management.service.page.ManagerOwnerInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

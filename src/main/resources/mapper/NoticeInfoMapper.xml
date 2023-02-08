@@ -66,4 +66,12 @@
     <select id="getHouseNoticeInfoByPage" resultMap="BaseResultMap">
         select * from notice_info limit #{offset}, #{pageSize}
     </select>
+
+    <select id="findLatestNotice" resultMap="BaseResultMap">
+        select * from notice_info order by notice_create_time desc limit 1
+    </select>
+
+    <select id="findFourLatestNotice" resultMap="BaseResultMap">
+        select * from notice_info order by notice_create_time desc limit 4
+    </select>
 </mapper>

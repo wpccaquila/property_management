@@ -1,13 +1,14 @@
-package com.property_management.service.manager.page;
+package com.property_management.service.page;
 
-import com.property_management.pojo.OwnerInfo;
+
+import com.property_management.pojo.RepairInfo;
 
 import java.util.List;
 
 /**
  * 使用PageHelper 插件实现分页功能
  */
-public interface ManagerOwnerInfoPageService {
+public interface ManagerRepairInfoPageService {
 
 
     /**
@@ -16,7 +17,7 @@ public interface ManagerOwnerInfoPageService {
      * @param pageSize
      * @return
      */
-     List<OwnerInfo> getOwnerInfoByPage(int pageNo, int pageSize);
+     List<RepairInfo> getRepairInfoByPage(int pageNo, int pageSize);
 
     /**
      * 通过页码计算当前行号

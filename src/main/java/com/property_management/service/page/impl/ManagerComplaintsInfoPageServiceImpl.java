@@ -1,9 +1,9 @@
-package com.property_management.service.manager.page.impl;
+package com.property_management.service.page.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.ComplaintsInfoMapper;
 import com.property_management.pojo.ComplaintsInfo;
-import com.property_management.service.manager.page.ManagerComplaintsInfoPageService;
+import com.property_management.service.page.ManagerComplaintsInfoPageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

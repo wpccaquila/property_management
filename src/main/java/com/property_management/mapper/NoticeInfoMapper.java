@@ -72,7 +72,17 @@ public interface NoticeInfoMapper {
      */
     List<NoticeInfo> getHouseNoticeInfoByPage(@Param("offset") int offset, @Param("pageSize") int pageSize);
 
+    /**
+     * 返回最新一条公告信息
+     * @return
+     */
+    NoticeInfo findLatestNotice();
 
+    /**
+     * 返回最后四条公告
+     * @return
+     */
+    List<NoticeInfo> findFourLatestNotice();
 }
 
 

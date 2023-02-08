@@ -1,10 +1,10 @@
-package com.property_management.service.manager.page.impl;
+package com.property_management.service.page.impl;
 
 
 import com.github.pagehelper.PageHelper;
 import com.property_management.mapper.HouseholdInfoMapper;
 import com.property_management.pojo.HouseholdInfo;
-import com.property_management.service.manager.page.ManagerHouseholdInfoPageService;
+import com.property_management.service.page.ManagerHouseholdInfoPageService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

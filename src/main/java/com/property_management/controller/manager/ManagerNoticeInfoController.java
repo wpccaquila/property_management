@@ -3,11 +3,9 @@ package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.HouseholdInfo;
-import com.property_management.pojo.HouseholdPaymentInfo;
 import com.property_management.pojo.NoticeInfo;
-import com.property_management.pojo.OwnerInfo;
 import com.property_management.service.common.NoticeInfoService;
-import com.property_management.service.manager.page.ManagerNoticeInfoPageService;
+import com.property_management.service.page.ManagerNoticeInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 

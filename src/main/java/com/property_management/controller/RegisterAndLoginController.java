@@ -1,6 +1,9 @@
 package com.property_management.controller;
 
+import com.property_management.controller.user.UserHomeController;
+import com.property_management.pojo.NoticeInfo;
 import com.property_management.pojo.OwnerInfo;
+import com.property_management.service.common.NoticeInfoService;
 import com.property_management.service.common.OwnerInfoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 
 /**
  * 登录与注册功能控制类
@@ -16,6 +20,10 @@ import javax.servlet.http.HttpServletRequest;
 public class RegisterAndLoginController {
     @Resource
     OwnerInfoService ownerInfoService;
+    @Resource
+    NoticeInfoService noticeInfoService;
+    @Resource
+    UserHomeController userHomeController;
 
     /**
      * 跳转到注册页面
@@ -78,7 +86,12 @@ public class RegisterAndLoginController {
                 request.setAttribute("login_msg","用户名或密码错误");
                 return "forward:/index.jsp";
             }else {
-                // 跳转到用户主页面
+                // 跳转到用户主页面并保存用户信息到域
+                request.setAttribute("currentOwnerInfo",currentOwnerInfo);
+
+                userHomeController.userHomeNotice(request,currentOwnerInfo.getOwner_id());
+
+                return "user/user_home_page";
             }
         }
         return "forward:/index.jsp";

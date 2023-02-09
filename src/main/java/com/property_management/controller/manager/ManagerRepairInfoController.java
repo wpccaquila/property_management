@@ -125,29 +125,31 @@ public class ManagerRepairInfoController {
      */
     @RequestMapping("/upDataRepairInfoById")
     public String upDataRepairInfoById(HttpServletRequest request,int repairId,String repairType,
-                                       String repairContent,String repairCreateTime, String repairApplicant,
-                                       String repairState,String repairProcessor) throws ParseException {
+                                       String repairContent,String repairCreateTime, String ownerName,
+                                       String ownerPhone,String repairState,String repairProcessor) throws ParseException {
         // 转换时间格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
         Date repairCreateTimeDate=dateFormat.parse(repairCreateTime);
 
         repairInfoService.modifyRepairByRepairId(new RepairInfo(repairId,repairType,
                                                     repairContent,repairCreateTimeDate,
-                                                    repairApplicant,repairState,repairProcessor));
+                                                    ownerName,ownerPhone,repairState,repairProcessor));
         return pageManagerOwnerInformation(request);
     }
 
     /**
-     * 通过报修类型查询
-     * @param repairTitle
+     * 通过报修人姓名查询
+     * @param ownerName
      * @param request
      * @return
      */
-    @RequestMapping("selectRepairByType")
-    public String selectRepairByType(String repairTitle,HttpServletRequest request){
-        if(repairTitle!=null&&repairTitle!=""){
-            List<RepairInfo> repairInfoListByType = repairInfoService.searchAllByRepairType(repairTitle);
+    @RequestMapping("selectRepairByName")
+    public String selectRepairByName(String ownerName,HttpServletRequest request){
+        if(ownerName!=null&&ownerName!=""){
+            List<RepairInfo> repairInfoListByType = repairInfoService.searchAllByOwnerName(ownerName);
             request.setAttribute("repairInfoListByType",repairInfoListByType);
+
+
             return "manager/manager_repair_information/manager_repair_select_information_page";
         }
         return pageManagerOwnerInformation(request);

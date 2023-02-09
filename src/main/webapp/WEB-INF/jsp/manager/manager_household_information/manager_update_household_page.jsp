@@ -31,9 +31,9 @@
                     <div class="panel-body">
                         <form class="form-horizontal" action="<%=request.getContextPath()%>/updateHouseholdById?householdId=${householdInfoById.householdId}"  method="post" role="form">
                         <div class="form-group">
-                            <label for="household_name" class="col-sm-3 control-label">真实姓名：</label>
+                            <label for="owner_name" class="col-sm-3 control-label">真实姓名：</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="household_name" name="household_name"  value="${householdInfoById.householdName}" placeholder="请输入真实姓名">
+                                <input type="text" class="form-control" id="owner_name" name="owner_name"  value="${householdInfoById.ownerName}" placeholder="请输入真实姓名">
                             </div>
                         </div>
 
@@ -67,9 +67,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="household_phone" class="col-sm-3 control-label">手机号：</label>
+                            <label for="owner_phone" class="col-sm-3 control-label">手机号：</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="household_phone" name="household_phone"value="${householdInfoById.householdPhone}" placeholder="请输入手机号">
+                                <input type="text" class="form-control" id="owner_phone" name="owner_phone"value="${householdInfoById.ownerPhone}" placeholder="请输入手机号">
                             </div>
                         </div>
 

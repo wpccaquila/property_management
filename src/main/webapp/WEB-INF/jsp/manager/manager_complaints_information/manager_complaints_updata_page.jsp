@@ -58,10 +58,10 @@
                                             <input type="text"  name="complaintContent" value="${complaintsInfoById.complaintContent}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="complaintName" value="${complaintsInfoById.complaintName}" class="form-control" />
+                                            <input type="text"  name="ownerName" value="${complaintsInfoById.ownerName}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="complaintPhone" value="${complaintsInfoById.complaintPhone}" class="form-control" />
+                                            <input type="text"  name="ownerPhone" value="${complaintsInfoById.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text"  name="complaintStatus" value="${complaintsInfoById.complaintStatus}" class="form-control" />

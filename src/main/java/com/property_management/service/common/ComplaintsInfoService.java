@@ -29,10 +29,10 @@ public interface ComplaintsInfoService {
 
     /**
      * 通过投诉人名字查询
-     * @param complaintName
+     * @param ownerName
      * @return
      */
-    List<ComplaintsInfo> selectAllByComplaintName(String complaintName);
+    List<ComplaintsInfo> selectAllByComplaintName(String ownerName);
 
     /**
      * 增加投诉信息

@@ -40,7 +40,7 @@ public class RegisterAndLoginController {
      */
     @RequestMapping("/register")
     @Transactional
-    public String register(String owner_name, int owner_phone, String owner_password,
+    public String register(String owner_name, String owner_phone, String owner_password,
                            String owner_address, String owner_identity, HttpServletRequest request){
         System.out.println("————调用register方法————");
         OwnerInfo ownerInfo = new OwnerInfo(owner_name,owner_phone,owner_address,owner_password,owner_identity);

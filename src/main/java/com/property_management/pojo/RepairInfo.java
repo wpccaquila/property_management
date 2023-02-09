@@ -15,21 +15,23 @@ import lombok.Data;
 @TableName(value ="repair_info")
 @Data
 public class RepairInfo implements Serializable {
-    public RepairInfo(String repairType, String repairContent, Date repairCreateTime, String repairApplicant, String repairState, String repairProcessor) {
+    public RepairInfo(String repairType, String repairContent, Date repairCreateTime, String ownerName, String ownerPhone, String repairState, String repairProcessor) {
         this.repairType = repairType;
         this.repairContent = repairContent;
         this.repairCreateTime = repairCreateTime;
-        this.repairApplicant = repairApplicant;
+        this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
         this.repairState = repairState;
         this.repairProcessor = repairProcessor;
     }
 
-    public RepairInfo(Integer repairId, String repairType, String repairContent, Date repairCreateTime, String repairApplicant, String repairState, String repairProcessor) {
+    public RepairInfo(Integer repairId, String repairType, String repairContent, Date repairCreateTime, String ownerName, String ownerPhone, String repairState, String repairProcessor) {
         this.repairId = repairId;
         this.repairType = repairType;
         this.repairContent = repairContent;
         this.repairCreateTime = repairCreateTime;
-        this.repairApplicant = repairApplicant;
+        this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
         this.repairState = repairState;
         this.repairProcessor = repairProcessor;
     }
@@ -61,7 +63,12 @@ public class RepairInfo implements Serializable {
     /**
      * 报修人
      */
-    private String repairApplicant;
+    private String ownerName;
+
+    /**
+     * 报修人电话
+     */
+    private String ownerPhone;
 
     /**
      * 维修状态

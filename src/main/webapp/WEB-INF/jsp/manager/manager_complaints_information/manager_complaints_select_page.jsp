@@ -27,7 +27,7 @@
                     <form action="<%=request.getContextPath()%>/selectComplaintsInfoByName" method="post">
                         <div  class="input-group text-center">
                             <span  class="input-group-addon">投诉人姓名</span>
-                            <input style="width:200px;" type="text" class="form-control" name="complaintName"/>
+                            <input style="width:200px;" type="text" class="form-control" name="ownerName"/>
                         </div>
                         <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
                     </form>
@@ -61,10 +61,10 @@
                                             <input type="text" readonly="readonly" name="complaintContent" value="${item.complaintContent}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="complaintName" value="${item.complaintName}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="ownerName" value="${item.ownerName}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="complaintPhone" value="${item.complaintPhone}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="ownerPhone" value="${item.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="complaintStatus" value="${item.complaintStatus}" class="form-control" />

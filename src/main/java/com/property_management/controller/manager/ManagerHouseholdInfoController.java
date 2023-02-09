@@ -99,14 +99,14 @@ public class ManagerHouseholdInfoController {
      * @return
      */
     @RequestMapping("addHouseholdInfo")
-    public String addHouseholdInfo(HttpServletRequest request,String household_name,String household_id_number,String household_birthday,
-                                   String household_gender,Integer household_phone,String household_checkin_time,
+    public String addHouseholdInfo(HttpServletRequest request,String owner_name,String household_id_number,String household_birthday,
+                                   String household_gender,String owner_phone,String household_checkin_time,
                                    String household_house_type,String household_address_unit,String household_address_building,
                                    String household_address_room){
         // 将地址信息统一格式
         String household_address = household_address_unit + "幢" + household_address_building + "单元" + household_address_room + "室";
-        householdInfoService.addAll(new HouseholdInfo(household_name, household_id_number,
-                                        household_birthday, household_gender, household_phone,
+        householdInfoService.addAll(new HouseholdInfo(owner_name, household_id_number,
+                                        household_birthday, household_gender, owner_phone,
                                         household_checkin_time, household_house_type, household_address));
         return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
@@ -125,14 +125,14 @@ public class ManagerHouseholdInfoController {
 
     /**
      * 通过名字查询
-     * @param householdName
+     * @param ownerName
      * @param request
      * @return
      */
     @RequestMapping("selectHouseholdByName")
-    public String selectHouseholdByName(String householdName,HttpServletRequest request){
-        if(householdName!=null&&householdName!=""){
-            List<HouseholdInfo> householdInfoByName = householdInfoService.selectAllByHouseholdName(householdName);
+    public String selectHouseholdByName(String ownerName,HttpServletRequest request){
+        if(ownerName!=null&&ownerName!=""){
+            List<HouseholdInfo> householdInfoByName = householdInfoService.selectAllByHouseholdName(ownerName);
             request.setAttribute("householdInfoByName",householdInfoByName);
             return "manager/manager_household_information/manager_household_select_page";
         }
@@ -162,15 +162,15 @@ public class ManagerHouseholdInfoController {
      * @return
      */
     @RequestMapping("/updateHouseholdById")
-    public String updateHouseholdById(HttpServletRequest request,int householdId,String household_name,
+    public String updateHouseholdById(HttpServletRequest request,int householdId,String owner_name,
                                       String household_id_number,String household_birthday,
-                                      String household_gender,Integer household_phone,String household_checkin_time,
+                                      String household_gender,String owner_phone,String household_checkin_time,
                                       String household_house_type,String household_address_unit,String household_address_building,
                                       String household_address_room){
         // 将地址信息统一格式
         String household_address = household_address_unit + "幢" + household_address_building + "单元" + household_address_room + "室";
-        householdInfoService.modifyHousehold(new HouseholdInfo(householdId,household_name, household_id_number,
-                household_birthday, household_gender, household_phone,
+        householdInfoService.modifyHousehold(new HouseholdInfo(householdId,owner_name, household_id_number,
+                household_birthday, household_gender, owner_phone,
                 household_checkin_time, household_house_type, household_address));
         return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }

@@ -74,10 +74,10 @@ public interface RepairInfoMapper {
 
     /**
      * 通过报修类型查询
-     * @param repairType
+     * @param ownerName
      * @return
      */
-    List<RepairInfo> searchAllByRepairType(@Param("repairType") String repairType);
+    List<RepairInfo> searchAllByRepairType(@Param("ownerName") String ownerName);
 
 }
 

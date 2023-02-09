@@ -33,10 +33,10 @@ public interface ComplaintsInfoMapper {
 
     /**
      * 通过投诉人名字查询
-     * @param complaintName
+     * @param ownerName
      * @return
      */
-    List<ComplaintsInfo> selectAllByComplaintName(@Param("complaintName") String complaintName);
+    List<ComplaintsInfo> selectAllByComplaintName(@Param("ownerName") String ownerName);
 
     /**
      * 增加投诉信息

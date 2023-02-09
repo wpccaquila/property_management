@@ -15,23 +15,24 @@ import lombok.Data;
 @TableName(value ="complaints_info")
 @Data
 public class ComplaintsInfo implements Serializable {
-    public ComplaintsInfo(Date complaintTime, String complaintContent, String complaintName, String complaintPhone, String complaintStatus) {
-        this.complaintTime = complaintTime;
-        this.complaintContent = complaintContent;
-        this.complaintName = complaintName;
-        this.complaintPhone = complaintPhone;
-        this.complaintStatus = complaintStatus;
-    }
 
     public ComplaintsInfo() {
     }
 
-    public ComplaintsInfo(Integer complaintId, Date complaintTime, String complaintContent, String complaintName, String complaintPhone, String complaintStatus) {
+    public ComplaintsInfo(Date complaintTime, String complaintContent, String ownerName, String ownerPhone, String complaintStatus) {
+        this.complaintTime = complaintTime;
+        this.complaintContent = complaintContent;
+        this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
+        this.complaintStatus = complaintStatus;
+    }
+
+    public ComplaintsInfo(Integer complaintId, Date complaintTime, String complaintContent, String ownerName, String ownerPhone, String complaintStatus) {
         this.complaintId = complaintId;
         this.complaintTime = complaintTime;
         this.complaintContent = complaintContent;
-        this.complaintName = complaintName;
-        this.complaintPhone = complaintPhone;
+        this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
         this.complaintStatus = complaintStatus;
     }
 
@@ -54,12 +55,13 @@ public class ComplaintsInfo implements Serializable {
     /**
      * 投诉人姓名
      */
-    private String complaintName;
+    private String ownerName;
+
 
     /**
      * 投诉人电话
      */
-    private String complaintPhone;
+    private String ownerPhone;
 
     /**
      * 投诉状态

@@ -41,6 +41,7 @@
                                     <th>报修内容</th>
                                     <th>报修时间</th>
                                     <th>报修人</th>
+                                    <th>报修人电话</th>
                                     <th>报修状态</th>
                                     <th>维修人</th>
                                 </tr>
@@ -62,7 +63,10 @@
                                         <input type="text" id="repairCreateTime" name="repairCreateTime" value="<fmt:formatDate value="${repairInfoById.repairCreateTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                                     </td>
                                     <td>
-                                        <input type="text"  name="repairApplicant" value="${repairInfoById.repairApplicant}" class="form-control" />
+                                        <input type="text"  name="ownerName" value="${repairInfoById.ownerName}" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text"  name="ownerPhone" value="${repairInfoById.ownerPhone}" class="form-control" />
                                     </td>
                                     <td>
                                         <input type="text"  name="repairState" value="${repairInfoById.repairState}" class="form-control" />
@@ -78,11 +82,10 @@
                                 </tbody>
 
                             </table>
+                            <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Repair" class="btn btn-primary">返回</a>
                         </form>
                     </div>
                 </div>
-
-                <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Repair" class="btn btn-primary">返回</a>
 
             </div>
         </div>

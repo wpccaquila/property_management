@@ -24,10 +24,10 @@
                 <div class="panel-heading">住户报修信息管理</div>
                 <div class="panel-body">
                     <%-- 查询公告信息标题--%>
-                    <form action="<%=request.getContextPath()%>/selectRepairByType" method="post">
+                    <form action="<%=request.getContextPath()%>/selectRepairByName" method="post">
                         <div  class="input-group text-center">
-                            <span  class="input-group-addon">输入报修类型</span>
-                            <input style="width:200px;" type="text" class="form-control" name="repairTitle"/>
+                            <span  class="input-group-addon">报修人姓名</span>
+                            <input style="width:200px;" type="text" class="form-control" name="ownerName"/>
                         </div>
                         <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
                     </form>
@@ -41,6 +41,7 @@
                                     <th>报修内容</th>
                                     <th>报修时间</th>
                                     <th>报修人</th>
+                                    <th>报修人电话</th>
                                     <th>报修状态</th>
                                     <th>维修人</th>
                                 </tr>
@@ -65,7 +66,10 @@
                                             <input type="text" readonly="readonly" name="repairCreateTime" value="<fmt:formatDate value="${item.repairCreateTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="repairApplicant" value="${item.repairApplicant}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="ownerName" value="${item.ownerName}" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" name="ownerPhone" value="${item.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="repairState" value="${item.repairState}" class="form-control" />

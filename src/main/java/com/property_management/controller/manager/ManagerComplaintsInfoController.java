@@ -108,13 +108,13 @@ public class ManagerComplaintsInfoController {
      */
     @RequestMapping("/updateComplaintsInfoById")
     public String updateComplaintsInfoById(HttpServletRequest request,int complaintId,String complaintTime,
-                                           String complaintContent,String complaintName,String complaintPhone,
+                                           String complaintContent,String ownerName,String ownerPhone,
                                            String complaintStatus) throws ParseException {
         // 转换时间格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
         Date complaintTimeDate=dateFormat.parse(complaintTime);
 
-        complaintsInfoService.updateComplaintInfo(new ComplaintsInfo(complaintId,complaintTimeDate,complaintContent,complaintName,complaintPhone,complaintStatus));
+        complaintsInfoService.updateComplaintInfo(new ComplaintsInfo(complaintId,complaintTimeDate,complaintContent,ownerName,ownerPhone,complaintStatus));
 
         return pageManagerComplaintsInfoInformation(request);
     }
@@ -122,12 +122,12 @@ public class ManagerComplaintsInfoController {
     /**
      * 通过姓名查询
      * @param request
-     * @param complaintName
+     * @param ownerName
      * @return
      */
     @RequestMapping("/selectComplaintsInfoByName")
-    public String selectComplaintsInfoByName(HttpServletRequest request,String complaintName){
-        List<ComplaintsInfo> complaintsInfoByName = complaintsInfoService.selectAllByComplaintName(complaintName);
+    public String selectComplaintsInfoByName(HttpServletRequest request,String ownerName){
+        List<ComplaintsInfo> complaintsInfoByName = complaintsInfoService.selectAllByComplaintName(ownerName);
         request.setAttribute("complaintsInfoByName",complaintsInfoByName);
         return  "manager/manager_complaints_information/manager_complaints_select_page";
     }

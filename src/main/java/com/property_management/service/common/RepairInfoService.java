@@ -68,9 +68,9 @@ public interface RepairInfoService {
 
     /**
      * 通过报修类型查询
-     * @param repairType
+     * @param ownerName
      * @return
      */
-    List<RepairInfo> searchAllByRepairType(String repairType);
+    List<RepairInfo> searchAllByOwnerName(@Param("ownerName") String ownerName);
 
 }

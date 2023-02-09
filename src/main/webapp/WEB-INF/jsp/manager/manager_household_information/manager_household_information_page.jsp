@@ -34,7 +34,7 @@
                     <form action="<%=request.getContextPath()%>/selectHouseholdByName" method="post">
                         <div  class="input-group text-center">
                             <span  class="input-group-addon">用户的姓名</span>
-                            <input style="width:200px;" type="text" class="form-control" name="householdName"/>
+                            <input style="width:200px;" type="text" class="form-control" name="ownerName"/>
                         </div>
                         <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
                     </form>
@@ -67,10 +67,10 @@
                                             <input type="text" readonly="readonly" name="household_id" value="${householdStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="household_name" value="${item.householdName}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="owner_name" value="${item.ownerName}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="household_phone" value="${item.householdIdNumber}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="owner_phone" value="${item.householdIdNumber}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="household_address" value="${item.householdBirthday}" class="form-control" />
@@ -79,7 +79,7 @@
                                             <input type="text" readonly="readonly" name="household_password" value="${item.householdGender}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="household_identity" value="${item.householdPhone}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="household_identity" value="${item.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="household_identity" value="${item.householdCheckinTime}" class="form-control" />

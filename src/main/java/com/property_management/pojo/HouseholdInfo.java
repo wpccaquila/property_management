@@ -14,32 +14,32 @@ import lombok.Data;
  */
 @TableName(value ="household_info")
 public class HouseholdInfo implements Serializable {
+
+    public HouseholdInfo(String ownerName, String householdIdNumber, String householdBirthday, String householdGender, String ownerPhone, String householdCheckinTime, String householdHouseType, String householdAddress) {
+        this.ownerName = ownerName;
+        this.householdIdNumber = householdIdNumber;
+        this.householdBirthday = householdBirthday;
+        this.householdGender = householdGender;
+        this.ownerPhone = ownerPhone;
+        this.householdCheckinTime = householdCheckinTime;
+        this.householdHouseType = householdHouseType;
+        this.householdAddress = householdAddress;
+    }
+
+    public HouseholdInfo(Integer householdId, String ownerName, String householdIdNumber, String householdBirthday, String householdGender, String ownerPhone, String householdCheckinTime, String householdHouseType, String householdAddress) {
+        this.householdId = householdId;
+        this.ownerName = ownerName;
+        this.householdIdNumber = householdIdNumber;
+        this.householdBirthday = householdBirthday;
+        this.householdGender = householdGender;
+        this.ownerPhone = ownerPhone;
+        this.householdCheckinTime = householdCheckinTime;
+        this.householdHouseType = householdHouseType;
+        this.householdAddress = householdAddress;
+    }
+
     public HouseholdInfo() {
     }
-
-    public HouseholdInfo(String householdName, String householdIdNumber, String householdBirthday, String householdGender, Integer householdPhone, String householdCheckinTime, String householdHouseType, String householdAddress) {
-        this.householdName = householdName;
-        this.householdIdNumber = householdIdNumber;
-        this.householdBirthday = householdBirthday;
-        this.householdGender = householdGender;
-        this.householdPhone = householdPhone;
-        this.householdCheckinTime = householdCheckinTime;
-        this.householdHouseType = householdHouseType;
-        this.householdAddress = householdAddress;
-    }
-
-    public HouseholdInfo(Integer householdId, String householdName, String householdIdNumber, String householdBirthday, String householdGender, Integer householdPhone, String householdCheckinTime, String householdHouseType, String householdAddress) {
-        this.householdId = householdId;
-        this.householdName = householdName;
-        this.householdIdNumber = householdIdNumber;
-        this.householdBirthday = householdBirthday;
-        this.householdGender = householdGender;
-        this.householdPhone = householdPhone;
-        this.householdCheckinTime = householdCheckinTime;
-        this.householdHouseType = householdHouseType;
-        this.householdAddress = householdAddress;
-    }
-
 
     @Column(name = "household_id")
     private Integer householdId;
@@ -47,8 +47,8 @@ public class HouseholdInfo implements Serializable {
     /**
      * 住户姓名
      */
-    @Column(name = "household_name")
-    private String householdName;
+    @Column(name = "owner_name")
+    private String ownerName;
 
     /**
      * 住户身份证号
@@ -71,8 +71,8 @@ public class HouseholdInfo implements Serializable {
     /**
      * 住户手机号
      */
-    @Column(name = "household_phone")
-    private Integer householdPhone;
+    @Column(name = "owner_phone")
+    private String ownerPhone;
 
     /**
      * 住户入住时间
@@ -95,6 +95,22 @@ public class HouseholdInfo implements Serializable {
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
 
+    public String getOwnerName() {
+        return ownerName;
+    }
+
+    public void setOwnerName(String ownerName) {
+        this.ownerName = ownerName;
+    }
+
+    public String getOwnerPhone() {
+        return ownerPhone;
+    }
+
+    public void setOwnerPhone(String ownerPhone) {
+        this.ownerPhone = ownerPhone;
+    }
+
     public Integer getHouseholdId() {
         return householdId;
     }
@@ -103,13 +119,6 @@ public class HouseholdInfo implements Serializable {
         this.householdId = householdId;
     }
 
-    public String getHouseholdName() {
-        return householdName;
-    }
-
-    public void setHouseholdName(String householdName) {
-        this.householdName = householdName;
-    }
 
     public String getHouseholdIdNumber() {
         return householdIdNumber;
@@ -135,13 +144,6 @@ public class HouseholdInfo implements Serializable {
         this.householdGender = householdGender;
     }
 
-    public Integer getHouseholdPhone() {
-        return householdPhone;
-    }
-
-    public void setHouseholdPhone(Integer householdPhone) {
-        this.householdPhone = householdPhone;
-    }
 
     public String getHouseholdCheckinTime() {
         return householdCheckinTime;

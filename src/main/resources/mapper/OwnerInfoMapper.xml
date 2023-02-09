@@ -5,7 +5,7 @@
     <resultMap id="BaseResultMap" type="com.property_management.pojo.OwnerInfo">
         <id property="owner_id" column="owner_id" jdbcType="INTEGER"/>
         <result property="owner_name" column="owner_name" jdbcType="VARCHAR"/>
-        <result property="owner_phone" column="owner_phone" jdbcType="INTEGER"/>
+        <result property="owner_phone" column="owner_phone" jdbcType="VARCHAR"/>
         <result property="owner_address" column="owner_address" jdbcType="VARCHAR"/>
         <result property="owner_password" column="owner_password" jdbcType="VARCHAR"/>
         <result property="owner_identity" column="owner_identity" jdbcType="VARCHAR"/>

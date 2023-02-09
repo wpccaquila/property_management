@@ -48,10 +48,10 @@ public interface HouseholdInfoMapper {
 
     /**
      * 通过名字查询
-     * @param householdName
+     * @param ownerName
      * @return
      */
-    List<HouseholdInfo> selectAllByHouseholdName(@Param("householdName") String householdName);
+    List<HouseholdInfo> selectAllByHouseholdName(@Param("ownerName") String ownerName);
 
 
     /**

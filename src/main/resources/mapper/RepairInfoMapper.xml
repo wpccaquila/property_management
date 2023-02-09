@@ -9,23 +9,24 @@
             <result property="repairType" column="repair_type" jdbcType="VARCHAR"/>
             <result property="repairContent" column="repair_content" jdbcType="VARCHAR"/>
             <result property="repairCreateTime" column="repair_create_time" jdbcType="TIMESTAMP"/>
-            <result property="repairApplicant" column="repair_applicant" jdbcType="VARCHAR"/>
+            <result property="ownerName" column="owner_name" jdbcType="VARCHAR"/>
+            <result property="ownerPhone" column="owner_phone" jdbcType="VARCHAR"/>
             <result property="repairState" column="repair_state" jdbcType="VARCHAR"/>
             <result property="repairProcessor" column="repair_processor" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         repair_id,repair_type,repair_content,
-        repair_create_time,repair_applicant,repair_state,
+        repair_create_time,owner_name,owner_phone,repair_state,
         repair_processor
     </sql>
     <insert id="addRepair">
         insert into repair_info
         (repair_id, repair_type, repair_content,
-         repair_create_time, repair_applicant, repair_state,
+         repair_create_time, owner_name,owner_phone, repair_state,
          repair_processor)
         values (#{repairId,jdbcType=NUMERIC}, #{repairType,jdbcType=VARCHAR}, #{repairContent,jdbcType=VARCHAR},
-                #{repairCreateTime,jdbcType=TIMESTAMP}, #{repairApplicant,jdbcType=VARCHAR},
+                #{repairCreateTime,jdbcType=TIMESTAMP}, #{ownerName,jdbcType=VARCHAR},#{ownerPhone,jdbcType=VARCHAR},
                 #{repairState,jdbcType=VARCHAR},
                 #{repairProcessor,jdbcType=VARCHAR})
 
@@ -68,7 +69,8 @@
         set repair_type=#{repairType,jdbcType=VARCHAR},
             repair_content=#{repairContent,jdbcType=VARCHAR},
             repair_create_time=#{repairCreateTime,jdbcType=TIMESTAMP},
-            repair_applicant=#{repairApplicant,jdbcType=VARCHAR},
+            owner_name=#{ownerName,jdbcType=VARCHAR},
+            owner_phone=#{ownerPhone,jdbcType=VARCHAR},
             repair_state=#{repairState,jdbcType=VARCHAR},
             repair_processor=#{repairProcessor,jdbcType=VARCHAR}
         where repair_id=#{repairId,jdbcType=NUMERIC}
@@ -79,7 +81,7 @@
         <include refid="Base_Column_List"/>
         from repair_info
         where
-        repair_type
-        like concat('%',#{repairType,jdbcType=VARCHAR},'%')
+        owner_name
+        like concat('%',#{ownerName,jdbcType=VARCHAR},'%')
     </select>
 </mapper>

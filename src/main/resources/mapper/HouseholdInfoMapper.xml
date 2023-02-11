@@ -86,6 +86,13 @@
         select * from household_info
         where owner_name like concat('%',#{ownerName},'%')
     </select>
+    <select id="selectAllByOwnerPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from household_info
+        where
+        owner_phone = #{ownerPhone,jdbcType=VARCHAR}
+    </select>
 
 
 </mapper>

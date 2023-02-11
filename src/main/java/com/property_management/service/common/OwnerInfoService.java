@@ -36,7 +36,14 @@ public interface OwnerInfoService {
       * @param password
       * @return
       */
-     OwnerInfo queryOwnerByPhoneAndPassword(int phone, String password);
+     OwnerInfo queryOwnerByPhoneAndPassword(String phone, String password);
+
+     /**
+      * 查询电话返回
+      * @param owner_phone
+      * @return
+      */
+     OwnerInfo selectByOwner_phone(@Param("owner_phone") String owner_phone);
 
      /**
       * 查询所有业主信息

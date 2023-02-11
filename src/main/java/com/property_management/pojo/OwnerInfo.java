@@ -8,47 +8,36 @@ public class OwnerInfo {
     private int owner_id;
     private String owner_name;
     private String owner_phone;
-    private String owner_address;
     private String owner_password;
     private String owner_identity;
-
-    public OwnerInfo(int owner_id, String owner_name, String owner_phone, String owner_address, String owner_password, String owner_identity) {
-        this.owner_id = owner_id;
-        this.owner_name = owner_name;
-        this.owner_phone = owner_phone;
-        this.owner_address = owner_address;
-        this.owner_password = owner_password;
-        this.owner_identity = owner_identity;
-    }
 
     @Override
     public String toString() {
         return "OwnerInfo{" +
                 "owner_id=" + owner_id +
                 ", owner_name='" + owner_name + '\'' +
-                ", owner_phone=" + owner_phone +
-                ", owner_address='" + owner_address + '\'' +
+                ", owner_phone='" + owner_phone + '\'' +
                 ", owner_password='" + owner_password + '\'' +
                 ", owner_identity='" + owner_identity + '\'' +
                 '}';
     }
 
-    public OwnerInfo() {
-    }
-
-
-
-
-
-    /**
-     * 无id构造函数
-     */
-    public OwnerInfo(String owner_name, String owner_phone, String owner_address, String owner_password, String owner_identity) {
+    public OwnerInfo(String owner_name, String owner_phone, String owner_password, String owner_identity) {
         this.owner_name = owner_name;
         this.owner_phone = owner_phone;
-        this.owner_address = owner_address;
         this.owner_password = owner_password;
         this.owner_identity = owner_identity;
+    }
+
+    public OwnerInfo(int owner_id, String owner_name, String owner_phone, String owner_password, String owner_identity) {
+        this.owner_id = owner_id;
+        this.owner_name = owner_name;
+        this.owner_phone = owner_phone;
+        this.owner_password = owner_password;
+        this.owner_identity = owner_identity;
+    }
+
+    public OwnerInfo() {
     }
 
     public int getOwner_id() {
@@ -75,13 +64,7 @@ public class OwnerInfo {
         this.owner_phone = owner_phone;
     }
 
-    public String getOwner_address() {
-        return owner_address;
-    }
 
-    public void setOwner_address(String owner_address) {
-        this.owner_address = owner_address;
-    }
 
     public String getOwner_password() {
         return owner_password;

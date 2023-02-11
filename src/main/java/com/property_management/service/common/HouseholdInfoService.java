@@ -18,6 +18,13 @@ public interface HouseholdInfoService {
      */
     int addAll(HouseholdInfo householdInfo);
 
+    /**
+     * 通过电话号码查询
+     * @param ownerPhone
+     * @return
+     */
+    HouseholdInfo selectAllByOwnerPhone( String ownerPhone);
+
 
 
     /**

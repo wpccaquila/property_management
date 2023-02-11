@@ -28,6 +28,13 @@ public interface ComplaintsInfoService {
     int deleteByComplaintId(Integer complaintId);
 
     /**
+     * 通过电话查询投诉信息
+     * @param ownerPhone
+     * @return
+     */
+    List<ComplaintsInfo> selectAllByOwnerPhone( String ownerPhone);
+
+    /**
      * 通过投诉人名字查询
      * @param ownerName
      * @return

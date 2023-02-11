@@ -24,6 +24,11 @@ public class HouseholdInfoServiceImpl implements HouseholdInfoService{
     }
 
     @Override
+    public HouseholdInfo selectAllByOwnerPhone(String ownerPhone) {
+        return householdInfoMapper.selectAllByOwnerPhone(ownerPhone);
+    }
+
+    @Override
     public int deleteByHouseholdId(Integer householdId) {
         return householdInfoMapper.deleteByHouseholdId(householdId);
     }

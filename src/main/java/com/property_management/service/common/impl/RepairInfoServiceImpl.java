@@ -20,6 +20,11 @@ public class RepairInfoServiceImpl implements RepairInfoService{
     RepairInfoMapper repairInfoMapper;
 
     @Override
+    public List<RepairInfo> selectAllByOwnerPhone(String ownerPhone) {
+        return repairInfoMapper.selectAllByOwnerPhone(ownerPhone);
+    }
+
+    @Override
     public int addRepair(RepairInfo repairInfo) {
         return repairInfoMapper.addRepair(repairInfo);
     }

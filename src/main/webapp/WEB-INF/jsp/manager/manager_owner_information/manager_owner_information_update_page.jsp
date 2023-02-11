@@ -36,7 +36,6 @@
                                     <th>id</th>
                                     <th>姓名</th>
                                     <th>手机号</th>
-                                    <th>地址</th>
                                     <th>密码</th>
                                     <th>身份信息</th>
                                 </tr>
@@ -53,13 +52,17 @@
                                             <input type="text" name="owner_phone" value="${ownerInfoById.owner_phone}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="owner_address" value="${ownerInfoById.owner_address}" class="form-control" />
-                                        </td>
-                                        <td>
                                             <input type="text" name="owner_password" value="${ownerInfoById.owner_password}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="owner_identity" value="${ownerInfoById.owner_identity}" class="form-control" />
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="owner_identity" id="inlineRadio1" value="业主"  <c:if test="${ownerInfoById.owner_identity == '业主'}">checked</c:if>>
+                                                <label class="form-check-label" for="inlineRadio1">业主</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="owner_identity" id="inlineRadio2" value="租客" <c:if test="${ownerInfoById.owner_identity == '租客'}">checked</c:if>>
+                                                <label class="form-check-label" for="inlineRadio2">租客</label>
+                                            </div>
                                         </td>
                                         <td>
                                             <button type="submit" class="btn btn-primary">修改数据</button>

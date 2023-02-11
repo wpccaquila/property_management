@@ -37,14 +37,14 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>报修类型</th>
+                                    <th style="width: 70px">id</th>
+                                    <th style="width: 100px">报修类型</th>
                                     <th>报修内容</th>
                                     <th>报修时间</th>
-                                    <th>报修人</th>
+                                    <th style="width: 100px">报修人</th>
                                     <th>报修人电话</th>
-                                    <th>报修状态</th>
-                                    <th>维修人</th>
+                                    <th style="width: 100px">报修状态</th>
+                                    <th style="width: 100px">维修人</th>
                                 </tr>
                                 </thead>
 
@@ -64,7 +64,7 @@
                                             <input type="text" readonly="readonly" name="repairContent" value="${item.repairContent}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="repairCreateTime" value="<fmt:formatDate value="${item.repairCreateTime}" pattern="yyyy-MM-dd" />" class="form-control" />
+                                            <input type="text" readonly="readonly" name="repairCreateTime" value="<fmt:formatDate value="${item.repairCreateTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="ownerName" value="${item.ownerName}" class="form-control" />

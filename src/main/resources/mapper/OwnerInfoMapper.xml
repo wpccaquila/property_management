@@ -6,7 +6,6 @@
         <id property="owner_id" column="owner_id" jdbcType="INTEGER"/>
         <result property="owner_name" column="owner_name" jdbcType="VARCHAR"/>
         <result property="owner_phone" column="owner_phone" jdbcType="VARCHAR"/>
-        <result property="owner_address" column="owner_address" jdbcType="VARCHAR"/>
         <result property="owner_password" column="owner_password" jdbcType="VARCHAR"/>
         <result property="owner_identity" column="owner_identity" jdbcType="VARCHAR"/>
     </resultMap>
@@ -16,9 +15,9 @@
 <!-- 插入业主信息
     public int addOwner(OwnerInfo ownerInfo); -->
     <insert id="addOwner" parameterType="com.property_management.pojo.OwnerInfo">
-        insert into owner_info(owner_name,owner_phone,owner_address,
+        insert into owner_info(owner_name,owner_phone,
                                owner_password,owner_identity)
-        values (#{owner_name},#{owner_phone},#{owner_address},
+        values (#{owner_name},#{owner_phone},
                 #{owner_password},#{owner_identity});
     </insert>
 
@@ -61,7 +60,6 @@
         update owner_info
         set owner_name=#{owner_name},
             owner_phone=#{owner_phone},
-            owner_address=#{owner_address},
             owner_password=#{owner_password},
             owner_identity=#{owner_identity}
         where owner_id=#{owner_id}
@@ -88,5 +86,12 @@
 
     <select id="selectCount" resultType="int">
         SELECT COUNT(*) FROM owner_info;
+    </select>
+    <select id="selectByOwner_phone" resultMap="BaseResultMap">
+        select
+        *
+        from owner_info
+        where
+        owner_phone = #{owner_phone,jdbcType=VARCHAR}
     </select>
 </mapper>

@@ -79,6 +79,13 @@ public interface RepairInfoMapper {
      */
     List<RepairInfo> searchAllByRepairType(@Param("ownerName") String ownerName);
 
+    /**
+     * 通过电话查询
+     * @param ownerPhone
+     * @return
+     */
+    List<RepairInfo> selectAllByOwnerPhone(@Param("ownerPhone") String ownerPhone);
+
 }
 
 

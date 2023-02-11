@@ -34,7 +34,7 @@ public interface OwnerInfoMapper {
      * @param owner_password
      * @return
      */
-    OwnerInfo selectByOwner_phoneAndOwner_password(@Param("owner_phone") int owner_phone, @Param("owner_password") String owner_password);
+    OwnerInfo selectByOwner_phoneAndOwner_password(@Param("owner_phone") String owner_phone, @Param("owner_password") String owner_password);
 
     /**
      * 姓名查询业主
@@ -81,6 +81,13 @@ public interface OwnerInfoMapper {
      */
      int deleteOwnerById(@Param("owner_id")
                          int ownerId);
+
+    /**
+     * 查询电话返回
+     * @param owner_phone
+     * @return
+     */
+    OwnerInfo selectByOwner_phone(@Param("owner_phone") String owner_phone);
 
 
 }

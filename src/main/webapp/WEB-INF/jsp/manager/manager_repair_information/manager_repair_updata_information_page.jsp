@@ -36,14 +36,14 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>id</th>
-                                    <th>报修类型</th>
+                                    <th style="width: 70px">id</th>
+                                    <th style="width: 100px">报修类型</th>
                                     <th>报修内容</th>
                                     <th>报修时间</th>
-                                    <th>报修人</th>
+                                    <th style="width: 100px">报修人</th>
                                     <th>报修人电话</th>
-                                    <th>报修状态</th>
-                                    <th>维修人</th>
+                                    <th style="width: 100px">报修状态</th>
+                                    <th style="width: 100px">维修人</th>
                                 </tr>
                                 </thead>
 
@@ -69,7 +69,14 @@
                                         <input type="text"  name="ownerPhone" value="${repairInfoById.ownerPhone}" class="form-control" />
                                     </td>
                                     <td>
-                                        <input type="text"  name="repairState" value="${repairInfoById.repairState}" class="form-control" />
+                                        <div class="form-check form-check-inline ">
+                                            <input class="form-check-input" type="radio" name="repairState" id="inlineRadio1" value="未处理"  <c:if test="${repairInfoById.repairState == '未处理'}">checked</c:if>>
+                                            <label class="form-check-label" for="inlineRadio1">未处理</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="repairState" id="inlineRadio2" value="已处理" <c:if test="${repairInfoById.repairState == '已处理'}">checked</c:if>>
+                                            <label class="form-check-label" for="inlineRadio2">已处理</label>
+                                        </div>
                                     </td>
                                     <td>
                                         <input type="text"  name="repairProcessor" value="${repairInfoById.repairProcessor}" class="form-control" />

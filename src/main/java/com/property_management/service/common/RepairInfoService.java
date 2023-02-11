@@ -12,6 +12,13 @@ import java.util.List;
 * @createDate 2023-02-01 19:53:42
 */
 public interface RepairInfoService {
+
+    /**
+     * 通过电话查询
+     * @param ownerPhone
+     * @return
+     */
+    List<RepairInfo> selectAllByOwnerPhone( String ownerPhone);
     /**
      * 添加报修信息
      * @param repairInfo

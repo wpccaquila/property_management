@@ -39,6 +39,13 @@ public interface ComplaintsInfoMapper {
     List<ComplaintsInfo> selectAllByComplaintName(@Param("ownerName") String ownerName);
 
     /**
+     * 通过电话查询投诉信息
+     * @param ownerPhone
+     * @return
+     */
+    List<ComplaintsInfo> selectAllByOwnerPhone(@Param("ownerPhone") String ownerPhone);
+
+    /**
      * 增加投诉信息
      * @param complaintsInfo
      * @return

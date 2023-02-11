@@ -40,10 +40,9 @@ public class RegisterAndLoginController {
      */
     @RequestMapping("/register")
     @Transactional
-    public String register(String owner_name, String owner_phone, String owner_password,
-                           String owner_address, String owner_identity, HttpServletRequest request){
+    public String register(String owner_name, String owner_phone, String owner_password, String owner_identity, HttpServletRequest request){
         System.out.println("————调用register方法————");
-        OwnerInfo ownerInfo = new OwnerInfo(owner_name,owner_phone,owner_address,owner_password,owner_identity);
+        OwnerInfo ownerInfo = new OwnerInfo(owner_name,owner_phone,owner_password,owner_identity);
         // 设置到域中，方便数据回填
         request.setAttribute("ownerInfo",ownerInfo);
         System.out.println(ownerInfo);
@@ -65,11 +64,11 @@ public class RegisterAndLoginController {
      * @return
      */
     @RequestMapping("/owner_login")
-    public String login(int owner_phone,String owner_password, String role,HttpServletRequest request) {
+    public String login(String owner_phone,String owner_password, String role,HttpServletRequest request) {
         // 登录身份为管理员
-        if (role.equals("admin") && owner_phone == 123456 && owner_password.equalsIgnoreCase("admin")) {
+        if (role.equals("admin") && owner_phone.equals("123456") && owner_password.equalsIgnoreCase("admin")) {
             return "manager/manager_home_page";
-        }else if(role.equals("admin") && owner_phone != 123456 && !owner_password.equalsIgnoreCase("admin")){
+        }else if(role.equals("admin") && owner_phone.equals("123456") && !owner_password.equalsIgnoreCase("admin")){
             //管理员密码或账户输入错误
             request.setAttribute("login_msg","用户名或密码错误");
             return "forward:/index.jsp";
@@ -88,10 +87,8 @@ public class RegisterAndLoginController {
             }else {
                 // 跳转到用户主页面并保存用户信息到域
                 request.setAttribute("currentOwnerInfo",currentOwnerInfo);
-
-                userHomeController.userHomeNotice(request,currentOwnerInfo.getOwner_id());
-
-                return "user/user_home_page";
+                // 获取当前用户的各种信息
+                return "redirect:currentUserHomeInfo?request=" + request + "&ownerPhone=" + currentOwnerInfo.getOwner_phone();
             }
         }
         return "forward:/index.jsp";

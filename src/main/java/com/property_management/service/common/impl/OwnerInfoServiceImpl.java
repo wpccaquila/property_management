@@ -31,8 +31,13 @@ public class OwnerInfoServiceImpl implements OwnerInfoService {
     }
 
     @Override
-    public OwnerInfo queryOwnerByPhoneAndPassword(int phone, String password) {
+    public OwnerInfo queryOwnerByPhoneAndPassword(String phone, String password) {
         return ownerInfoMapper.selectByOwner_phoneAndOwner_password(phone,password);
+    }
+
+    @Override
+    public OwnerInfo selectByOwner_phone(String owner_phone) {
+        return ownerInfoMapper.selectByOwner_phone(owner_phone);
     }
 
 

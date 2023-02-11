@@ -140,9 +140,9 @@ public class ManagerOwnerInfoController {
     @RequestMapping ("/update_manager_owner_information")
     public String updateManagerOwnerInformation(HttpServletRequest request,int owner_id,
                                                 String owner_name,String owner_phone,
-                                                String owner_address,String owner_password,
+                                                String owner_password,
                                                 String owner_identity){
-        OwnerInfo ownerInfo = new OwnerInfo(owner_id,owner_name,owner_phone,owner_address,owner_password,owner_identity);
+        OwnerInfo ownerInfo = new OwnerInfo(owner_id,owner_name,owner_phone,owner_password,owner_identity);
         int num = ownerInfoService.updateOwnerById(ownerInfo);
         System.out.println("修改数据库返回值："+num);
         return pageManagerOwnerInformation(request,PAGEDEFAULT);

@@ -37,11 +37,11 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>id</th>
+                                    <th style="width: 70px">id</th>
                                     <th>公告标题</th>
-                                    <th>公告内容</th>
+                                    <th style="width: 350px">公告内容</th>
                                     <th>发布时间</th>
-                                    <th>发布人</th>
+                                    <th style="width: 120px">发布人</th>
                                 </tr>
                                 </thead>
 

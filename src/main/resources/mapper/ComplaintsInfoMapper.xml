@@ -65,4 +65,11 @@
     <select id="getComplaintInfoByPage" resultMap="BaseResultMap">
         select * from complaints_info limit #{offset}, #{pageSize}
     </select>
+    <select id="selectAllByOwnerPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from complaints_info
+        where
+        owner_phone = #{ownerPhone,jdbcType=VARCHAR}
+    </select>
 </mapper>

@@ -47,7 +47,6 @@
                                     <th>id</th>
                                     <th>姓名</th>
                                     <th>手机号</th>
-                                    <th>地址</th>
                                     <th>密码</th>
                                     <th>身份信息</th>
                                 </tr>
@@ -66,9 +65,6 @@
                                             </td>
                                             <td>
                                                 <input type="text" readonly="readonly" name="owner_phone" value="${item.owner_phone}" class="form-control" />
-                                            </td>
-                                            <td>
-                                                <input type="text" readonly="readonly" name="owner_address" value="${item.owner_address}" class="form-control" />
                                             </td>
                                             <td>
                                                 <input type="text" readonly="readonly" name="owner_password" value="${item.owner_password}" class="form-control" />

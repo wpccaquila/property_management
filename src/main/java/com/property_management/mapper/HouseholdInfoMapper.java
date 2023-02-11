@@ -53,6 +53,13 @@ public interface HouseholdInfoMapper {
      */
     List<HouseholdInfo> selectAllByHouseholdName(@Param("ownerName") String ownerName);
 
+    /**
+     * 通过电话号码查询
+     * @param ownerPhone
+     * @return
+     */
+    HouseholdInfo selectAllByOwnerPhone(@Param("ownerPhone") String ownerPhone);
+
 
     /**
      * 修改住户信息

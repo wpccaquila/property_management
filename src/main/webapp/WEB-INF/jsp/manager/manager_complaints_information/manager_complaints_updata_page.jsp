@@ -36,12 +36,12 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>投诉信息id</th>
+                                    <th style="width: 70px">id</th>
                                     <th>投诉时间</th>
                                     <th>投诉内容</th>
                                     <th>投诉人姓名</th>
                                     <th>投诉人电话</th>
-                                    <th>投诉状态</th>
+                                    <th style="width: 100px">投诉状态</th>
                                 </tr>
                                 </thead>
 
@@ -64,7 +64,14 @@
                                             <input type="text"  name="ownerPhone" value="${complaintsInfoById.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="complaintStatus" value="${complaintsInfoById.complaintStatus}" class="form-control" />
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input" type="radio" name="complaintStatus" id="inlineRadio1" value="未处理"  <c:if test="${complaintsInfoById.complaintStatus == '未处理'}">checked</c:if>>
+                                                <label class="form-check-label" for="inlineRadio1">未处理</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="complaintStatus" id="inlineRadio2" value="已处理" <c:if test="${complaintsInfoById.complaintStatus == '已处理'}">checked</c:if>>
+                                                <label class="form-check-label" for="inlineRadio2">已处理</label>
+                                            </div>
                                         </td>
                                         <td>
                                             <button type="submit" class="btn btn-primary">修改数据</button>

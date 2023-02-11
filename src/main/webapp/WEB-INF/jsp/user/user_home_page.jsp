@@ -18,7 +18,7 @@
 <body>
 <!-- 顶部导航栏 -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">物业管理系统</a>
+  <a class="navbar-brand" >物业管理系统</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -86,9 +86,9 @@
             <thead>
             <tr>
               <th>公告标题</th>
-              <th>公告内容</th>
+              <th style="width: 350px">公告内容</th>
               <th>发布时间</th>
-              <th>发布人</th>
+              <th style="width: 120px">发布人</th>
             </tr>
             </thead>
             <tbody>
@@ -112,6 +112,42 @@
           </table>
         </div>
       </div>
+
+      <a class="btn btn-primary btn-block my-3" data-toggle="collapse" href="#collapseExample9" role="button" aria-expanded="false" aria-controls="collapseExample2">
+        用户信息
+      </a>
+      <div class="collapse" id="collapseExample9">
+        <div class="card card-body">
+          <table class="table">
+            <thead>
+            <tr>
+              <th>姓名</th>
+              <th>手机号</th>
+              <th>密码</th>
+              <th>身份信息</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>
+                <input type="text" readonly="readonly" name="owner_name" value="${currentOwnerInfo.owner_name}" class="form-control" />
+              </td>
+              <td>
+                <input type="text" readonly="readonly" name="owner_phone" value="${currentOwnerInfo.owner_phone}" class="form-control" />
+              </td>
+              <td>
+                <input type="text" readonly="readonly" name="owner_password" value="${currentOwnerInfo.owner_password}" class="form-control" />
+              </td>
+              <td>
+                <input type="text" readonly="readonly" name="owner_identity" value="${currentOwnerInfo.owner_identity}" class="form-control" />
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
       <a class="btn btn-primary btn-block my-3" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="false" aria-controls="collapseExample2">
         个人信息
       </a>
@@ -131,38 +167,32 @@
             </tr>
             </thead>
             <tbody>
-<%--            <c:forEach items="${householdInfoList}" var="item" varStatus="status">--%>
-<%--              <tr>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_name" value="${item.householdName}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_phone" value="${item.householdIdNumber}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_address" value="${item.householdBirthday}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_password" value="${item.householdGender}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_identity" value="${item.householdPhone}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_identity" value="${item.householdCheckinTime}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_identity" value="${item.householdHouseType}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <input type="text" readonly="readonly" name="household_identity" value="${item.householdAddress}" class="form-control" />--%>
-<%--                </td>--%>
-<%--                <td>--%>
-<%--                  <a href="<%=request.getContextPath()%>/forwardUpdateHouseholdPage?householdId=${item.householdId}"  class="btn btn-primary">修改数据</a>--%>
-<%--                  <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deleteHouseholdById?householdId=${item.householdId}')">删除用户</a>--%>
-<%--                </td>--%>
-<%--              </tr>--%>
-<%--            </c:forEach>--%>
+              <tr>
+                <td>
+                  <input type="text" readonly="readonly" name="ownerName" value="${currentHouseholdInfo.ownerName}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="householdIdNumber" value="${currentHouseholdInfo.householdIdNumber}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="householdBirthday" value="${currentHouseholdInfo.householdBirthday}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="householdGender" value="${currentHouseholdInfo.householdGender}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="ownerPhone" value="${currentHouseholdInfo.ownerPhone}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="householdCheckinTime" value="${currentHouseholdInfo.householdCheckinTime}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="householdHouseType" value="${currentHouseholdInfo.householdHouseType}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="householdAddress" value="${currentHouseholdInfo.householdAddress}" class="form-control" />
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
@@ -195,20 +225,65 @@
       </a>
       <div class="collapse" id="collapseExample4">
         <div class="card card-body">
+        <%--  显示已报修的--%>
           <table class="table">
             <thead>
             <tr>
-              <th scope="col">报修内容</th>
-              <th scope="col">时间</th>
+              <th>报修类型</th>
+              <th>报修内容</th>
+              <th>报修时间</th>
+              <th>报修状态</th>
+              <th>维修人</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>厕所堵塞</td>
-              <td>2020-05-21</td>
-            </tr>
+            <c:forEach items="${currentRepairInfoList}" var="item" varStatus="status">
+              <tr>
+                <td>
+                  <input type="text" readonly="readonly" name="repairType" value="${item.repairType}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="repairContent" value="${item.repairContent}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="repairCreateTime" value="<fmt:formatDate value="${item.repairCreateTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="repairState" value="${item.repairState}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="repairProcessor" value="${item.repairProcessor}" class="form-control" />
+                </td>
+              </tr>
+            </c:forEach>
             </tbody>
           </table>
+
+          <%-- 提交报修表单--%>
+          <form  method="post" action="<%=request.getContextPath()%>/addRepairInfo?ownerName=${currentHouseholdInfo.ownerName}&ownerPhone=${currentHouseholdInfo.ownerPhone}">
+            <table class="table">
+              <thead>
+              <tr>
+                <th>报修类型</th>
+                <th>报修内容</th>
+              </tr>
+              </thead>
+
+              <tbody>
+              <tr>
+                <td>
+                  <input type="text" name="repairType"  class="form-control" />
+                </td>
+                <td>
+                  <input type="text" name="repairContent" class="form-control" />
+                </td>
+                <td>
+                  <button type="submit" class="btn btn-primary">报修</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </form>
         </div>
       </div>
       <a class="btn btn-primary btn-block my-3" data-toggle="collapse" href="#collapseExample5" role="button" aria-expanded="false" aria-controls="collapseExample5">
@@ -216,20 +291,53 @@
       </a>
       <div class="collapse" id="collapseExample5">
         <div class="card card-body">
+          <%--  显示已投诉的--%>
           <table class="table">
             <thead>
             <tr>
-              <th scope="col">投诉内容</th>
-              <th scope="col">时间</th>
+              <th>投诉时间</th>
+              <th>投诉内容</th>
+              <th>投诉状态</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>物业服务态度不好</td>
-              <td>2020-05-21</td>
-            </tr>
+            <c:forEach items="${currentComplaintsInfos}" var="item" varStatus="status">
+              <tr>
+                <td>
+                  <input type="text" readonly="readonly" name="complaintTime" value="<fmt:formatDate value="${item.complaintTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="complaintContent" value="${item.complaintContent}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="complaintStatus" value="${item.complaintStatus}" class="form-control" />
+                </td>
+              </tr>
+            </c:forEach>
             </tbody>
           </table>
+            <%-- 提交投诉表单--%>
+            <form  method="post" action="<%=request.getContextPath()%>/addComplaintInfo?ownerName=${currentHouseholdInfo.ownerName}&ownerPhone=${currentHouseholdInfo.ownerPhone}">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th>投诉内容</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                  <td>
+                    <input type="text" name="complaintContent"  class="form-control" />
+                  </td>
+                  <td>
+                    <button type="submit" class="btn btn-primary">投诉</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </form>
+
         </div>
       </div>
     </div>

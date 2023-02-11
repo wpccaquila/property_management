@@ -36,12 +36,12 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>投诉信息id</th>
+                                    <th style="width: 70px">id</th>
                                     <th>投诉时间</th>
                                     <th>投诉内容</th>
                                     <th>投诉人姓名</th>
                                     <th>投诉人电话</th>
-                                    <th>投诉状态</th>
+                                    <th style="width: 100px">投诉状态</th>
                                 </tr>
                                 </thead>
 
@@ -55,7 +55,7 @@
                                             <input type="text" readonly="readonly" name="complaintsStartLineNo" value="${complaintsStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="complaintTime" value="<fmt:formatDate value="${item.complaintTime}" pattern="yyyy-MM-dd" />" class="form-control" />
+                                            <input type="text" readonly="readonly" name="complaintTime" value="<fmt:formatDate value="${item.complaintTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="complaintContent" value="${item.complaintContent}" class="form-control" />

@@ -29,6 +29,11 @@ public class ComplaintsInfoServiceImpl implements ComplaintsInfoService{
     }
 
     @Override
+    public List<ComplaintsInfo> selectAllByOwnerPhone(String ownerPhone) {
+        return complaintsInfoMapper.selectAllByOwnerPhone(ownerPhone);
+    }
+
+    @Override
     public List<ComplaintsInfo> selectAllByComplaintName(String ownerName) {
         return complaintsInfoMapper.selectAllByComplaintName(ownerName);
     }

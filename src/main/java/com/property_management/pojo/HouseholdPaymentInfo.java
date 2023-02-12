@@ -18,9 +18,22 @@ import lombok.Data;
 @TableName(value ="household_payment_info")
 @Data
 public class HouseholdPaymentInfo implements Serializable {
-    public HouseholdPaymentInfo(Integer householdId, String householdName, BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
-        this.householdId = householdId;
-        this.householdName = householdName;
+
+    public HouseholdPaymentInfo(String ownerPhone, String ownerName, String paymentType, BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
+        this.ownerPhone = ownerPhone;
+        this.ownerName = ownerName;
+        this.paymentType = paymentType;
+        this.paymentAmount = paymentAmount;
+        this.paymentMethod = paymentMethod;
+        this.paymentTime = paymentTime;
+        this.paymentStatus = paymentStatus;
+    }
+
+    public HouseholdPaymentInfo(Integer propertyPaymentId, String ownerPhone, String ownerName, String paymentType, BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
+        this.propertyPaymentId = propertyPaymentId;
+        this.ownerPhone = ownerPhone;
+        this.ownerName = ownerName;
+        this.paymentType = paymentType;
         this.paymentAmount = paymentAmount;
         this.paymentMethod = paymentMethod;
         this.paymentTime = paymentTime;
@@ -28,16 +41,6 @@ public class HouseholdPaymentInfo implements Serializable {
     }
 
     public HouseholdPaymentInfo() {
-    }
-
-    public HouseholdPaymentInfo(Integer propertyPaymentId, Integer householdId, String householdName, BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
-        this.propertyPaymentId = propertyPaymentId;
-        this.householdId = householdId;
-        this.householdName = householdName;
-        this.paymentAmount = paymentAmount;
-        this.paymentMethod = paymentMethod;
-        this.paymentTime = paymentTime;
-        this.paymentStatus = paymentStatus;
     }
 
     /**
@@ -49,12 +52,12 @@ public class HouseholdPaymentInfo implements Serializable {
     /**
      * 住户ID号
      */
-    private Integer householdId;
+    private String ownerPhone;
 
     /**
      * 住户姓名
      */
-    private String householdName;
+    private String ownerName;
 
     /**
      * 修改时用的构造对象
@@ -64,13 +67,19 @@ public class HouseholdPaymentInfo implements Serializable {
      * @param paymentTime
      * @param paymentStatus
      */
-    public HouseholdPaymentInfo(Integer propertyPaymentId, BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
+    public HouseholdPaymentInfo(Integer propertyPaymentId, String paymentType,BigDecimal paymentAmount, String paymentMethod, Date paymentTime, String paymentStatus) {
         this.propertyPaymentId = propertyPaymentId;
+        this.paymentType = paymentType;
         this.paymentAmount = paymentAmount;
         this.paymentMethod = paymentMethod;
         this.paymentTime = paymentTime;
         this.paymentStatus = paymentStatus;
     }
+
+    /**
+     * 缴费类型
+     */
+    private String paymentType;
 
     /**
      * 缴费金额

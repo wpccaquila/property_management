@@ -29,10 +29,17 @@ public interface HouseholdPaymentInfoMapper {
 
     /**
      * 通过住户名字查询缴费订单信息
-     * @param householdName
+     * @param ownerName
      * @return
      */
-    List<HouseholdPaymentInfo> selectAllByHouseholdName(@Param("householdName") String householdName);
+    List<HouseholdPaymentInfo> selectAllByHouseholdName(@Param("ownerName") String ownerName);
+
+    /**
+     * 通过住户电话查询缴费订单信息
+     * @param ownerPhone
+     * @return
+     */
+    List<HouseholdPaymentInfo> selectAllByOwnerPhone(@Param("ownerPhone") String ownerPhone);
 
     /**
      * ID 号删除

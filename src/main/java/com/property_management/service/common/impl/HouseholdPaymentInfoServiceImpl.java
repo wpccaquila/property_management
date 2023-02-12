@@ -21,6 +21,11 @@ public class HouseholdPaymentInfoServiceImpl implements HouseholdPaymentInfoServ
     HouseholdPaymentInfoMapper householdPaymentInfoMapper;
 
     @Override
+    public List<HouseholdPaymentInfo> selectAllByOwnerPhone(String ownerPhone) {
+        return householdPaymentInfoMapper.selectAllByOwnerPhone(ownerPhone);
+    }
+
+    @Override
     public List<HouseholdPaymentInfo> selectAll() {
         return householdPaymentInfoMapper.selectAll();
     }

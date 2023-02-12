@@ -15,7 +15,7 @@
     if(householdPaymentPageNo==0){%>
 <li><a style="display:none">上一页</a></li>
 <%}else{%>
-<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdPaymentInfo?pageNo=${householdPageNo-1}">上一页</a></li>
+<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdPaymentInfo?pageNo=${householdPaymentPageNo-1}">上一页</a></li>
 <%}%>
 
 <%--按钮的变化，当前页码大于第二页时。则中间按钮变为当前页--%>
@@ -40,7 +40,7 @@
 <%if(householdPaymentPages-1 <= householdPaymentPageNo){%>
 <li><a style="display:none">下一页</a></li>
 <%}else{%>
-<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdInfoInformation?pageNo=${householdPaymentPageNo+1}">下一页</a></li>
+<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdPaymentInfo?pageNo=${householdPaymentPageNo+1}">下一页</a></li>
 <%}%>
 <%-- 尾页--%>
-<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdInfoInformation?pageNo=${householdPaymentPages-1}">尾页</a></li>
+<li><a href="<%=request.getContextPath()%>/pageManagerHouseholdPaymentInfo?pageNo=${householdPaymentPages-1}">尾页</a></li>

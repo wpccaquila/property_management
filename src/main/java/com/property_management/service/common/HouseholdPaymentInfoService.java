@@ -3,6 +3,7 @@ package com.property_management.service.common;
 
 import com.property_management.pojo.HouseholdInfo;
 import com.property_management.pojo.HouseholdPaymentInfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,6 +13,12 @@ import java.util.List;
 * @createDate 2023-01-28 10:05:19
 */
 public interface HouseholdPaymentInfoService {
+    /**
+     * 通过住户电话查询缴费订单信息
+     * @param ownerPhone
+     * @return
+     */
+    List<HouseholdPaymentInfo> selectAllByOwnerPhone(String ownerPhone);
 
 
     /**

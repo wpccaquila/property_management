@@ -117,13 +117,13 @@ public class ManagerHouseholdPaymentInfoController {
      * @return
      */
     @RequestMapping("updataPaymentInfoById")
-    public String updataPaymentInfoById(HttpServletRequest request,int propertyPaymentId, BigDecimal paymentAmount, String paymentMethod, String paymentTime, String paymentStatus) throws ParseException {
+    public String updataPaymentInfoById(HttpServletRequest request,int propertyPaymentId, String paymentType,BigDecimal paymentAmount, String paymentMethod, String paymentTime, String paymentStatus) throws ParseException {
 
         // 转换时间格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
         Date paymentTimeDate=dateFormat.parse(paymentTime);
 
-        householdPaymentInfoService.modifyHouseholdPaymentInfo(new HouseholdPaymentInfo(propertyPaymentId,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
+        householdPaymentInfoService.modifyHouseholdPaymentInfo(new HouseholdPaymentInfo(propertyPaymentId,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
         return pageManagerHouseholdPaymentInfo(request);
     }
 
@@ -172,14 +172,14 @@ public class ManagerHouseholdPaymentInfoController {
      */
     @RequestMapping("insertPaymentInfo")
     public String insertPaymentInfo(HttpServletRequest request,
-                                        int householdId, String householdName,
+                                        String ownerPhone, String ownerName,String paymentType,
                                         BigDecimal paymentAmount, String paymentMethod,
                                         String paymentTime, String paymentStatus) throws ParseException {
         // 转换时间格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
         Date paymentTimeDate=dateFormat.parse(paymentTime);
 
-        householdPaymentInfoService.addAll(new HouseholdPaymentInfo(householdId,householdName,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
+        householdPaymentInfoService.addAll(new HouseholdPaymentInfo(ownerPhone,ownerName,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
         return pageManagerHouseholdPaymentInfo(request);
     }
 

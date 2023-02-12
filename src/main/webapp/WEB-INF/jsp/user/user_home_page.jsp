@@ -76,7 +76,8 @@
       <p class="text-right">${latestNotice.noticeCreateUser}</p>
     </div>
 
-    <div class="col-sm-10">
+<%--   各类信息显示按钮--%>
+    <div class="col-sm-11">
       <a class="btn btn-primary btn-block my-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         物业通知
       </a>
@@ -130,16 +131,16 @@
             <tbody>
             <tr>
               <td>
-                <input type="text" readonly="readonly" name="owner_name" value="${currentOwnerInfo.owner_name}" class="form-control" />
+                <input type="text" readonly="readonly" name="owner_name" value="${sessionScope.currentOwnerInfo.owner_name}" class="form-control" />
               </td>
               <td>
-                <input type="text" readonly="readonly" name="owner_phone" value="${currentOwnerInfo.owner_phone}" class="form-control" />
+                <input type="text" readonly="readonly" name="owner_phone" value="${sessionScope.currentOwnerInfo.owner_phone}" class="form-control" />
               </td>
               <td>
-                <input type="text" readonly="readonly" name="owner_password" value="${currentOwnerInfo.owner_password}" class="form-control" />
+                <input type="text" readonly="readonly" name="owner_password" value="${sessionScope.currentOwnerInfo.owner_password}" class="form-control" />
               </td>
               <td>
-                <input type="text" readonly="readonly" name="owner_identity" value="${currentOwnerInfo.owner_identity}" class="form-control" />
+                <input type="text" readonly="readonly" name="owner_identity" value="${sessionScope.currentOwnerInfo.owner_identity}" class="form-control" />
               </td>
             </tr>
             </tbody>
@@ -169,28 +170,28 @@
             <tbody>
               <tr>
                 <td>
-                  <input type="text" readonly="readonly" name="ownerName" value="${currentHouseholdInfo.ownerName}" class="form-control" />
+                  <input type="text" readonly="readonly" name="ownerName" value="${sessionScope.currentHouseholdInfo.ownerName}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="householdIdNumber" value="${currentHouseholdInfo.householdIdNumber}" class="form-control" />
+                  <input type="text" readonly="readonly" name="householdIdNumber" value="${sessionScope.currentHouseholdInfo.householdIdNumber}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="householdBirthday" value="${currentHouseholdInfo.householdBirthday}" class="form-control" />
+                  <input type="text" readonly="readonly" name="householdBirthday" value="${sessionScope.currentHouseholdInfo.householdBirthday}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="householdGender" value="${currentHouseholdInfo.householdGender}" class="form-control" />
+                  <input type="text" readonly="readonly" name="householdGender" value="${sessionScope.currentHouseholdInfo.householdGender}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="ownerPhone" value="${currentHouseholdInfo.ownerPhone}" class="form-control" />
+                  <input type="text" readonly="readonly" name="ownerPhone" value="${sessionScope.currentHouseholdInfo.ownerPhone}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="householdCheckinTime" value="${currentHouseholdInfo.householdCheckinTime}" class="form-control" />
+                  <input type="text" readonly="readonly" name="householdCheckinTime" value="${sessionScope.currentHouseholdInfo.householdCheckinTime}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="householdHouseType" value="${currentHouseholdInfo.householdHouseType}" class="form-control" />
+                  <input type="text" readonly="readonly" name="householdHouseType" value="${sessionScope.currentHouseholdInfo.householdHouseType}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="householdAddress" value="${currentHouseholdInfo.householdAddress}" class="form-control" />
+                  <input type="text" readonly="readonly" name="householdAddress" value="${sessionScope.currentHouseholdInfo.householdAddress}" class="form-control" />
                 </td>
               </tr>
             </tbody>
@@ -205,17 +206,33 @@
           <table class="table">
             <thead>
             <tr>
-              <th scope="col">缴费项目</th>
-              <th scope="col">金额</th>
-              <th scope="col">时间</th>
+              <th>缴费类型</th>
+              <th>缴费金额</th>
+              <th>缴费方式</th>
+              <th>缴费时间</th>
+              <th>缴费状态</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>物业费</td>
-              <td>500元</td>
-              <td>2020-05-20</td>
-            </tr>
+            <c:forEach items="${sessionScope.currentHouseholdPaymentInfoList}" var="item" varStatus="status">
+              <tr>
+                <td>
+                  <input type="text" readonly="readonly" name="paymentType" value="${item.paymentType}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="paymentAmount" value="${item.paymentAmount}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="paymentMethod" value="${item.paymentMethod}" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                </td>
+                <td>
+                  <input type="text" readonly="readonly" name="paymentStatus" value="${item.paymentStatus}" class="form-control" />
+                </td>
+              </tr>
+            </c:forEach>
             </tbody>
           </table>
         </div>
@@ -237,7 +254,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${currentRepairInfoList}" var="item" varStatus="status">
+            <c:forEach items="${sessionScope.currentRepairInfoList}" var="item" varStatus="status">
               <tr>
                 <td>
                   <input type="text" readonly="readonly" name="repairType" value="${item.repairType}" class="form-control" />
@@ -260,7 +277,7 @@
           </table>
 
           <%-- 提交报修表单--%>
-          <form  method="post" action="<%=request.getContextPath()%>/addRepairInfo?ownerName=${currentHouseholdInfo.ownerName}&ownerPhone=${currentHouseholdInfo.ownerPhone}">
+          <form  method="post" action="<%=request.getContextPath()%>/addRepairInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
             <table class="table">
               <thead>
               <tr>
@@ -301,7 +318,7 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${currentComplaintsInfos}" var="item" varStatus="status">
+            <c:forEach items="${sessionScope.currentComplaintsInfos}" var="item" varStatus="status">
               <tr>
                 <td>
                   <input type="text" readonly="readonly" name="complaintTime" value="<fmt:formatDate value="${item.complaintTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
@@ -317,7 +334,7 @@
             </tbody>
           </table>
             <%-- 提交投诉表单--%>
-            <form  method="post" action="<%=request.getContextPath()%>/addComplaintInfo?ownerName=${currentHouseholdInfo.ownerName}&ownerPhone=${currentHouseholdInfo.ownerPhone}">
+            <form  method="post" action="<%=request.getContextPath()%>/addComplaintInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
               <table class="table">
                 <thead>
                 <tr>

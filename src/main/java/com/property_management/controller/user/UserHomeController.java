@@ -2,15 +2,13 @@ package com.property_management.controller.user;
 
 import com.property_management.mapper.ComplaintsInfoMapper;
 import com.property_management.pojo.*;
-import com.property_management.service.common.HouseholdInfoService;
-import com.property_management.service.common.NoticeInfoService;
-import com.property_management.service.common.OwnerInfoService;
-import com.property_management.service.common.RepairInfoService;
+import com.property_management.service.common.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -27,6 +25,10 @@ public class UserHomeController {
     RepairInfoService repairInfoService;
     @Resource
     ComplaintsInfoMapper complaintsInfoMapper;
+    @Resource
+    HouseholdPaymentInfoService householdPaymentInfoService;
+    @Resource
+    private HttpSession session;
 
     /**
      * 获取当前用户的各种信息
@@ -49,19 +51,23 @@ public class UserHomeController {
 
         //获取用户信息
         OwnerInfo currentOwnerInfo = ownerInfoService.selectByOwner_phone(ownerPhone);
-        request.setAttribute("currentOwnerInfo",currentOwnerInfo);
+        session.setAttribute("currentOwnerInfo",currentOwnerInfo);
 
         //获取住户信息
         HouseholdInfo currentHouseholdInfo = householdInfoService.selectAllByOwnerPhone(ownerPhone);
-        request.setAttribute("currentHouseholdInfo",currentHouseholdInfo);
+        session.setAttribute("currentHouseholdInfo",currentHouseholdInfo);
 
         //获取报修信息
         List<RepairInfo> currentRepairInfoList = repairInfoService.selectAllByOwnerPhone(ownerPhone);
-        request.setAttribute("currentRepairInfoList",currentRepairInfoList);
+        session.setAttribute("currentRepairInfoList",currentRepairInfoList);
 
         // 获取投诉信息
         List<ComplaintsInfo> currentComplaintsInfos = complaintsInfoMapper.selectAllByOwnerPhone(ownerPhone);
-        request.setAttribute("currentComplaintsInfos",currentComplaintsInfos);
+        session.setAttribute("currentRepairInfoList",currentRepairInfoList);
+
+        // 获取缴费信息
+        List<HouseholdPaymentInfo> currentHouseholdPaymentInfoList = householdPaymentInfoService.selectAllByOwnerPhone(ownerPhone);
+        session.setAttribute("currentHouseholdPaymentInfoList",currentHouseholdPaymentInfoList);
         return "user/user_home_page";
     }
 

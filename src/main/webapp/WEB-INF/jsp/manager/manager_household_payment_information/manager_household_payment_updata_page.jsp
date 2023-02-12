@@ -36,13 +36,14 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>缴费订单id</th>
-                                    <th>住户id</th>
-                                    <th>住户姓名</th>
+                                    <th style="width: 70px">缴费订单id</th>
+                                    <th>住户手机号</th>
+                                    <th style="width: 100px">住户姓名</th>
+                                    <th style="width: 100px">缴费类型</th>
                                     <th>缴费金额</th>
-                                    <th>缴费方式</th>
+                                    <th style="width: 100px">缴费方式</th>
                                     <th>缴费时间</th>
-                                    <th>缴费状态</th>
+                                    <th style="width: 100px">缴费状态</th>
                                 </tr>
                                 </thead>
 
@@ -53,10 +54,13 @@
                                             <input type="text" readonly="readonly" name="householdPaymentStartLineNo" value="${param.householdPaymentStartLineNo}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdId" value="${householdPaymentById.householdId}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="householdId" value="${householdPaymentById.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="householdName" value="${householdPaymentById.householdName}" class="form-control" />
+                                            <input type="text" readonly="readonly" name="householdName" value="${householdPaymentById.ownerName}" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text"  name="paymentType" value="${householdPaymentById.paymentType}" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text"  name="paymentAmount" value="${householdPaymentById.paymentAmount}" class="form-control" />
@@ -68,7 +72,14 @@
                                             <input type="text"  id="paymentTime" name="paymentTime" value="<fmt:formatDate value="${householdPaymentById.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="paymentStatus" value="${householdPaymentById.paymentStatus}" class="form-control" />
+                                            <div class="form-check form-check-inline ">
+                                                <input class="form-check-input" type="radio" name="paymentStatus" id="inlineRadio1" value="未支付"  <c:if test="${householdPaymentById.paymentStatus == '未支付'}">checked</c:if>>
+                                                <label class="form-check-label" for="inlineRadio1">未支付</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="paymentStatus" id="inlineRadio2" value="已支付" <c:if test="${householdPaymentById.paymentStatus == '已支付'}">checked</c:if>>
+                                                <label class="form-check-label" for="inlineRadio2">已支付</label>
+                                            </div>
                                         </td>
                                         <td>
                                             <button type="submit" class="btn btn-primary">修改数据</button>

@@ -6,8 +6,9 @@
 
     <resultMap id="BaseResultMap" type="com.property_management.pojo.HouseholdPaymentInfo">
             <id property="propertyPaymentId" column="property_payment_id" jdbcType="INTEGER"/>
-            <result property="householdId" column="household_id" jdbcType="INTEGER"/>
-            <result property="householdName" column="household_name" jdbcType="VARCHAR"/>
+            <result property="ownerPhone" column="owner_phone" jdbcType="VARCHAR"/>
+            <result property="ownerName" column="owner_name" jdbcType="VARCHAR"/>
+            <result property="paymentType" column="payment_type" jdbcType="VARCHAR"/>
             <result property="paymentAmount" column="payment_amount" jdbcType="DECIMAL"/>
             <result property="paymentMethod" column="payment_method" jdbcType="VARCHAR"/>
             <result property="paymentTime" column="payment_time" jdbcType="TIMESTAMP"/>
@@ -15,7 +16,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        property_payment_id,household_id,household_name,
+        property_payment_id,owner_phone,owner_name,payment_type,
         payment_amount,payment_method,payment_time,
         payment_status
     </sql>
@@ -39,11 +40,11 @@
 
     <insert id="addAll">
         insert into household_payment_info
-        (household_id, household_name,
+        (owner_phone, owner_name,payment_type,
          payment_amount, payment_method, payment_time,
          payment_status)
-        values (#{householdId,jdbcType=NUMERIC},
-                #{householdName,jdbcType=VARCHAR},
+        values (#{ownerPhone,jdbcType=VARCHAR},
+                #{ownerName,jdbcType=VARCHAR},#{paymentType,jdbcType=VARCHAR},
                 #{paymentAmount,jdbcType=DECIMAL}, #{paymentMethod,jdbcType=VARCHAR}, #{paymentTime,jdbcType=TIMESTAMP},
                 #{paymentStatus,jdbcType=VARCHAR})
 
@@ -53,12 +54,13 @@
         <include refid="Base_Column_List"/>
         from household_payment_info
         where
-        household_name = #{householdName,jdbcType=VARCHAR}
+        owner_name = #{ownerName,jdbcType=VARCHAR}
     </select>
 
     <update id="modifyHouseholdPaymentInfo" parameterType="com.property_management.pojo.HouseholdPaymentInfo">
         update household_payment_info
-        set payment_amount=#{paymentAmount,jdbcType=DECIMAL},
+        set payment_type=#{paymentType,jdbcType=VARCHAR},
+            payment_amount=#{paymentAmount,jdbcType=DECIMAL},
             payment_method=#{paymentMethod,jdbcType=VARCHAR},
             payment_time=#{paymentTime,jdbcType=TIMESTAMP},
             payment_status=#{paymentStatus,jdbcType=VARCHAR}
@@ -71,5 +73,12 @@
 
     <select id="getHouseholdPaymentInfoByPage" resultMap="BaseResultMap">
         select * from household_payment_info limit #{offset}, #{pageSize}
+    </select>
+    <select id="selectAllByOwnerPhone" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from household_payment_info
+        where
+        owner_phone = #{ownerPhone,jdbcType=VARCHAR}
     </select>
 </mapper>

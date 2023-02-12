@@ -36,13 +36,14 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th>缴费订单id</th>
-                                    <th>住户id</th>
-                                    <th>住户姓名</th>
+                                    <th style="width: 70px">缴费订单id</th>
+                                    <th>住户手机号</th>
+                                    <th style="width: 100px">住户姓名</th>
+                                    <th style="width: 100px">缴费类型</th>
                                     <th>缴费金额</th>
-                                    <th>缴费方式</th>
+                                    <th style="width: 100px">缴费方式</th>
                                     <th>缴费时间</th>
-                                    <th>缴费状态</th>
+                                    <th style="width: 100px">缴费状态</th>
                                 </tr>
                                 </thead>
 
@@ -52,10 +53,13 @@
                                             <input type="text" readonly="readonly" name="householdPaymentStartLineNo"  class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="householdId" class="form-control" />
+                                            <input type="text" name="ownerPhone" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="householdName"  class="form-control" />
+                                            <input type="text" name="ownerName"  class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text"name="paymentType"  class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text"  name="paymentAmount" class="form-control" />

@@ -63,7 +63,7 @@ public class UserHomeController {
 
         // 获取投诉信息
         List<ComplaintsInfo> currentComplaintsInfos = complaintsInfoMapper.selectAllByOwnerPhone(ownerPhone);
-        session.setAttribute("currentRepairInfoList",currentRepairInfoList);
+        session.setAttribute("currentComplaintsInfos",currentComplaintsInfos);
 
         // 获取缴费信息
         List<HouseholdPaymentInfo> currentHouseholdPaymentInfoList = householdPaymentInfoService.selectAllByOwnerPhone(ownerPhone);

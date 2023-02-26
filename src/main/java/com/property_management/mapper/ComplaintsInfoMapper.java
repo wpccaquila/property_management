@@ -25,6 +25,14 @@ public interface ComplaintsInfoMapper {
     ComplaintsInfo selectAllByComplaintId(@Param("complaintId") Integer complaintId);
 
     /**
+     * 修改用户评价
+     * @param userEvaluation
+     * @param complaintId
+     * @return
+     */
+    int modifyUserEvaluationByComplaintId(@Param("userEvaluation") String userEvaluation, @Param("complaintId") Integer complaintId);
+
+    /**
      * 通过ID号删除
      * @param complaintId
      * @return

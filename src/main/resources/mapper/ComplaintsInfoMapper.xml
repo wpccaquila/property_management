@@ -11,11 +11,15 @@
             <result property="ownerName" column="owner_name" jdbcType="VARCHAR"/>
             <result property="ownerPhone" column="owner_phone" jdbcType="VARCHAR"/>
             <result property="complaintStatus" column="complaint_status" jdbcType="VARCHAR"/>
+        <result property="processingContent" column="processing_content" jdbcType="VARCHAR"/>
+        <result property="processingDate" column="processing_date" jdbcType="TIMESTAMP"/>
+        <result property="userEvaluation" column="user_evaluation" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         complaint_id,complaint_time,complaint_content,
-        owner_name,owner_phone,complaint_status
+        owner_name,owner_phone,complaint_status,
+        processing_content,processing_date,user_evaluation
     </sql>
     <select id="selectAllByComplaintId" resultMap="BaseResultMap">
         select
@@ -41,11 +45,17 @@
     <insert id="addAll">
         insert into complaints_info
         (complaint_time, complaint_content,
-         owner_name, owner_phone, complaint_status)
+         owner_name, owner_phone, complaint_status,
+         processing_content,processing_date,user_evaluation)
         values (#{complaintTime,jdbcType=TIMESTAMP},
                 #{complaintContent,jdbcType=VARCHAR},
-                #{ownerName,jdbcType=VARCHAR}, #{ownerPhone,jdbcType=VARCHAR},
-                #{complaintStatus,jdbcType=VARCHAR})
+                #{ownerName,jdbcType=VARCHAR},
+                #{ownerPhone,jdbcType=VARCHAR},
+                #{complaintStatus,jdbcType=VARCHAR},
+                #{processingContent,jdbcType=VARCHAR},
+                #{processingDate,jdbcType=TIMESTAMP},
+                #{userEvaluation,jdbcType=VARCHAR}
+                )
 
     </insert>
     <update id="updateComplaintInfo" parameterType="com.property_management.pojo.ComplaintsInfo">
@@ -54,7 +64,10 @@
             owner_name    = #{ownerName,jdbcType=VARCHAR},
             owner_phone   = #{ownerPhone,jdbcType=VARCHAR},
             complaint_status  = #{complaintStatus,jdbcType=VARCHAR},
-            complaint_time    = #{complaintTime}
+            complaint_time= #{complaintTime},
+            processing_content=#{processingContent,jdbcType=VARCHAR},
+            processing_date=#{processingDate,jdbcType=TIMESTAMP},
+            user_evaluation=#{userEvaluation,jdbcType=VARCHAR}
         where complaint_id = #{complaintId,jdbcType=NUMERIC}
     </update>
 
@@ -72,4 +85,9 @@
         where
         owner_phone = #{ownerPhone,jdbcType=VARCHAR}
     </select>
+    <update id="modifyUserEvaluationByComplaintId">
+        update complaints_info
+        set user_evaluation = #{userEvaluation,jdbcType=VARCHAR}
+        where complaint_id = #{complaintId,jdbcType=NUMERIC}
+    </update>
 </mapper>

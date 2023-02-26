@@ -19,21 +19,27 @@ public class ComplaintsInfo implements Serializable {
     public ComplaintsInfo() {
     }
 
-    public ComplaintsInfo(Date complaintTime, String complaintContent, String ownerName, String ownerPhone, String complaintStatus) {
+    public ComplaintsInfo(Date complaintTime, String complaintContent, String ownerName, String ownerPhone, String complaintStatus, String processingContent, String userEvaluation, Date processingDate) {
         this.complaintTime = complaintTime;
         this.complaintContent = complaintContent;
         this.ownerName = ownerName;
         this.ownerPhone = ownerPhone;
         this.complaintStatus = complaintStatus;
+        this.processingContent = processingContent;
+        this.userEvaluation = userEvaluation;
+        this.processingDate = processingDate;
     }
 
-    public ComplaintsInfo(Integer complaintId, Date complaintTime, String complaintContent, String ownerName, String ownerPhone, String complaintStatus) {
+    public ComplaintsInfo(Integer complaintId, Date complaintTime, String complaintContent, String ownerName, String ownerPhone, String complaintStatus, String processingContent, String userEvaluation, Date processingDate) {
         this.complaintId = complaintId;
         this.complaintTime = complaintTime;
         this.complaintContent = complaintContent;
         this.ownerName = ownerName;
         this.ownerPhone = ownerPhone;
         this.complaintStatus = complaintStatus;
+        this.processingContent = processingContent;
+        this.userEvaluation = userEvaluation;
+        this.processingDate = processingDate;
     }
 
     /**
@@ -67,6 +73,22 @@ public class ComplaintsInfo implements Serializable {
      * 投诉状态
      */
     private String complaintStatus;
+
+    /**
+     * 处理内容
+     */
+    private String processingContent;
+
+
+    /**
+     * 用户评价反馈
+     */
+    private String userEvaluation;
+
+    /**
+     * 处理日期
+     */
+    private Date processingDate;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

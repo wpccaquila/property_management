@@ -19,6 +19,14 @@ public interface ComplaintsInfoService {
      * @return
      */
     ComplaintsInfo selectAllByComplaintId(Integer complaintId);
+    /**
+     * 修改用户评价
+     * @param userEvaluation
+     * @param complaintId
+     * @return
+     */
+    int modifyUserEvaluationByComplaintId(String userEvaluation,Integer complaintId);
+
 
     /**
      * 通过ID号删除

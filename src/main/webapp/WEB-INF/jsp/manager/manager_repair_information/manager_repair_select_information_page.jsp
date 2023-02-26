@@ -13,13 +13,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <ul class="nav nav-pills nav-stacked">
                 <%-- 静态包含左侧导航栏--%>
                 <%@ include file="../manager_public_part/navigation_bar.jsp"%>
             </ul>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-10">
             <div class="panel panel-default">
                 <div class="panel-heading">住户报修信息管理</div>
                 <div class="panel-body">
@@ -45,6 +45,9 @@
                                     <th>报修人电话</th>
                                     <th style="width: 100px">报修状态</th>
                                     <th style="width: 100px">维修人</th>
+                                    <th>维修内容</th>
+                                    <th>维修时间</th>
+                                    <th>用户评价</th>
                                 </tr>
                                 </thead>
 
@@ -77,6 +80,15 @@
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="repairProcessor" value="${item.repairProcessor}" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" name="processingContent" value="${item.processingContent}" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" name="repairTime" value="<fmt:formatDate value="${item.repairTime}" pattern="yyyy-MM-dd" />" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" name="repairAppraise" value="${item.repairAppraise}" class="form-control" />
                                         </td>
 
                                         <td>

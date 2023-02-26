@@ -13,13 +13,13 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-2">
             <ul class="nav nav-pills nav-stacked">
                 <%-- 静态包含左侧导航栏--%>
                 <%@ include file="../manager_public_part/navigation_bar.jsp"%>
             </ul>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-10">
             <div class="panel panel-default">
                 <div class="panel-heading">住户投诉信息管理</div>
                 <div class="panel-body">
@@ -42,6 +42,9 @@
                                     <th style="width: 100px">投诉人姓名</th>
                                     <th>投诉人电话</th>
                                     <th style="width: 100px">投诉状态</th>
+                                    <th>处理内容</th>
+                                    <th>处理时间</th>
+                                    <th>用户反馈</th>
                                 </tr>
                                 </thead>
 
@@ -68,6 +71,15 @@
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="complaintStatus" value="${item.complaintStatus}" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" name="processingContent" value="${item.processingContent}" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" id="processingDate" name="processingDate" value="<fmt:formatDate value="${item.processingDate}" pattern="yyyy-MM-dd" />" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <input type="text" readonly="readonly" name="userEvaluation" value="${item.userEvaluation}" class="form-control" />
                                         </td>
 
                                         <td>

@@ -109,12 +109,21 @@ public class ManagerComplaintsInfoController {
     @RequestMapping("/updateComplaintsInfoById")
     public String updateComplaintsInfoById(HttpServletRequest request,int complaintId,String complaintTime,
                                            String complaintContent,String ownerName,String ownerPhone,
-                                           String complaintStatus) throws ParseException {
+                                           String complaintStatus,String processingContent,String processingDate,
+                                           String userEvaluation) throws ParseException {
         // 转换时间格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
         Date complaintTimeDate=dateFormat.parse(complaintTime);
+        // 若处理时间processingDate为空，则为null不处理。若不为空，则转换成时间格式。
+        if (processingDate != null&&!processingDate.equals("")){
+            Date processingDateTime=dateFormat.parse(processingDate);
+            complaintsInfoService.updateComplaintInfo(new ComplaintsInfo(complaintId,complaintTimeDate,complaintContent,
+                    ownerName,ownerPhone,complaintStatus,processingContent,userEvaluation,processingDateTime));
+        }else {
+            complaintsInfoService.updateComplaintInfo(new ComplaintsInfo(complaintId,complaintTimeDate,complaintContent,
+                    ownerName,ownerPhone,complaintStatus,processingContent,userEvaluation,null));
+        }
 
-        complaintsInfoService.updateComplaintInfo(new ComplaintsInfo(complaintId,complaintTimeDate,complaintContent,ownerName,ownerPhone,complaintStatus));
 
         return pageManagerComplaintsInfoInformation(request);
     }

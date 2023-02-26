@@ -74,6 +74,15 @@ public interface RepairInfoService {
     int modifyRepairByRepairId(RepairInfo repairInfo);
 
     /**
+     * 修改用户评价
+     * @param repairAppraise
+     * @return
+     */
+    int modifyRepairAppraiseByRepairId(String repairAppraise,Integer repairId);
+
+
+
+    /**
      * 通过报修类型查询
      * @param ownerName
      * @return

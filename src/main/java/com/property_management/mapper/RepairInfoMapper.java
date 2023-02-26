@@ -73,6 +73,13 @@ public interface RepairInfoMapper {
     int modifyRepairByRepairId(RepairInfo repairInfo);
 
     /**
+     * 修改用户评价
+     * @param repairAppraise
+     * @return
+     */
+    int modifyRepairAppraiseByRepairId(@Param("repairAppraise") String repairAppraise, @Param("repairId") Integer repairId);
+
+    /**
      * 通过报修类型查询
      * @param ownerName
      * @return

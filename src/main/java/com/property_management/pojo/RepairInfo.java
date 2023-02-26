@@ -15,7 +15,7 @@ import lombok.Data;
 @TableName(value ="repair_info")
 @Data
 public class RepairInfo implements Serializable {
-    public RepairInfo(String repairType, String repairContent, Date repairCreateTime, String ownerName, String ownerPhone, String repairState, String repairProcessor) {
+    public RepairInfo(String repairType, String repairContent, Date repairCreateTime, String ownerName, String ownerPhone, String repairState, String repairProcessor, String processingContent, Date repairTime, String repairAppraise) {
         this.repairType = repairType;
         this.repairContent = repairContent;
         this.repairCreateTime = repairCreateTime;
@@ -23,9 +23,12 @@ public class RepairInfo implements Serializable {
         this.ownerPhone = ownerPhone;
         this.repairState = repairState;
         this.repairProcessor = repairProcessor;
+        this.processingContent = processingContent;
+        this.repairTime = repairTime;
+        this.repairAppraise = repairAppraise;
     }
 
-    public RepairInfo(Integer repairId, String repairType, String repairContent, Date repairCreateTime, String ownerName, String ownerPhone, String repairState, String repairProcessor) {
+    public RepairInfo(Integer repairId, String repairType, String repairContent, Date repairCreateTime, String ownerName, String ownerPhone, String repairState, String repairProcessor, String processingContent, Date repairTime, String repairAppraise) {
         this.repairId = repairId;
         this.repairType = repairType;
         this.repairContent = repairContent;
@@ -34,6 +37,9 @@ public class RepairInfo implements Serializable {
         this.ownerPhone = ownerPhone;
         this.repairState = repairState;
         this.repairProcessor = repairProcessor;
+        this.processingContent = processingContent;
+        this.repairTime = repairTime;
+        this.repairAppraise = repairAppraise;
     }
 
     public RepairInfo() {
@@ -79,6 +85,22 @@ public class RepairInfo implements Serializable {
      * 维修人
      */
     private String repairProcessor;
+
+    /**
+     * 维修内容
+     */
+    private String processingContent;
+
+    /**
+     * 维修时间
+     */
+    private Date repairTime;
+
+    /**
+     * 维修评价
+     */
+    private String repairAppraise;
+
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;

@@ -240,39 +240,57 @@
       </a>
       <div class="collapse" id="collapseExample4">
         <div class="card card-body">
-        <%--  显示已报修的--%>
-          <table class="table">
-            <thead>
-            <tr>
-              <th>报修类型</th>
-              <th>报修内容</th>
-              <th>报修时间</th>
-              <th>报修状态</th>
-              <th>维修人</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach items="${sessionScope.currentRepairInfoList}" var="item" varStatus="status">
+        <%--  显示已报修的，并能提交用户评价--%>
+           <table class="table">
+             <thead>
               <tr>
-                <td>
-                  <input type="text" readonly="readonly" name="repairType" value="${item.repairType}" class="form-control" />
-                </td>
-                <td>
-                  <input type="text" readonly="readonly" name="repairContent" value="${item.repairContent}" class="form-control" />
-                </td>
-                <td>
-                  <input type="text" readonly="readonly" name="repairCreateTime" value="<fmt:formatDate value="${item.repairCreateTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
-                </td>
-                <td>
-                  <input type="text" readonly="readonly" name="repairState" value="${item.repairState}" class="form-control" />
-                </td>
-                <td>
-                  <input type="text" readonly="readonly" name="repairProcessor" value="${item.repairProcessor}" class="form-control" />
-                </td>
+                <th>报修类型</th>
+                <th>报修内容</th>
+                <th>报修时间</th>
+                <th>报修状态</th>
+                <th>维修人</th>
+                <th>维修内容</th>
+                <th>维修时间</th>
+                <th>用户评价</th>
               </tr>
-            </c:forEach>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+              <c:forEach items="${sessionScope.currentRepairInfoList}" var="item" varStatus="status">
+              <form  method="post" action="<%=request.getContextPath()%>/submitRepairAppraise?ownerPhone=${sessionScope.currentOwnerInfo.owner_phone}">
+                <tr>
+                    <input type="hidden" name="cuRepairId" value="${item.repairId}" />
+                  <td>
+                    <input type="text" readonly="readonly" name="repairType" value="${item.repairType}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="repairContent" value="${item.repairContent}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="repairCreateTime" value="<fmt:formatDate value="${item.repairCreateTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="repairState" value="${item.repairState}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="repairProcessor" value="${item.repairProcessor}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="processingContent" value="${item.processingContent}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="repairTime" value="${item.repairTime}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text"  name="repairAppraise" value="${item.repairAppraise}" class="form-control" />
+                  </td>
+                  <td>
+                    <button type="submit" id="subRepairAppraise" class="btn btn-primary">提交评价</button>
+                  </td>
+                </tr>
+              </form>
+              </c:forEach>
+              </tbody>
+            </table>
 
           <%-- 提交报修表单--%>
           <form  method="post" action="<%=request.getContextPath()%>/addRepairInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
@@ -313,21 +331,39 @@
               <th>投诉时间</th>
               <th>投诉内容</th>
               <th>投诉状态</th>
+              <th>处理内容</th>
+              <th>处理时间</th>
+              <th>用户反馈</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${sessionScope.currentComplaintsInfos}" var="item" varStatus="status">
+            <form  method="post" action="<%=request.getContextPath()%>/submitComplaintAppraise?ownerPhone=${sessionScope.currentOwnerInfo.owner_phone}">
               <tr>
+                <input type="hidden" name="cuComplaintId" value="${item.complaintId}" />
+                  <td>
+                    <input type="text" readonly="readonly" name="complaintTime" value="<fmt:formatDate value="${item.complaintTime}" pattern="yyyy-MM-dd" />" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="complaintContent" value="${item.complaintContent}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="complaintStatus" value="${item.complaintStatus}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" name="processingContent" value="${item.processingContent}" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text" readonly="readonly" id="processingDate" name="processingDate" value="<fmt:formatDate value="${item.processingDate}" pattern="yyyy-MM-dd" />" class="form-control" />
+                  </td>
+                  <td>
+                    <input type="text"  name="userEvaluation" value="${item.userEvaluation}" class="form-control" />
+                  </td>
+                </tr>
                 <td>
-                  <input type="text" readonly="readonly" name="complaintTime" value="<fmt:formatDate value="${item.complaintTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                  <button type="submit"  class="btn btn-primary">提交评价</button>
                 </td>
-                <td>
-                  <input type="text" readonly="readonly" name="complaintContent" value="${item.complaintContent}" class="form-control" />
-                </td>
-                <td>
-                  <input type="text" readonly="readonly" name="complaintStatus" value="${item.complaintStatus}" class="form-control" />
-                </td>
-              </tr>
+              </form>
             </c:forEach>
             </tbody>
           </table>
@@ -364,5 +400,7 @@
 <script src="<%=request.getContextPath()%>/js/bootstrap-datepicker.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery-ui.js"></script>
 <script src="<%=request.getContextPath()%>/js/bootstrap.min.js"></script>
+
+
 </body>
 </html>

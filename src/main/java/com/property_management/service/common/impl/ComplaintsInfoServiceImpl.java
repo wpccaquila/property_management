@@ -24,6 +24,11 @@ public class ComplaintsInfoServiceImpl implements ComplaintsInfoService{
     }
 
     @Override
+    public int modifyUserEvaluationByComplaintId(String userEvaluation, Integer complaintId) {
+        return complaintsInfoMapper.modifyUserEvaluationByComplaintId(userEvaluation,complaintId);
+    }
+
+    @Override
     public int deleteByComplaintId(Integer complaintId) {
         return complaintsInfoMapper.deleteByComplaintId(complaintId);
     }

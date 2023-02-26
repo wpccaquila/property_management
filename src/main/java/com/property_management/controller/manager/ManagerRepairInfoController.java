@@ -1,6 +1,7 @@
 package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
+import com.property_management.pojo.ComplaintsInfo;
 import com.property_management.pojo.RepairInfo;
 import com.property_management.service.common.RepairInfoService;
 import com.property_management.service.page.ManagerRepairInfoPageService;
@@ -126,14 +127,25 @@ public class ManagerRepairInfoController {
     @RequestMapping("/upDataRepairInfoById")
     public String upDataRepairInfoById(HttpServletRequest request,int repairId,String repairType,
                                        String repairContent,String repairCreateTime, String ownerName,
-                                       String ownerPhone,String repairState,String repairProcessor) throws ParseException {
+                                       String ownerPhone,String repairState,String repairProcessor,
+                                       String processingContent,String repairTime,String repairAppraise) throws ParseException {
         // 转换时间格式
         SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
         Date repairCreateTimeDate=dateFormat.parse(repairCreateTime);
+        // 若处理时间repairTime为空，则为null不处理。若不为空，则转换成时间格式。
+        if (repairTime != null && !repairTime.equals("")){
+            Date repairTimeDate=dateFormat.parse(repairTime);
+            repairInfoService.modifyRepairByRepairId(new RepairInfo(repairId,repairType,
+                    repairContent,repairCreateTimeDate,
+                    ownerName,ownerPhone,repairState,repairProcessor,
+                    processingContent,repairTimeDate,repairAppraise));
+        }else {
+            repairInfoService.modifyRepairByRepairId(new RepairInfo(repairId,repairType,
+                    repairContent,repairCreateTimeDate,
+                    ownerName,ownerPhone,repairState,repairProcessor,
+                    processingContent,null,repairAppraise));
+        }
 
-        repairInfoService.modifyRepairByRepairId(new RepairInfo(repairId,repairType,
-                                                    repairContent,repairCreateTimeDate,
-                                                    ownerName,ownerPhone,repairState,repairProcessor));
         return pageManagerOwnerInformation(request);
     }
 
@@ -148,8 +160,6 @@ public class ManagerRepairInfoController {
         if(ownerName!=null&&ownerName!=""){
             List<RepairInfo> repairInfoListByType = repairInfoService.searchAllByOwnerName(ownerName);
             request.setAttribute("repairInfoListByType",repairInfoListByType);
-
-
             return "manager/manager_repair_information/manager_repair_select_information_page";
         }
         return pageManagerOwnerInformation(request);

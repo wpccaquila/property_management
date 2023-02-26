@@ -80,7 +80,18 @@ public class UserHomeController {
     @RequestMapping("/addRepairInfo")
     public String addRepairInfo(String ownerPhone,String ownerName,String repairType,String repairContent,HttpServletRequest request){
         Date repairTime = new Date();
-        repairInfoService.addRepair(new RepairInfo(repairType,repairContent,repairTime,ownerName,ownerPhone,"未处理","老李"));
+        repairInfoService.addRepair(new RepairInfo(repairType,repairContent,repairTime,ownerName,ownerPhone,"未处理","老李","",null,""));
+        return currentUserHomeInfo(request,ownerPhone);
+    }
+
+
+    /**
+     * 提交用户报修评价
+     * @return
+     */
+    @RequestMapping("/submitRepairAppraise")
+    public String submitRepairAppraise (String ownerPhone,int cuRepairId,String repairAppraise,HttpServletRequest request){
+        repairInfoService.modifyRepairAppraiseByRepairId(repairAppraise, cuRepairId);
         return currentUserHomeInfo(request,ownerPhone);
     }
 
@@ -94,7 +105,17 @@ public class UserHomeController {
     public String addComplaintInfo(HttpServletRequest request,String ownerPhone,String ownerName,
                                    String complaintContent){
         Date complaintTime = new Date();
-        complaintsInfoMapper.addAll(new ComplaintsInfo(complaintTime,complaintContent,ownerName,ownerPhone,"未处理"));
+        complaintsInfoMapper.addAll(new ComplaintsInfo(complaintTime,complaintContent,ownerName,ownerPhone,"未处理","","",null));
+        return currentUserHomeInfo(request,ownerPhone);
+    }
+
+    /**
+     * 提交用户投诉反馈评价
+     * @return
+     */
+    @RequestMapping("/submitComplaintAppraise")
+    public String submitComplaintAppraise (String ownerPhone,int cuComplaintId,String userEvaluation,HttpServletRequest request){
+        complaintsInfoMapper.modifyUserEvaluationByComplaintId(userEvaluation, cuComplaintId);
         return currentUserHomeInfo(request,ownerPhone);
     }
 

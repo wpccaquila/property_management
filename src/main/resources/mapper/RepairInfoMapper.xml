@@ -13,23 +13,26 @@
             <result property="ownerPhone" column="owner_phone" jdbcType="VARCHAR"/>
             <result property="repairState" column="repair_state" jdbcType="VARCHAR"/>
             <result property="repairProcessor" column="repair_processor" jdbcType="VARCHAR"/>
+            <result property="processingContent" column="processing_content" jdbcType="VARCHAR"/>
+            <result property="repairTime" column="repair_time" jdbcType="TIMESTAMP"/>
+            <result property="repairAppraise" column="repair_appraise" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         repair_id,repair_type,repair_content,
         repair_create_time,owner_name,owner_phone,repair_state,
-        repair_processor
+        repair_processor,processing_content,repair_time,repair_appraise
     </sql>
     <insert id="addRepair">
         insert into repair_info
         (repair_id, repair_type, repair_content,
          repair_create_time, owner_name,owner_phone, repair_state,
-         repair_processor)
+         repair_processor,processing_content,repair_time,repair_appraise)
         values (#{repairId,jdbcType=NUMERIC}, #{repairType,jdbcType=VARCHAR}, #{repairContent,jdbcType=VARCHAR},
                 #{repairCreateTime,jdbcType=TIMESTAMP}, #{ownerName,jdbcType=VARCHAR},#{ownerPhone,jdbcType=VARCHAR},
-                #{repairState,jdbcType=VARCHAR},
-                #{repairProcessor,jdbcType=VARCHAR})
-
+                #{repairState,jdbcType=VARCHAR},#{repairProcessor,jdbcType=VARCHAR},#{processingContent,jdbcType=VARCHAR},
+                #{repairTime,jdbcType=TIMESTAMP},#{repairAppraise,jdbcType=VARCHAR}
+                )
     </insert>
     <delete id="deleteByRepairId">
         delete
@@ -72,7 +75,10 @@
             owner_name=#{ownerName,jdbcType=VARCHAR},
             owner_phone=#{ownerPhone,jdbcType=VARCHAR},
             repair_state=#{repairState,jdbcType=VARCHAR},
-            repair_processor=#{repairProcessor,jdbcType=VARCHAR}
+            repair_processor=#{repairProcessor,jdbcType=VARCHAR},
+            processing_content=#{processingContent,jdbcType=VARCHAR},
+            repair_time=#{repairTime,jdbcType=TIMESTAMP},
+            repair_appraise=#{repairAppraise,jdbcType=VARCHAR}
         where repair_id=#{repairId,jdbcType=NUMERIC}
     </update>
 
@@ -91,4 +97,11 @@
         where
         owner_phone = #{ownerPhone,jdbcType=VARCHAR}
     </select>
+
+
+    <update id="modifyRepairAppraiseByRepairId">
+        update repair_info
+        set repair_appraise = #{repairAppraise,jdbcType=VARCHAR}
+        where repair_id = #{repairId,jdbcType=NUMERIC}
+    </update>
 </mapper>

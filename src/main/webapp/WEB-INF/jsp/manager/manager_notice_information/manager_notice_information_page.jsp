@@ -69,6 +69,7 @@
                                         </td>
                                         <td>
                                             <a href="<%=request.getContextPath()%>/forwardUpDataNoticeInfoPage?noticeId=${item.noticeId}&noticeStartLineNo=${noticeStartLineNo}"  class="btn btn-primary">修改公告</a>
+                                            <br>
                                             <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deleteNoticeInfoById?noticeId=${item.noticeId}')">删除公告</a>
                                         </td>
                                     </tr>

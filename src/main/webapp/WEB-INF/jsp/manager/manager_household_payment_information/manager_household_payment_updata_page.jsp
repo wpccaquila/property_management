@@ -69,7 +69,7 @@
                                             <input type="text"  name="paymentMethod" value="${householdPaymentById.paymentMethod}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  id="paymentTime" name="paymentTime" value="<fmt:formatDate value="${householdPaymentById.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                                            <input type="text"  id="paymentTime" name="paymentTime" value="<fmt:formatDate value="${householdPaymentById.paymentTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                                         </td>
                                         <td>
                                             <div class="form-check form-check-inline ">

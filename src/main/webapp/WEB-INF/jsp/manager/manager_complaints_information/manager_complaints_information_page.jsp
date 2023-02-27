@@ -38,11 +38,11 @@
                                 <tr>
                                     <th style="width: 70px">id</th>
                                     <th style="width: 120px">投诉时间</th>
-                                    <th style="width: 350px">投诉内容</th>
+                                    <th style="width: 280px">投诉内容</th>
                                     <th style="width: 100px">投诉人姓名</th>
                                     <th>投诉人电话</th>
                                     <th style="width: 100px">投诉状态</th>
-                                    <th>处理内容</th>
+                                    <th style="width: 150px">处理内容</th>
                                     <th>处理时间</th>
                                     <th>用户反馈</th>
                                 </tr>

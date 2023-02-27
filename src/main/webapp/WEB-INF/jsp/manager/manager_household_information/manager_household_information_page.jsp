@@ -46,14 +46,14 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 70px">id</th>
-                                    <th>姓名</th>
-                                    <th>身份证号</th>
+                                    <th style="width: 100px">姓名</th>
+                                    <th style="width: 180px">身份证号</th>
                                     <th>出生日期</th>
                                     <th style="width: 70px">性别</th>
                                     <th>手机号</th>
                                     <th>入住时间</th>
-                                    <th style="width: 70px">户型</th>
-                                    <th>地址</th>
+                                    <th style="width: 60px">户型</th>
+                                    <th style="width: 150px">地址</th>
                                 </tr>
                                 </thead>
 

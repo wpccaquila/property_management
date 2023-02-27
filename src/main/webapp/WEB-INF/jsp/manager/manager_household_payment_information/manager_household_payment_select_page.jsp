@@ -81,7 +81,7 @@
                                             <input type="text" readonly="readonly" name="paymentMethod" value="${item.paymentMethod}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                                            <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="paymentStatus" value="${item.paymentStatus}" class="form-control" />

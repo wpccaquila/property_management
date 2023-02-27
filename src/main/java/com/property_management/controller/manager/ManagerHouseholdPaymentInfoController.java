@@ -118,12 +118,14 @@ public class ManagerHouseholdPaymentInfoController {
      */
     @RequestMapping("updataPaymentInfoById")
     public String updataPaymentInfoById(HttpServletRequest request,int propertyPaymentId, String paymentType,BigDecimal paymentAmount, String paymentMethod, String paymentTime, String paymentStatus) throws ParseException {
-
-        // 转换时间格式
-        SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
-        Date paymentTimeDate=dateFormat.parse(paymentTime);
-
-        householdPaymentInfoService.modifyHouseholdPaymentInfo(new HouseholdPaymentInfo(propertyPaymentId,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
+        if(!paymentTime.equals("") && paymentTime != null){
+            // 转换时间格式
+            SimpleDateFormat dateFormat=new SimpleDateFormat("yy-MM-dd");
+            Date paymentTimeDate=dateFormat.parse(paymentTime);
+            householdPaymentInfoService.modifyHouseholdPaymentInfo(new HouseholdPaymentInfo(propertyPaymentId,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
+        }else {
+            householdPaymentInfoService.modifyHouseholdPaymentInfo(new HouseholdPaymentInfo(propertyPaymentId,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,null,paymentStatus));
+        }
         return pageManagerHouseholdPaymentInfo(request);
     }
 
@@ -175,11 +177,16 @@ public class ManagerHouseholdPaymentInfoController {
                                         String ownerPhone, String ownerName,String paymentType,
                                         BigDecimal paymentAmount, String paymentMethod,
                                         String paymentTime, String paymentStatus) throws ParseException {
-        // 转换时间格式
-        SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        Date paymentTimeDate=dateFormat.parse(paymentTime);
 
-        householdPaymentInfoService.addAll(new HouseholdPaymentInfo(ownerPhone,ownerName,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
+        if(!paymentTime.equals("") && paymentTime != null){
+            // 转换时间格式
+            SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+            Date paymentTimeDate=dateFormat.parse(paymentTime);
+            householdPaymentInfoService.addAll(new HouseholdPaymentInfo(ownerPhone,ownerName,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,paymentTimeDate,paymentStatus));
+
+        }else {
+            householdPaymentInfoService.addAll(new HouseholdPaymentInfo(ownerPhone,ownerName,paymentType,new BigDecimal(String.valueOf(paymentAmount)),paymentMethod,null,paymentStatus));
+        }
         return pageManagerHouseholdPaymentInfo(request);
     }
 

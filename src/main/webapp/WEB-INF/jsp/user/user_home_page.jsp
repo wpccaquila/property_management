@@ -75,7 +75,7 @@
     </div>
 
 <%--   各类信息显示按钮--%>
-    <div class="col-sm-11">
+    <div class="col-sm-12">
       <a class="btn btn-primary btn-block my-3" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
         物业通知
       </a>
@@ -84,10 +84,10 @@
           <table class="table">
             <thead>
             <tr>
-              <th>公告标题</th>
+              <th style="width: 200px">公告标题</th>
               <th style="width: 350px">公告内容</th>
-              <th>发布时间</th>
-              <th style="width: 120px">发布人</th>
+              <th style="width: 150px">发布时间</th>
+              <th style="width: 150px">发布人</th>
             </tr>
             </thead>
             <tbody>
@@ -155,14 +155,14 @@
           <table class="table">
             <thead>
             <tr>
-              <th>姓名</th>
-              <th>身份证号</th>
+              <th style="width: 100px">姓名</th>
+              <th style="width: 180px">身份证号</th>
               <th>出生日期</th>
-              <th>性别</th>
+              <th style="width: 70px">性别</th>
               <th>手机号</th>
               <th>入住时间</th>
-              <th>户型</th>
-              <th>地址</th>
+              <th style="width: 60px">户型</th>
+              <th style="width: 150px">地址</th>
             </tr>
             </thead>
             <tbody>
@@ -224,7 +224,7 @@
                   <input type="text" readonly="readonly" name="paymentMethod" value="${item.paymentMethod}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                  <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                 </td>
                 <td>
                   <input type="text" readonly="readonly" name="paymentStatus" value="${item.paymentStatus}" class="form-control" />
@@ -244,14 +244,14 @@
            <table class="table">
              <thead>
               <tr>
-                <th>报修类型</th>
-                <th>报修内容</th>
-                <th>报修时间</th>
-                <th>报修状态</th>
-                <th>维修人</th>
-                <th>维修内容</th>
-                <th>维修时间</th>
-                <th>用户评价</th>
+                <th style="width: 150px">报修类型</th>
+                <th style="width: 250px">报修内容</th>
+                <th style="width: 150px">报修时间</th>
+                <th style="width: 110px">状态</th>
+                <th style="width: 90px">维修人</th>
+                <th style="width: 150px">维修内容</th>
+                <th style="width: 120px">维修时间</th>
+                <th style="width: 120px">用户评价</th>
               </tr>
               </thead>
               <tbody>
@@ -278,13 +278,13 @@
                     <input type="text" readonly="readonly" name="processingContent" value="${item.processingContent}" class="form-control" />
                   </td>
                   <td>
-                    <input type="text" readonly="readonly" name="repairTime" value="${item.repairTime}" class="form-control" />
+                    <input type="text" readonly="readonly" name="repairTime" value="<fmt:formatDate value="${item.repairTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
                   </td>
                   <td>
                     <input type="text"  name="repairAppraise" value="${item.repairAppraise}" class="form-control" />
                   </td>
                   <td>
-                    <button type="submit" id="subRepairAppraise" class="btn btn-primary">提交评价</button>
+                    <button style="width: 70px" type="submit" class="btn btn-primary">提交</button>
                   </td>
                 </tr>
               </form>
@@ -297,7 +297,7 @@
             <table class="table">
               <thead>
               <tr>
-                <th>报修类型</th>
+                <th style="width: 150px">报修类型</th>
                 <th>报修内容</th>
               </tr>
               </thead>
@@ -328,12 +328,12 @@
           <table class="table">
             <thead>
             <tr>
-              <th>投诉时间</th>
-              <th>投诉内容</th>
-              <th>投诉状态</th>
-              <th>处理内容</th>
-              <th>处理时间</th>
-              <th>用户反馈</th>
+              <th style="width: 150px">投诉时间</th>
+              <th style="width: 280px">投诉内容</th>
+              <th style="width: 100px">投诉状态</th>
+              <th style="width: 150px">处理内容</th>
+              <th style="width: 150px">处理时间</th>
+              <th style="width: 120px">用户反馈</th>
             </tr>
             </thead>
             <tbody>
@@ -359,10 +359,11 @@
                   <td>
                     <input type="text"  name="userEvaluation" value="${item.userEvaluation}" class="form-control" />
                   </td>
+                  <td>
+                    <button style="width: 80px" type="submit"  class="btn btn-primary form-control">提交</button>
+                  </td>
                 </tr>
-                <td>
-                  <button type="submit"  class="btn btn-primary">提交评价</button>
-                </td>
+
               </form>
             </c:forEach>
             </tbody>

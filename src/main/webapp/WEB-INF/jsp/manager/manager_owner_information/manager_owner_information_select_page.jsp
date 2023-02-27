@@ -74,6 +74,7 @@
                                         </td>
                                         <td>
                                             <a href="<%=request.getContextPath()%>/forwardUpdateOwner?ownerId=${item.owner_id}&ownerStartLineNo=${ownerStartLineNo}"  class="btn btn-primary">修改数据</a>
+                                            <br>
                                             <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/delete_manager_owner_information?owner_id=${item.owner_id}')">删除用户</a>
                                         </td>
                                     </tr>

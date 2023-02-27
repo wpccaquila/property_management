@@ -42,7 +42,7 @@
                                     <th style="width: 100px">投诉人姓名</th>
                                     <th>投诉人电话</th>
                                     <th style="width: 100px">投诉状态</th>
-                                    <th>处理内容</th>
+                                    <th style="width: 150px">处理内容</th>
                                     <th>处理时间</th>
                                     <th>用户反馈</th>
                                 </tr>

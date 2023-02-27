@@ -38,15 +38,15 @@
                                 <tr>
                                     <th style="width: 70px">id</th>
                                     <th style="width: 100px">报修类型</th>
-                                    <th>报修内容</th>
-                                    <th>报修时间</th>
+                                    <th style="width: 250px">报修内容</th>
+                                    <th style="width: 100px">报修时间</th>
                                     <th style="width: 100px">报修人</th>
-                                    <th>报修人电话</th>
+                                    <th style="width: 120px">报修人电话</th>
                                     <th style="width: 100px">报修状态</th>
-                                    <th style="width: 100px">维修人</th>
-                                    <th>维修内容</th>
-                                    <th>维修时间</th>
-                                    <th>用户评价</th>
+                                    <th style="width: 80px">维修人</th>
+                                    <th style="width: 150px">维修内容</th>
+                                    <th style="width: 100px">维修时间</th>
+                                    <th style="width: 100px">用户评价</th>
                                 </tr>
                                 </thead>
 

@@ -3,7 +3,6 @@ package com.property_management.service.common.impl;
 import com.property_management.mapper.RepairInfoMapper;
 import com.property_management.pojo.RepairInfo;
 import com.property_management.service.common.RepairInfoService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

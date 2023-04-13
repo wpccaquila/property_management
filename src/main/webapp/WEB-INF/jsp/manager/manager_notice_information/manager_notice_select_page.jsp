@@ -7,8 +7,8 @@
     <%@ include file="../manager_public_part/manager_head.jsp"%>
 </head>
 <body>
-    <%-- 静态包含顶部导航栏--%>
-    <%@ include file="../manager_public_part/manager_top.jsp"%>
+<%-- 静态包含顶部导航栏--%>
+<%@ include file="../manager_public_part/manager_top.jsp"%>
 
 
 <div class="container-fluid">
@@ -21,7 +21,7 @@
         </div>
         <div class="col-sm-10">
             <div class="panel panel-default">
-                <div class="panel-heading">公告信息管理</div>
+                <div class="panel-heading">输入公告信息标题</div>
                 <div class="panel-body">
                     <%-- 查询公告信息标题--%>
                     <form action="<%=request.getContextPath()%>/selectNoticeByTitle" method="post">
@@ -31,6 +31,7 @@
                         </div>
                         <input style="float:left;margin-left:200px;width:95px;" type="submit" class="btn btn-primary" value="查询"/>
                     </form>
+                    <input style="float:right;margin-right:15px;width:170px;" class="btn btn-primary" value="发布公告" onclick="window.location.href='<%=request.getContextPath()%>/forwardInsertNoticePage'" />
 
                     <div class="panel-body">
                         <form  method="post">
@@ -47,7 +48,7 @@
 
                                 <tbody>
 
-                                <c:forEach items="${householdInfoByNameList}" var="item" varStatus="status">
+                                <c:forEach items="${selectNoticeInfoByNameList}" var="item" varStatus="status">
                                     <tr>
                                         <td>
                                                 <%-- 是数据库中的行号，不是id号--%>
@@ -61,7 +62,7 @@
                                             <input type="text" readonly="readonly" name="noticeContent" value="${item.noticeContent}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" readonly="readonly" name="noticeCreateTime" value="<fmt:formatDate value="${item.noticeCreateTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
+                                            <input type="text" readonly="readonly" name="noticeCreateTime" value="<fmt:formatDate value="${item.noticeCreateTime}" pattern="yyyy-MM-dd" />" class="form-control" />
                                         </td>
                                         <td>
                                             <input type="text" readonly="readonly" name="noticeCreateUser" value="${item.noticeCreateUser}" class="form-control" />
@@ -76,22 +77,15 @@
                                 </tbody>
 
                             </table>
+                            <a href="<%=request.getContextPath()%>/PAGE-DEFAULT-Notice" class="btn btn-primary">返回</a>
                         </form>
                     </div>
-                    </div>
-
-                <%-- 页脚分页按钮--%>
-                <div class="text-center">
-                    <ul class="pagination">
-                        <%-- 静态包含分页按钮--%>
-                        <%@ include file="notice_paging_button.jsp"%>
-                    </ul>
                 </div>
 
-                </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 </body>
 

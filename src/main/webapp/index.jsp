@@ -47,7 +47,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input class="btn btn-lg btn-primary btn-block" type="submit" value="登录">
+                                    <input class="btn btn-lg btn-primary btn-block" type="submit"  id="submit" value="登录">
                                 </div>
                                 <div class="form-group">
                                     <a href="<%=request.getContextPath()%>/register.jsp"><input class="btn btn-lg btn-success btn-block" type="button" value="注册"></a>
@@ -71,5 +71,25 @@
     <%
         }
     %>
+
+
+
+<script>
+    window.onload=function(){
+        document.getElementById("submit").onclick=function(){
+            var owner_phone=document.getElementById("owner_phone").value;
+            var owner_password=document.getElementById("owner_password").value;
+            if(owner_phone==""||owner_password==""){
+                alert("请输入完整的信息后再提交！");
+                return "<%=request.getContextPath()%>/index.jsp";
+            }
+            if(isNaN(owner_phone)){
+                alert("手机号必须是数字！");
+                return "<%=request.getContextPath()%>/index.jsp";
+            }
+        }
+    }
+</script>
+
 </body>
 </html>

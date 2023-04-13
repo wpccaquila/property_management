@@ -29,7 +29,6 @@
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
-                                    <th style="width: 70px">id</th>
                                     <th>公告标题</th>
                                     <th style="width: 350px">公告内容</th>
                                     <th>发布时间</th>
@@ -38,7 +37,6 @@
                                 </thead>
 
                                 <tbody>
-
                                     <tr>
                                         <td>
                                             <input type="text" name="noticeTitle"  class="form-control" />

@@ -35,12 +35,12 @@
         where notice_id = #{noticeId,jdbcType=NUMERIC}
     </delete>
 
-    <select id="selectAllByNoticeTitleName"
-            resultMap="BaseResultMap"
-            parameterType="String">
+    <select id="selectAllByNoticeTitleName" resultMap="BaseResultMap" parameterType="String">
         select * from notice_info
         where notice_title like concat('%',#{noticeTitle},'%')
     </select>
+
+
 
     <update id="modifyNoticeInfo" parameterType="com.property_management.pojo.NoticeInfo">
         update notice_info
@@ -74,4 +74,6 @@
     <select id="findFourLatestNotice" resultMap="BaseResultMap">
         select * from notice_info order by notice_create_time desc limit 4
     </select>
+
+
 </mapper>

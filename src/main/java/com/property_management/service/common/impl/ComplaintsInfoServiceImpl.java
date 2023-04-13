@@ -14,7 +14,7 @@ import java.util.List;
 * @createDate 2023-02-06 10:29:39
 */
 @Service
-public class ComplaintsInfoServiceImpl implements ComplaintsInfoService{
+public class ComplaintsInfoServiceImpl implements ComplaintsInfoService, ComplaintsInfoMapper {
     @Resource
     ComplaintsInfoMapper complaintsInfoMapper;
 

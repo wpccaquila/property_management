@@ -1,6 +1,7 @@
 package com.property_management.service.common;
 
 
+import com.property_management.mapper.RepairInfoMapper;
 import com.property_management.pojo.RepairInfo;
 import org.apache.ibatis.annotations.Param;
 
@@ -87,6 +88,6 @@ public interface RepairInfoService {
      * @param ownerName
      * @return
      */
-    List<RepairInfo> searchAllByOwnerName(@Param("ownerName") String ownerName);
+    List<RepairInfo> searchAllByOwnerName(String ownerName);
 
 }

@@ -9,7 +9,7 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 
+ *
  * @TableName repair_info
  */
 @TableName(value ="repair_info")
@@ -46,7 +46,7 @@ public class RepairInfo implements Serializable {
     }
 
     /**
-     * 
+     *
      */
     @TableId(type = IdType.AUTO)
     private Integer repairId;

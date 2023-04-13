@@ -114,7 +114,7 @@ public class ManagerOwnerInfoController {
      */
     @RequestMapping("/selectOwnerInfoByName")
     public String selectOwnerInfoByName(HttpServletRequest request,String ownerName){
-        if(ownerName!=null&&ownerName!=""){
+        if(ownerName != null && !ownerName.trim().isEmpty()){
             List<OwnerInfo> ownerInfoByOwnerNameList = ownerInfoService.queryOwnerByName(ownerName);
             request.setAttribute("ownerInfoByOwnerNameList",ownerInfoByOwnerNameList);
             return "manager/manager_owner_information/manager_owner_information_select_page";

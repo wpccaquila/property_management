@@ -42,7 +42,8 @@ public interface NoticeInfoMapper {
      * @param noticeTitle
      * @return
      */
-    List<HouseholdInfo> selectAllByNoticeTitleName(@Param("noticeTitle") String noticeTitle);
+    List<NoticeInfo> selectAllByNoticeTitleName(@Param("noticeTitle") String noticeTitle);
+
 
     /**
      * 修改公告信息

@@ -143,16 +143,19 @@ public class ManagerNoticeInfoController {
     }
 
     /**
-     * 通过姓名查询
+     * 通过标题查询
      * @param request
      * @param noticeTitle
      * @return
      */
-    @RequestMapping("selectNoticeByTitle")
+    @RequestMapping("/selectNoticeByTitle")
     public String selectNoticeByTitle(HttpServletRequest request, String noticeTitle){
-        List<HouseholdInfo> householdInfoByNameList = noticeInfoService.selectAllByNoticeTitleName(noticeTitle);
-        request.setAttribute("householdInfoByNameList",householdInfoByNameList);
-        return "manager/manager_notice_information/manager_notice_select_page";
+        if(noticeTitle != null && !noticeTitle.trim().isEmpty()){
+            List<NoticeInfo> selectNoticeInfoByNameList = noticeInfoService.selectAllByNoticeTitleName(noticeTitle);
+            request.setAttribute("selectNoticeInfoByNameList",selectNoticeInfoByNameList);
+            return "manager/manager_notice_information/manager_notice_select_page";
+        }
+        return pageManagerNoticeInformation(request);
     }
 
     /**

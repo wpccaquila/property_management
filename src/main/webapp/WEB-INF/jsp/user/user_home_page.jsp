@@ -292,8 +292,23 @@
               </tbody>
             </table>
 
+<%--        检查报修内容是否为空--%>
+          <script type="text/javascript">
+            function checkFormIsNull(){
+              if(document.repairFormSub.repairType.value==""){
+                alert("请输入报修类型！");
+                document.repairFormSub.repairType.focus();
+                return false;
+              }else if(document.repairFormSub.repairContent.value==""){
+                alert("请输入报修内容！");
+                document.repairFormSub.repairContent.focus();
+                return false;
+              }
+              return true;
+            }
+          </script>
           <%-- 提交报修表单--%>
-          <form  method="post" action="<%=request.getContextPath()%>/addRepairInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
+          <form  method="post" name="repairFormSub" onsubmit="return checkFormIsNull()" action="<%=request.getContextPath()%>/addRepairInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
             <table class="table">
               <thead>
               <tr>
@@ -368,8 +383,20 @@
             </c:forEach>
             </tbody>
           </table>
+
+            <%-- 检查投诉内容是否为空--%>
+            <script type="text/javascript">
+              function checkComplaintFormIsNull(){
+                if(document.complaintFormSub.complaintContent.value==""){
+                  alert("请输入投诉内容！");
+                  document.complaintFormSub.complaintContent.focus();
+                  return false;
+                }
+                return true;
+              }
+            </script>
             <%-- 提交投诉表单--%>
-            <form  method="post" action="<%=request.getContextPath()%>/addComplaintInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
+            <form  method="post" name="complaintFormSub" onsubmit="return checkComplaintFormIsNull()" action="<%=request.getContextPath()%>/addComplaintInfo?ownerName=${currentOwnerInfo.owner_name}&ownerPhone=${currentOwnerInfo.owner_phone}">
               <table class="table">
                 <thead>
                 <tr>
@@ -395,6 +422,8 @@
     </div>
   </div>
 </div>
+
+
 <script src="<%=request.getContextPath()%>/js/jquery-3.4.1.slim.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/popper.min.js"></script>
 <script src="<%=request.getContextPath()%>/js/jquery.js"></script>

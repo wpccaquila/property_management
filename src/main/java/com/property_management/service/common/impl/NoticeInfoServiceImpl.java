@@ -53,7 +53,7 @@ public class NoticeInfoServiceImpl implements NoticeInfoService{
     }
 
     @Override
-    public List<HouseholdInfo> selectAllByNoticeTitleName(String noticeTitle) {
+    public List<NoticeInfo> selectAllByNoticeTitleName(String noticeTitle) {
         return noticeInfoMapper.selectAllByNoticeTitleName(noticeTitle);
     }
 

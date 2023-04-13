@@ -1,6 +1,7 @@
 package com.property_management.service.page;
 
 
+import com.property_management.mapper.RepairInfoMapper;
 import com.property_management.pojo.RepairInfo;
 
 import java.util.List;
@@ -8,7 +9,7 @@ import java.util.List;
 /**
  * 使用PageHelper 插件实现分页功能
  */
-public interface ManagerRepairInfoPageService {
+public interface ManagerRepairInfoPageService  {
 
 
     /**

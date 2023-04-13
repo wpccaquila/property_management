@@ -53,7 +53,7 @@ public interface NoticeInfoService {
      * @param noticeTitle
      * @return
      */
-    List<HouseholdInfo> selectAllByNoticeTitleName(String noticeTitle);
+    List<NoticeInfo> selectAllByNoticeTitleName(String noticeTitle);
 
     /**
      * 修改公告信息

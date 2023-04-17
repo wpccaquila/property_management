@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.property_management.mapper.BuildingInfoMapper">
+
+    <resultMap id="BaseResultMap" type="com.property_management.pojo.BuildingInfo">
+            <id property="buildingId" column="building_id" jdbcType="INTEGER"/>
+            <result property="buildingNum" column="building_num" jdbcType="VARCHAR"/>
+            <result property="unitNum" column="unit_num" jdbcType="VARCHAR"/>
+            <result property="roomNum" column="room_num" jdbcType="VARCHAR"/>
+            <result property="ownerName" column="owner_name" jdbcType="VARCHAR"/>
+            <result property="ownerPhone" column="owner_phone" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        building_id,building_num,unit_num,
+        room_num,owner_name,owner_phone
+    </sql>
+    <select id="selectAllByBuildingId" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from building_info
+        where
+        building_id = #{buildingId,jdbcType=NUMERIC}
+    </select>
+    <delete id="deleteByBuildingId">
+        delete
+        from building_info
+        where building_id = #{buildingId,jdbcType=NUMERIC}
+    </delete>
+    <select id="selectAllByBuildingNumAndUnitNumAndRoomNum" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from building_info
+        where
+        building_num = #{buildingNum,jdbcType=VARCHAR}
+        AND unit_num = #{unitNum,jdbcType=VARCHAR}
+        AND room_num = #{roomNum,jdbcType=VARCHAR}
+    </select>
+
+
+    <update id="updateBuildingInfo" parameterType="com.property_management.pojo.BuildingInfo">
+        update building_info
+        set building_num = #{buildingNum,jdbcType=VARCHAR},
+            unit_num     = #{unitNum,jdbcType=VARCHAR},
+            room_num     = #{roomNum,jdbcType=VARCHAR},
+            owner_name   = #{ownerName,jdbcType=VARCHAR},
+            owner_phone  = #{ownerPhone,jdbcType=VARCHAR}
+        where building_id = #{buildingId,jdbcType=NUMERIC}
+    </update>
+
+    <select id="getBuildingInfoByPage" resultMap="BaseResultMap">
+        select * from building_info limit #{offset}, #{pageSize}
+    </select>
+
+    <select id="selectBuildingInfoCount" resultType="int">
+        SELECT COUNT(*) FROM building_info;
+    </select>
+
+
+    <insert id="addAll">
+        insert into building_info
+        (building_id, building_num, unit_num,
+         room_num, owner_name, owner_phone)
+        values (#{buildingId,jdbcType=NUMERIC}, #{buildingNum,jdbcType=VARCHAR}, #{unitNum,jdbcType=VARCHAR},
+                #{roomNum,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, #{ownerPhone,jdbcType=VARCHAR})
+
+    </insert>
+
+
+</mapper>

@@ -119,6 +119,38 @@ public class UserHomeController {
         return currentUserHomeInfo(request,ownerPhone);
     }
 
+    /**
+     * 跳转到缴费页面
+     * @return
+     */
+    @RequestMapping("/forwardUpDataPaymentState")
+    public String forwardUpDataPaymentState(HttpServletRequest request,int propertyPaymentId){
+        // 跳转的同时储存id值
+        session.setAttribute("statePropertyPaymentId",propertyPaymentId);
+        return "forward:/jiaoFei.jsp";
+    }
+
+
+    /**
+     * 二维码缴费完成，修改缴费信息
+     * @param request
+     * @return
+     */
+    @RequestMapping("/upDataPaymentState")
+    public String upDataPaymentState(HttpServletRequest request){
+        // 取出域中的id值
+        int statePropertyPaymentId = (int) session.getAttribute("statePropertyPaymentId");
+        // 通过id号码查询用户信息
+        HouseholdPaymentInfo householdPaymentInfo = householdPaymentInfoService.selectAllByPropertyPaymentId(statePropertyPaymentId);
+        // 获取现在的时间
+        Date currentDate = new Date();
+        // 修改支付信息
+        householdPaymentInfoService.modifyHouseholdPaymentInfo(new HouseholdPaymentInfo(statePropertyPaymentId,householdPaymentInfo.getPaymentType(),
+                householdPaymentInfo.getPaymentAmount(),"支付宝",currentDate,"已支付"));
+
+        return currentUserHomeInfo(request,householdPaymentInfo.getOwnerPhone());
+    }
+
 
 
 

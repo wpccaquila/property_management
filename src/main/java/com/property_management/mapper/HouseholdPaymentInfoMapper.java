@@ -21,6 +21,14 @@ public interface HouseholdPaymentInfoMapper {
     List<HouseholdPaymentInfo> selectAll();
 
     /**
+     * 修改状态为已支付
+     * @param paymentStatus
+     * @return
+     */
+    int updatePaymentStatus(@Param("paymentStatus") String paymentStatus,@Param("propertyPaymentId") Integer propertyPaymentId);
+
+
+    /**
      * ID号查询
      * @param propertyPaymentId
      * @return

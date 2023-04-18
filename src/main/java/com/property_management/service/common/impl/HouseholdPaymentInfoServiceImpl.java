@@ -26,6 +26,11 @@ public class HouseholdPaymentInfoServiceImpl implements HouseholdPaymentInfoServ
     }
 
     @Override
+    public int updatePaymentStatus(String paymentStatus, Integer propertyPaymentId) {
+        return householdPaymentInfoMapper.updatePaymentStatus(paymentStatus,propertyPaymentId);
+    }
+
+    @Override
     public List<HouseholdPaymentInfo> selectAll() {
         return householdPaymentInfoMapper.selectAll();
     }

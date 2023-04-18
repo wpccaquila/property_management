@@ -89,7 +89,7 @@
                                         </td>
                                         <td>
                                             <a href="<%=request.getContextPath()%>/forwardUpdateHouseholdPaymentPage?propertyPaymentId=${item.propertyPaymentId}&householdPaymentStartLineNo=${householdPaymentStartLineNo}"  class="btn btn-primary">修改数据</a>
-                                            <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deletePaymentInfoById?propertyPaymentId=${item.propertyPaymentId}')">删除用户</a>
+                                            <a class="btn btn-primary"  href="javascript:deleteData('<%=request.getContextPath()%>/deletePaymentInfoById?propertyPaymentId=${item.propertyPaymentId}')">删除数据</a>
                                         </td>
                                     </tr>
                                 </c:forEach>

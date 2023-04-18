@@ -46,8 +46,10 @@
                                 <th>楼房</th>
                                 <th>单元</th>
                                 <th>房间</th>
+                                <th>户型</th>
                                 <th>住房人</th>
                                 <th>住房人电话</th>
+                                <th>发起缴费</th>
                             </tr>
                             </thead>
 
@@ -70,10 +72,16 @@
                                         <input type="text" readonly="readonly" name="roomNum" value="${item.roomNum}" class="form-control" />
                                     </td>
                                     <td>
+                                        <input type="text" readonly="readonly" name="roomNum" value="${item.householdHouseType}" class="form-control" />
+                                    </td>
+                                    <td>
                                         <input type="text" readonly="readonly" name="ownerName" value="${item.ownerName}" class="form-control" />
                                     </td>
                                     <td>
                                         <input type="text" readonly="readonly" name="ownerPhone" value="${item.ownerPhone}" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <a href="<%=request.getContextPath()%>/forwardBuildingInsertPayment?buildingId=${item.buildingId}" class="btn btn-primary" >发起缴费</a>
                                     </td>
 
                                         <td>

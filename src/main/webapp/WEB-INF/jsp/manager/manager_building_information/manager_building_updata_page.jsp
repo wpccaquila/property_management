@@ -39,6 +39,7 @@
                                     <th>楼房</th>
                                     <th>单元</th>
                                     <th>房间</th>
+                                    <th>户型</th>
                                     <th>住房人</th>
                                     <th>住房人电话</th>
                                 </tr>
@@ -55,6 +56,9 @@
                                     </td>
                                     <td>
                                         <input type="text" name="roomNum" value="${buildingInfo.roomNum}" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <input type="text" name="householdHouseType" value="${buildingInfo.householdHouseType}" class="form-control" />
                                     </td>
                                     <td>
                                         <input type="text" name="ownerName" value="${buildingInfo.ownerName}" class="form-control" />

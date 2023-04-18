@@ -209,6 +209,7 @@
               <th>缴费方式</th>
               <th>缴费时间</th>
               <th>缴费状态</th>
+              <th style="width: 100px;">点击缴费</th>
             </tr>
             </thead>
             <tbody>
@@ -224,10 +225,13 @@
                   <input type="text" readonly="readonly" name="paymentMethod" value="${item.paymentMethod}" class="form-control" />
                 </td>
                 <td>
-                  <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd" />" class="form-control" />
+                  <input type="text" readonly="readonly" name="paymentTime" value="<fmt:formatDate value="${item.paymentTime}" pattern="yyyy-MM-dd HH:mm:ss" />" class="form-control" />
                 </td>
                 <td>
                   <input type="text" readonly="readonly" name="paymentStatus" value="${item.paymentStatus}" class="form-control" />
+                </td>
+                <td>
+                  <a href="<%=request.getContextPath()%>/forwardUpDataPaymentState?propertyPaymentId=${item.propertyPaymentId}">点击缴费</a>
                 </td>
               </tr>
             </c:forEach>

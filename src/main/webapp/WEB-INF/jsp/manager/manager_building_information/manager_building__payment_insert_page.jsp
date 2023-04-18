@@ -28,11 +28,11 @@
         </div>
         <div class="col-sm-10">
             <div class="panel panel-default">
-                <div class="panel-heading">住户缴费信息管理</div>
+                <div class="panel-heading">发起缴费信息</div>
                 <div class="panel-body">
 
                     <div class="panel-body">
-                        <form  method="post" action="<%=request.getContextPath()%>/addBuildingInfo">
+                        <form  method="post" action="<%=request.getContextPath()%>/BuildingInsertPayment">
                             <table class="table table-bordered">
                                 <thead>
                                 <tr>
@@ -40,38 +40,43 @@
                                     <th>单元</th>
                                     <th>房间</th>
                                     <th>户型</th>
-                                    <th>住房人</th>
-                                    <th>住房人电话</th>
+                                    <th>住户姓名</th>
+                                    <th>住户手机号</th>
+                                    <th>缴费类型</th>
+                                    <th>缴费金额</th>
                                 </tr>
                                 </thead>
 
                                 <tbody>
-
                                     <tr>
                                         <td>
-                                            <input type="text" name="buildingNum"  class="form-control"/>
+                                            <input type="text" readonly="readonly" name="buildingNum" value="${buildingPaymentInfo.buildingNum}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="unitNum" class="form-control" />
+                                            <input type="text" readonly="readonly" name="unitNum" value="${buildingPaymentInfo.unitNum}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="roomNum"  class="form-control" />
+                                            <input type="text" readonly="readonly" name="roomNum"  value="${buildingPaymentInfo.roomNum}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="householdHouseType" class="form-control" />
+                                            <input type="text" readonly="readonly" name="householdHouseType" value="${buildingPaymentInfo.householdHouseType}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text" name="ownerName"class="form-control" />
+                                            <input type="text" readonly="readonly" name="ownerName" value="${buildingPaymentInfo.ownerName}" class="form-control" />
                                         </td>
                                         <td>
-                                            <input type="text"  name="ownerPhone" class="form-control" />
+                                            <input type="text" readonly="readonly" name="ownerPhone" value="${buildingPaymentInfo.ownerPhone}" class="form-control" />
                                         </td>
                                         <td>
-                                            <button type="submit" class="btn btn-primary">增加楼房信息</button>
+                                            <input type="text"name="paymentType"  class="form-control" />
                                         </td>
-
+                                        <td>
+                                            <input type="text"  name="paymentAmount" class="form-control" />
+                                        </td>
+                                        <td>
+                                            <button type="submit" class="btn btn-primary">增加缴费信息</button>
+                                        </td>
                                     </tr>
-
                                 </tbody>
 
                             </table>
@@ -86,7 +91,6 @@
     </div>
 </div>
 </body>
-
 
 
 

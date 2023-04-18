@@ -81,4 +81,9 @@
         where
         owner_phone = #{ownerPhone,jdbcType=VARCHAR}
     </select>
+    <update id="updatePaymentStatus">
+        update household_payment_info
+        set payment_status = #{paymentStatus,jdbcType=VARCHAR}
+        where property_payment_id=#{propertyPaymentId,jdbcType=INTEGER}
+    </update>
 </mapper>

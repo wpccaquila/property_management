@@ -2,15 +2,16 @@ package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
 import com.property_management.pojo.BuildingInfo;
-import com.property_management.pojo.ComplaintsInfo;
-import com.property_management.pojo.NoticeInfo;
+import com.property_management.pojo.HouseholdPaymentInfo;
 import com.property_management.service.common.BuildingInfoService;
+import com.property_management.service.common.HouseholdPaymentInfoService;
 import com.property_management.service.page.ManagerBuildingInfoPageService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.math.BigDecimal;
 import java.util.List;
 
 @Controller
@@ -100,11 +101,11 @@ public class ManagerBuildingInfoController {
      */
     @RequestMapping("/addBuildingInfo")
     public String addBuildingInfo(HttpServletRequest request, String buildingNum,String unitNum,
-                                  String roomNum, String ownerName, String ownerPhone){
+                                  String roomNum, String householdHouseType,String ownerName, String ownerPhone){
         if(ownerName != null&&!ownerName.trim().isEmpty()&&ownerPhone != null&&!ownerPhone.trim().isEmpty()){
-            buildingInfoService.addAll(new BuildingInfo(null,buildingNum,unitNum,roomNum,ownerName,ownerPhone));
+            buildingInfoService.addAll(new BuildingInfo(null,buildingNum,unitNum,roomNum,ownerName,ownerPhone,householdHouseType));
         }else {
-            buildingInfoService.addAll(new BuildingInfo(null,buildingNum,unitNum,roomNum,null,null));
+            buildingInfoService.addAll(new BuildingInfo(null,buildingNum,unitNum,roomNum,null,null,null));
         }
         return pageManagerBuildingInfoInformation(request);
     }
@@ -128,8 +129,8 @@ public class ManagerBuildingInfoController {
      */
     @RequestMapping("/upDataBuildingInfo")
     public String upDataBuildingInfo(HttpServletRequest request,int buildingId ,String buildingNum,String unitNum,
-                                  String roomNum, String ownerName, String ownerPhone){
-        buildingInfoService.updateBuildingInfo(new BuildingInfo(buildingId,buildingNum,unitNum,roomNum,ownerName,ownerPhone));
+                                  String roomNum, String ownerName, String ownerPhone,String householdHouseType){
+        buildingInfoService.updateBuildingInfo(new BuildingInfo(buildingId,buildingNum,unitNum,roomNum,ownerName,ownerPhone,householdHouseType));
         return pageManagerBuildingInfoInformation(request);
     }
 
@@ -145,6 +146,33 @@ public class ManagerBuildingInfoController {
             request.setAttribute("selectBuildingInfos", selectBuildingInfos);
             return "manager/manager_building_information/manager_building_select_page";
         }
+        return pageManagerBuildingInfoInformation(request);
+    }
+
+    @Resource
+    HouseholdPaymentInfoService householdPaymentInfoService;
+
+    /**
+     * 跳转到楼房信息发起的缴费页面
+     * @return
+     */
+    @RequestMapping("/forwardBuildingInsertPayment")
+    public String forwardBuildingInsertPayment(HttpServletRequest request,int buildingId){
+        //获取到楼房的信息
+        BuildingInfo buildingPaymentInfo = buildingInfoService.selectAllByBuildingId(buildingId);
+//        session.setAttribute("buildingPaymentInfo",buildingPaymentInfo);
+        request.setAttribute("buildingPaymentInfo",buildingPaymentInfo);
+        return "manager/manager_building_information/manager_building__payment_insert_page";
+    }
+
+    /**
+     * 通过楼房信息模块发起缴费
+     * @return
+     */
+    @RequestMapping("/BuildingInsertPayment")
+    public String BuildingInsertPayment(HttpServletRequest request,String ownerName, String ownerPhone,
+                                        String paymentType, BigDecimal paymentAmount){
+        householdPaymentInfoService.addAll(new HouseholdPaymentInfo(ownerPhone,ownerName,paymentType,new BigDecimal(String.valueOf(paymentAmount)),null,null,"未支付"));
         return pageManagerBuildingInfoInformation(request);
     }
 

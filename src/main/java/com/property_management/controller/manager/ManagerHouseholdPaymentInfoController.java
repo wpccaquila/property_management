@@ -1,7 +1,9 @@
 package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
+import com.property_management.pojo.BuildingInfo;
 import com.property_management.pojo.HouseholdPaymentInfo;
+import com.property_management.service.common.BuildingInfoService;
 import com.property_management.service.common.HouseholdPaymentInfoService;
 import com.property_management.service.page.ManagerHouseholdPaymentInfoPageService;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -189,6 +192,9 @@ public class ManagerHouseholdPaymentInfoController {
         }
         return pageManagerHouseholdPaymentInfo(request);
     }
+
+
+
 
 
 }

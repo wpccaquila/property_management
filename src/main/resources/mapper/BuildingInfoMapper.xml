@@ -9,12 +9,13 @@
             <result property="buildingNum" column="building_num" jdbcType="VARCHAR"/>
             <result property="unitNum" column="unit_num" jdbcType="VARCHAR"/>
             <result property="roomNum" column="room_num" jdbcType="VARCHAR"/>
+            <result property="householdHouseType" column="household_house_type" jdbcType="VARCHAR"/>
             <result property="ownerName" column="owner_name" jdbcType="VARCHAR"/>
             <result property="ownerPhone" column="owner_phone" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        building_id,building_num,unit_num,
+        building_id,building_num,unit_num,household_house_type,
         room_num,owner_name,owner_phone
     </sql>
     <select id="selectAllByBuildingId" resultMap="BaseResultMap">
@@ -45,6 +46,7 @@
         set building_num = #{buildingNum,jdbcType=VARCHAR},
             unit_num     = #{unitNum,jdbcType=VARCHAR},
             room_num     = #{roomNum,jdbcType=VARCHAR},
+            household_house_type = #{householdHouseType,jdbcType=VARCHAR},
             owner_name   = #{ownerName,jdbcType=VARCHAR},
             owner_phone  = #{ownerPhone,jdbcType=VARCHAR}
         where building_id = #{buildingId,jdbcType=NUMERIC}
@@ -62,9 +64,9 @@
     <insert id="addAll">
         insert into building_info
         (building_id, building_num, unit_num,
-         room_num, owner_name, owner_phone)
+         room_num,household_house_type, owner_name, owner_phone)
         values (#{buildingId,jdbcType=NUMERIC}, #{buildingNum,jdbcType=VARCHAR}, #{unitNum,jdbcType=VARCHAR},
-                #{roomNum,jdbcType=VARCHAR}, #{ownerName,jdbcType=VARCHAR}, #{ownerPhone,jdbcType=VARCHAR})
+                #{roomNum,jdbcType=VARCHAR}, #{householdHouseType,jdbcType=VARCHAR},#{ownerName,jdbcType=VARCHAR}, #{ownerPhone,jdbcType=VARCHAR})
 
     </insert>
 

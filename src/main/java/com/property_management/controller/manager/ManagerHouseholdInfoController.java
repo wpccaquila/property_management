@@ -1,7 +1,9 @@
 package com.property_management.controller.manager;
 
 import com.github.pagehelper.PageInfo;
+import com.property_management.pojo.BuildingInfo;
 import com.property_management.pojo.HouseholdInfo;
+import com.property_management.service.common.BuildingInfoService;
 import com.property_management.service.common.HouseholdInfoService;
 import com.property_management.service.page.ManagerHouseholdInfoPageService;
 import org.springframework.stereotype.Controller;
@@ -94,6 +96,9 @@ public class ManagerHouseholdInfoController {
         return "manager/manager_household_information/add_household_page";
     }
 
+    @Resource
+    BuildingInfoService buildingInfoService;
+
     /**
      * 添加住户信息
      * @return
@@ -108,6 +113,13 @@ public class ManagerHouseholdInfoController {
         householdInfoService.addAll(new HouseholdInfo(owner_name, household_id_number,
                                         household_birthday, household_gender, owner_phone,
                                         household_checkin_time, household_house_type, household_address));
+
+        // 不为空的情况下，顺便将住户信息同步到楼房信息中去
+        if(household_address_unit != null && !household_address_unit.trim().isEmpty()){
+            buildingInfoService.addAll(new BuildingInfo(null,household_address_unit,household_address_building,household_address_room,
+                    owner_name,owner_phone,household_house_type));
+        }
+
         return pageManagerHouseholdInfoPageServiceInfoInformation(request);
     }
 

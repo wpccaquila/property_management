@@ -22,6 +22,13 @@ public interface HouseholdPaymentInfoService {
 
 
     /**
+     * 修改状态为已支付
+     * @param paymentStatus
+     * @return
+     */
+    int updatePaymentStatus(@Param("paymentStatus") String paymentStatus,@Param("propertyPaymentId") Integer propertyPaymentId);
+
+    /**
      * 返回所有数据
      * @return
      */

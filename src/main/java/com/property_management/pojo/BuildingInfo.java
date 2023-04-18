@@ -14,20 +14,22 @@ import lombok.Data;
 @TableName(value ="building_info")
 @Data
 public class BuildingInfo implements Serializable {
-    public BuildingInfo(Integer buildingId, String buildingNum, String unitNum, String roomNum, String ownerName, String ownerPhone) {
-        this.buildingId = buildingId;
-        this.buildingNum = buildingNum;
-        this.unitNum = unitNum;
-        this.roomNum = roomNum;
-        this.ownerName = ownerName;
-        this.ownerPhone = ownerPhone;
-    }
 
     public BuildingInfo(Integer buildingId, String buildingNum, String unitNum, String roomNum) {
         this.buildingId = buildingId;
         this.buildingNum = buildingNum;
         this.unitNum = unitNum;
         this.roomNum = roomNum;
+    }
+
+    public BuildingInfo(Integer buildingId, String buildingNum, String unitNum, String roomNum, String ownerName, String ownerPhone, String householdHouseType) {
+        this.buildingId = buildingId;
+        this.buildingNum = buildingNum;
+        this.unitNum = unitNum;
+        this.roomNum = roomNum;
+        this.ownerName = ownerName;
+        this.ownerPhone = ownerPhone;
+        this.householdHouseType = householdHouseType;
     }
 
     public BuildingInfo() {
@@ -63,6 +65,8 @@ public class BuildingInfo implements Serializable {
      * 
      */
     private String ownerPhone;
+
+    private String householdHouseType;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
